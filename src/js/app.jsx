@@ -1,3 +1,4 @@
-var React = require('react');
+const Page = require('./components/Page.jsx')
+const React = require('react');
 
-React.render(<div>Lunch UX</div>, document.getElementById('content'));
+React.render(<Page />, document.getElementById('content'));
