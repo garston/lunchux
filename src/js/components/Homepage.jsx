@@ -1,5 +1,5 @@
-const { Button, Input } = require('react-bootstrap');
 const React = require('react');
+const { Button, Textfield } = require('react-mdl');
 
 module.exports = React.createClass({
     displayName: 'Homepage',
@@ -9,7 +9,8 @@ module.exports = React.createClass({
 
     getInitialState() {
         return {
-            isValid: false
+            firstName: undefined,
+            lastName: undefined
         };
     },
 
@@ -18,26 +19,10 @@ module.exports = React.createClass({
             <div>
                 <div>School Lunch Application</div>
                 <div>Please enter</div>
-                <Input onChange={this.onNameInputChange} ref="firstNameInput" type="text" />
-                <Input onChange={this.onNameInputChange} ref="lastNameInput" type="text" />
-                <Button bsStyle="primary" disabled={!this.state.isValid} onClick={this.onGetStartedButtonClick} ref="getStartedButton">Get Started</Button>
+                <Textfield label="First Name" onChange={(e) => this.setState({firstName: e.target.value})} />
+                <Textfield label="Last Name" onChange={(e) => this.setState({lastName: e.target.value})} />
+                <Button disabled={!this.state.firstName || !this.state.lastName} onClick={() => this.props.onGetStartedClick(this.state.firstName, this.state.lastName)}>Get Started</Button>
             </div>
         );
-    },
-
-    getFirstName() {
-        return this.refs.firstNameInput.getValue();
-    },
-
-    getLastName() {
-        return this.refs.lastNameInput.getValue();
-    },
-
-    onGetStartedButtonClick() {
-        this.props.onGetStartedClick(this.getFirstName(), this.getLastName());
-    },
-
-    onNameInputChange() {
-        this.setState({isValid: !!this.getFirstName() && !!this.getLastName()});
     }
 });
