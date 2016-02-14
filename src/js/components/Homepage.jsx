@@ -16,8 +16,8 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div>
-                <div>School Lunch Application</div>
+            <div className="homepage">
+                <div className="title">School Lunch Application</div>
                 <div>Please enter</div>
                 <Textfield label="First Name" onChange={(e) => this.setState({firstName: e.target.value})} />
                 <Textfield label="Last Name" onChange={(e) => this.setState({lastName: e.target.value})} />
