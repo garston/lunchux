@@ -1,5 +1,6 @@
 var React = require('react');
 var Homepage = require('./Homepage.jsx');
+var NumPeopleSelection = require('./NumPeopleSelection.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
 var ActionCreator = require('../utils/ActionCreator');
 var { STEPS } = require('../utils/Util');
@@ -26,12 +27,23 @@ module.exports = React.createClass({
     },
 
     render() {
-        switch(this.state.step) {
-            case STEPS.HOME:
-                return <Homepage onGetStartedClick={() => ActionCreator.getStarted()} />;
-            case STEPS.NUM_PEOPLE:
-                return <div>Num applicants</div>;
+        if(this.state.step === STEPS.HOME) {
+            return <Homepage onGetStartedClick={() => ActionCreator.getStarted()} />;
         }
+
+        var content;
+        switch(this.state.step) {
+            case STEPS.NUM_PEOPLE:
+                content = <NumPeopleSelection />;
+                break;
+        }
+
+        return (
+            <div>
+                <div>NAV BAR</div>
+                { content }
+            </div>
+        );
     },
 
     onStoreChange(){

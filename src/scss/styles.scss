@@ -3,3 +3,19 @@
         font-weight: bold;
     }
 }
+
+.num-people-selection-page {
+    .icon {
+        cursor: pointer;
+        height: 100px;
+        width: 100px;
+
+        &.not-selected {
+            opacity: .5;
+        }
+    }
+
+    .icon-counter {
+        font-size: 100px;
+    }
+}
