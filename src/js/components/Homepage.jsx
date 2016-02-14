@@ -1,5 +1,5 @@
-const React = require('react');
-const { Button, Textfield } = require('react-mdl');
+var React = require('react');
+var { Button, Textfield } = require('react-mdl');
 
 module.exports = React.createClass({
     displayName: 'Homepage',

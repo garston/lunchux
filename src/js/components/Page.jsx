@@ -1,8 +1,8 @@
-const React = require('react');
-const Homepage = require('./Homepage.jsx');
-const ApplicationStore = require('../stores/ApplicationStore');
-const ActionCreator = require('../utils/ActionCreator');
-const { STEPS } = require('../utils/Util');
+var React = require('react');
+var Homepage = require('./Homepage.jsx');
+var ApplicationStore = require('../stores/ApplicationStore');
+var ActionCreator = require('../utils/ActionCreator');
+var { STEPS } = require('../utils/Util');
 
 function getStateFromStore(){
     return {

@@ -1,4 +1,4 @@
-const keyMirror = require('keymirror');
+var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
     // client actions

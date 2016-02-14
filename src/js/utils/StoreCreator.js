@@ -1,9 +1,9 @@
-const _ = require('lodash');
-const EventEmitter = require('events').EventEmitter;
+var _ = require('lodash');
+var EventEmitter = require('events').EventEmitter;
 
-const CHANGE_EVENT = 'change';
+var CHANGE_EVENT = 'change';
 
-const mixin = {
+var mixin = {
     emitChange() {
         this.emit(CHANGE_EVENT);
     },

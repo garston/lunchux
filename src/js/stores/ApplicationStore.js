@@ -1,11 +1,11 @@
-const { GET_STARTED } = require('../utils/ActionTypes');
-const Dispatcher = require('../utils/Dispatcher');
-const StoreCreator = require('../utils/StoreCreator');
-const { STEPS } = require('../utils/Util');
+var { GET_STARTED } = require('../utils/ActionTypes');
+var Dispatcher = require('../utils/Dispatcher');
+var StoreCreator = require('../utils/StoreCreator');
+var { STEPS } = require('../utils/Util');
 
 var step = STEPS.HOME;
 
-const ApplicationStore = StoreCreator.create({
+var ApplicationStore = StoreCreator.create({
     getStep() {
         return step;
     }

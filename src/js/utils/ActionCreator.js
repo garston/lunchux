@@ -1,5 +1,5 @@
-const { GET_STARTED } = require('./ActionTypes');
-const Dispatcher = require('./Dispatcher');
+var { GET_STARTED } = require('./ActionTypes');
+var Dispatcher = require('./Dispatcher');
 
 module.exports = {
     getStarted() {
