@@ -1,9 +1,10 @@
-var { GET_STARTED } = require('../utils/ActionTypes');
+var { NAVIGATE_FORWARD } = require('../utils/ActionTypes');
 var Dispatcher = require('../utils/Dispatcher');
 var StoreCreator = require('../utils/StoreCreator');
 var { STEPS } = require('../utils/Util');
 
-var step = STEPS.HOME;
+var orderedSteps = [STEPS.HOME, STEPS.NUM_PEOPLE];
+var step = orderedSteps[0];
 
 var ApplicationStore = StoreCreator.create({
     getStep() {
@@ -13,8 +14,8 @@ var ApplicationStore = StoreCreator.create({
 
 ApplicationStore.dispatchToken = Dispatcher.register(({ action: { type } }) => {
     switch(type) {
-        case GET_STARTED:
-            step = STEPS.NUM_PEOPLE;
+        case NAVIGATE_FORWARD:
+            step = orderedSteps[orderedSteps.indexOf(step) + 1];
             break;
     }
 

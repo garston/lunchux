@@ -27,12 +27,10 @@ module.exports = React.createClass({
     },
 
     render() {
-        if(this.state.step === STEPS.HOME) {
-            return <Homepage onGetStartedClick={() => ActionCreator.getStarted()} />;
-        }
-
         var content;
         switch(this.state.step) {
+            case STEPS.HOME:
+                return <Homepage onGetStartedClick={() => ActionCreator.navigateForward()} />;
             case STEPS.NUM_PEOPLE:
                 content = <NumPeopleSelection />;
                 break;

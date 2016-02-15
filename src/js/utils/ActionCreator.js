@@ -1,8 +1,8 @@
-var { GET_STARTED } = require('./ActionTypes');
+var { NAVIGATE_FORWARD } = require('./ActionTypes');
 var Dispatcher = require('./Dispatcher');
 
 module.exports = {
-    getStarted() {
-        Dispatcher.handleViewAction({ type: GET_STARTED });
+    navigateForward() {
+        Dispatcher.handleViewAction({ type: NAVIGATE_FORWARD });
     }
 };
