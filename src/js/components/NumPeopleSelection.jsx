@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var React = require('react');
 var { Button, Card, CardText, CardTitle, Checkbox } = require('react-mdl');
+var { navigateForward } = require('../utils/ActionCreator');
 
 module.exports = React.createClass({
     displayName: 'NumPeopleSelection',
@@ -31,9 +32,9 @@ module.exports = React.createClass({
                     <div className="iconContainer">
                         { this.generateIconCounterRow('numAdults', 'adult.png') }
                     </div>
-                    <Checkbox onChange={(e) => this.setState({areAdultsInAssistanceProgram: e.target.value})} />Check if any adults are in the assistance programs SNAP, TANF, FDPIR
+                    <Checkbox onChange={e => this.setState({areAdultsInAssistanceProgram: e.target.checked})} />Check if any adults are in the assistance programs SNAP, TANF, FDPIR
                 </Card>
-                <Button>Next</Button>
+                <Button onClick={() => navigateForward(this.state)}>Next</Button>
             </div>
         );
     },

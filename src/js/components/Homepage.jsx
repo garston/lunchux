@@ -1,11 +1,9 @@
 var React = require('react');
 var { Button, Textfield } = require('react-mdl');
+var { navigateForward } = require('../utils/ActionCreator');
 
 module.exports = React.createClass({
     displayName: 'Homepage',
-    propTypes: {
-        onGetStartedClick: React.PropTypes.func.isRequired
-    },
 
     getInitialState() {
         return {
@@ -29,9 +27,9 @@ module.exports = React.createClass({
                 <div className="nameSelection">
                     <div className="nameContainer">
                         <p>To start please fill out your name below to start the application</p>
-                        <Textfield label="First Name" floatingLabel onChange={(e) => this.setState({firstName: e.target.value})} style={{width: '300px'}}/>
-                        <Textfield label="Last Name" floatingLabel onChange={(e) => this.setState({lastName: e.target.value})} style={{width: '300px', marginLeft:"30px"}} />
-                        <Button raised ripple disabled={!this.state.firstName || !this.state.lastName} onClick={() => this.props.onGetStartedClick(this.state.firstName, this.state.lastName)}>Get Started</Button>
+                        <Textfield label="First Name" floatingLabel onChange={e => this.setState({firstName: e.target.value})} style={{width: '300px'}}/>
+                        <Textfield label="Last Name" floatingLabel onChange={e => this.setState({lastName: e.target.value})} style={{width: '300px', marginLeft:"30px"}} />
+                        <Button raised ripple disabled={!this.state.firstName || !this.state.lastName} onClick={() => navigateForward(this.state)}>Get Started</Button>
                     </div>
                 </div>
             </div>

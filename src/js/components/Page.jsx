@@ -1,9 +1,14 @@
+var _ = require('lodash');
 var React = require('react');
 var Homepage = require('./Homepage.jsx');
 var NumPeopleSelection = require('./NumPeopleSelection.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
-var ActionCreator = require('../utils/ActionCreator');
 var { STEPS } = require('../utils/Util');
+
+var stepToContentMap = {};
+stepToContentMap[STEPS.HOME] = <Homepage />;
+stepToContentMap[STEPS.NUM_PEOPLE] = <NumPeopleSelection />;
+stepToContentMap[STEPS.FORM_SUBMITTED] = <div>Form was successfully submitted.</div>;
 
 function getStateFromStore(){
     return {
@@ -27,16 +32,8 @@ module.exports = React.createClass({
     },
 
     render() {
-        var content;
-        switch(this.state.step) {
-            case STEPS.HOME:
-                return <Homepage onGetStartedClick={() => ActionCreator.navigateForward()} />;
-            case STEPS.NUM_PEOPLE:
-                content = <NumPeopleSelection />;
-                break;
-        }
-
-        return (
+        var content = stepToContentMap[this.state.step];
+        return _.contains([STEPS.HOME, STEPS.FORM_SUBMITTED], this.state.step) ? content : (
             <div>
                 <div>NAV BAR</div>
                 { content }
