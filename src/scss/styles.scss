@@ -64,19 +64,32 @@
 }
 
 .num-people-selection-page {
-    .icon {
-        cursor: pointer;
-        height: 100px;
-        width: 100px;
-
-        &.not-selected {
-            opacity: .5;
+    .iconContainer {
+    width: 1000px;
+    }
+        .icon {
+            cursor: pointer;
+            height: 100px;
+            width: 100px;
+            position: relative;
+            display: inline-block;
+            float: left;
+            &.not-selected {
+                opacity: .5;
+            }
         }
-    }
 
-    .icon-counter {
-        font-size: 100px;
-    }
+        .icon-counter {
+            font-size: 6em;
+            text-align: right;
+            line-height: 100px;
+            position: relative;
+            float: left;
+            width: 150px;
+            height: 100px;
+
+
+        }
 }
 
 .container {

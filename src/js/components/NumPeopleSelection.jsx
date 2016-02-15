@@ -18,15 +18,19 @@ module.exports = React.createClass({
             <div className="num-people-selection-page">
                 <div>Lets get started</div>
                 <div>Please start by selecting how many applicants and adults are in your household. Please select only those that share income and expenses.</div>
-                <Card>
+                <Card shadow={1} style={{width: '1000px', margin: 'auto'}}>
                     <CardTitle>Children</CardTitle>
                     <CardText>Please select the number of children 18 and under and anyone who is over 18 and in grade 12 or below. A household is anyone who shares expenses and income.</CardText>
-                    { this.generateIconCounterRow('numChildren', 'baby.png') }
+                    <div className="iconContainer">
+                        { this.generateIconCounterRow('numChildren', 'baby.png') }
+                    </div>
                 </Card>
-                <Card>
+                <Card shadow={1} style={{width: '1000px', margin: 'auto', marginTop: "20px"}}>
                     <CardTitle>Adults</CardTitle>
                     <CardText>Please select the number of adults in your household that share income and expenses.</CardText>
-                    { this.generateIconCounterRow('numAdults', 'adult.png') }
+                    <div className="iconContainer">
+                        { this.generateIconCounterRow('numAdults', 'adult.png') }
+                    </div>
                     <Checkbox onChange={(e) => this.setState({areAdultsInAssistanceProgram: e.target.value})} />Check if any adults are in the assistance programs SNAP, TANF, FDPIR
                 </Card>
                 <Button>Next</Button>
@@ -41,7 +45,8 @@ module.exports = React.createClass({
                 key={`${stateFieldName}-icon-${index}`}
                 onClick={() => this.setState({ [stateFieldName]: index + 1 })}
                 src={imgSrc}
-            />;
+            />
+
         }).concat(<div className="icon-counter" key={`${stateFieldName}-icon-counter`}>{ this.state[stateFieldName] }</div>);
     }
 });
