@@ -1,13 +1,13 @@
 var _ = require('lodash');
 var React = require('react');
 var Homepage = require('./Homepage.jsx');
-var NumPeopleSelection = require('./NumPeopleSelection.jsx');
+var NumPeopleContent = require('./num-people/Content.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
 var { STEPS } = require('../utils/Util');
 
 var stepToContentMap = {};
 stepToContentMap[STEPS.HOME] = <Homepage />;
-stepToContentMap[STEPS.NUM_PEOPLE] = <NumPeopleSelection />;
+stepToContentMap[STEPS.NUM_PEOPLE] = <NumPeopleContent />;
 stepToContentMap[STEPS.FORM_SUBMITTED] = <div>Form was successfully submitted.</div>;
 
 function getStateFromStore(){
