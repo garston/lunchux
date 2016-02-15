@@ -1,6 +1,65 @@
 .homepage {
-    .title {
-        font-weight: bold;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 100%;
+    .heroImage {
+        width: 100%;
+        height: 70%;
+        background-color: #666666;
+        .image{
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            overflow: hidden;
+
+            img{
+                width: 100%;
+                min-width: 1000px;
+                top: -25%;
+                margin-left: auto;
+                margin-right: auto;
+                opacity: 0.3;
+            }
+        }
+
+        .heroContainer {
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            top: 20%;
+            position: relative;
+            .title {
+                font-weight: bold;
+                font-size: 5em;
+                padding-top: 5%;
+                color: #ffffff
+            }
+            .intro {
+                font-size: 2em;
+                padding-top: 10%;
+                text-align: left;
+                color: #eeeeee;
+            }
+        }
+    }
+    .nameSelection{
+        width: 100%;
+        height: 30%;
+        .nameContainer {
+            width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #999999;
+            top: 20%;
+            position: relative;
+            font-size: 2em;
+            Button {
+                margin-left: 30px;
+                margin-bottom: 15px;
+            }
+        }
     }
 }
 
@@ -18,4 +77,9 @@
     .icon-counter {
         font-size: 100px;
     }
+}
+
+.container {
+
+
 }
