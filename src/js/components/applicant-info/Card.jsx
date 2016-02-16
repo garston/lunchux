@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var React = require('react');
-var { Card, CardText, Checkbox, Textfield } = require('react-mdl');
+var { Card, CardText, Textfield } = require('react-mdl');
+var LabelCheckboxTable = require('../LabelCheckboxTable.jsx');
 
 module.exports = React.createClass({
     displayName: 'ApplicantInfoCard',
@@ -67,17 +68,7 @@ module.exports = React.createClass({
     },
 
     _generateLabelCheckboxTable(...labelStateKeyPairs) {
-        var rows = _(labelStateKeyPairs).
-            map((label, index, arr) => index % 2 === 0 && ({ label, stateKey: arr[index+1] })).
-            compact().
-            map(({ label, stateKey }, index) => (
-                <tr key={'label-checkbox-row' + index}>
-                    <td>{ label }</td>
-                    <td><Checkbox checked={this.state[stateKey]} onChange={e => this.setState({[stateKey]: e.target.checked})} /></td>
-                </tr>
-            )).
-            value();
-        return <table><tbody>{ rows }</tbody></table>;
+        return <LabelCheckboxTable labelStateKeyPairs={labelStateKeyPairs} onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })} />
     },
 
     _generateOptionalSection() {
