@@ -34,7 +34,7 @@ module.exports = React.createClass({
                 { applicantInfoCards }
                 <Button
                     disabled={ _.some(this.state.areApplicantsValid, isValid => !isValid) }
-                    onClick={() => navigateForward({ applicantInfos: this._eachApplicant(index => this.refs['applicantInfoCard' + index].state) })}
+                    onClick={() => navigateForward({ applicantInfos: this._eachApplicant(index => this.refs['applicantInfoCard' + index].getFormData()) })}
                 >
                     Next
                 </Button>

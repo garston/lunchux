@@ -11,12 +11,20 @@ module.exports = React.createClass({
 
     getInitialState() {
         return {
+            optionalSectionShown: false,
+
+            asian: false,
+            black: false,
             currentStudent: false,
             firstName: '',
             fosterChild: false,
+            hawaiian: false,
+            hispanicOrLatino: false,
+            indianAlaskan: false,
             lastName: '',
             migrantHomelessRunaway: false,
-            receivesIncome: false
+            receivesIncome: false,
+            white: false
         };
     },
 
@@ -24,43 +32,71 @@ module.exports = React.createClass({
         return (
             <Card>
                 <CardText>
-                    <table><tbody>
-                        <tr>
-                            <td className="applicant-name">
-                                <table><tbody>
-                                    <tr>
-                                        <td rowSpan="2">
-                                            <img src="baby.png" /><br/>
-                                            Child #{ this.props.applicantIndex + 1 }
-                                        </td>
-                                        <td><Textfield label="First Name" onChange={e => this._onNameChange(e, 'firstName')} /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Textfield label="Last Name" onChange={e => this._onNameChange(e, 'lastName')} /></td>
-                                    </tr>
-                                </tbody></table>
-                            </td>
-                            <td>
-                                <table><tbody>
-                                    { this._generateLabelCheckboxRow('Current Student', 'currentStudent') }
-                                    { this._generateLabelCheckboxRow('Receives Income', 'receivesIncome') }
-                                    { this._generateLabelCheckboxRow('Foster Child', 'fosterChild') }
-                                    { this._generateLabelCheckboxRow('Migrant, homeless, runaway', 'migrantHomelessRunaway') }
-                                </tbody></table>
-                            </td>
-                        </tr>
-                    </tbody></table>
+                    <table><tbody><tr>
+                        <td className="applicant-name">
+                            <table><tbody>
+                                <tr>
+                                    <td rowSpan="2">
+                                        <img src="baby.png" /><br/>
+                                        Child #{ this.props.applicantIndex + 1 }
+                                    </td>
+                                    <td><Textfield label="First Name" onChange={e => this._onNameChange(e, 'firstName')} /></td>
+                                </tr><tr>
+                                    <td><Textfield label="Last Name" onChange={e => this._onNameChange(e, 'lastName')} /></td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                        <td>
+                            { this._generateLabelCheckboxTable(
+                                'Current Student', 'currentStudent',
+                                'Receives Income', 'receivesIncome',
+                                'Foster Child', 'fosterChild',
+                                'Migrant, homeless, runaway', 'migrantHomelessRunaway'
+                            )}
+                            <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Optional</div>
+                        </td>
+                    </tr></tbody></table>
+                    { this.state.optionalSectionShown && this._generateOptionalSection() }
                 </CardText>
             </Card>
         );
     },
 
-    _generateLabelCheckboxRow(label, stateKey) {
+    getFormData() {
+        return _.omit(this.state, 'optionalSectionShown');
+    },
+
+    _generateLabelCheckboxTable(...labelStateKeyPairs) {
+        var rows = _(labelStateKeyPairs).
+            map((label, index, arr) => index % 2 === 0 && ({ label, stateKey: arr[index+1] })).
+            compact().
+            map(({ label, stateKey }, index) => (
+                <tr key={'label-checkbox-row' + index}>
+                    <td>{ label }</td>
+                    <td><Checkbox checked={this.state[stateKey]} onChange={e => this.setState({[stateKey]: e.target.checked})} /></td>
+                </tr>
+            )).
+            value();
+        return <table><tbody>{ rows }</tbody></table>;
+    },
+
+    _generateOptionalSection() {
         return (
-            <tr>
-                <td>{ label }</td>
-                <td><Checkbox checked={this.state[stateKey]} onChange={e => this.setState({[stateKey]: e.target.checked})} /></td>
-            </tr>
+            <table><tbody><tr>
+                <td className="applicant-ethnicity">
+                    Ethnicity<br/>
+                    { this._generateLabelCheckboxTable('Hispanic or Latino', 'hispanicOrLatino') }
+                </td><td>
+                    Race<br/>
+                    { this._generateLabelCheckboxTable(
+                        'American Indian or Alaskan Native', 'indianAlaskan',
+                        'Asian', 'asian',
+                        'Black or African American', 'black',
+                        'Native Hawaiian or Other Pacific Islander', 'hawaiian',
+                        'White', 'white'
+                    )}
+                </td>
+            </tr></tbody></table>
         );
     },
 
