@@ -1,5 +1,17 @@
-.mdl-card {
+.mdl-card, .mdl-card > .mdl-card__supporting-text > table {
     width: 100%;
+}
+
+.applicant-info-content .mdl-card {
+    td.applicant-name {
+        border-right: 2px solid gray;
+        width: 60%;
+
+        img {
+            height: 75px;
+            width: 75px;
+        }
+    }
 }
 
 .homepage {
@@ -67,28 +79,22 @@
     }
 }
 
-.num-people-selection-page {
-    .mdl-card {
-        table {
-            width: 100%;
+.num-people-selection-content .mdl-card {
+    td:first-child {
+        width: 80%;
+    }
 
-            td:first-child {
-                width: 80%;
-            }
+    .icon {
+        cursor: pointer;
+        height: 100px;
+        width: 100px;
+
+        &.not-selected {
+            opacity: .5;
         }
+    }
 
-        .icon {
-            cursor: pointer;
-            height: 100px;
-            width: 100px;
-
-            &.not-selected {
-                opacity: .5;
-            }
-        }
-
-        .icon-counter {
-            font-size: 100px;
-        }
+    .icon-counter {
+        font-size: 100px;
     }
 }

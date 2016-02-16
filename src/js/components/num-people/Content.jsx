@@ -16,7 +16,7 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <div className="num-people-selection-page">
+            <div className="num-people-selection-content">
                 <div>Lets get started</div>
                 <div>Please start by selecting how many applicants and adults are in your household. Please select only those that share income and expenses.</div>
                 <NumPeopleCard
