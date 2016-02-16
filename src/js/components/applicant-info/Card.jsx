@@ -31,35 +31,33 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <Card>
-                <CardText>
-                    <table><tbody><tr>
-                        <td className="applicant-name">
-                            <table><tbody>
-                                <tr>
-                                    <td rowSpan="2">
-                                        <img src="baby.png" /><br/>
-                                        Child #{ this.props.applicantIndex + 1 }
-                                    </td>
-                                    <td><Textfield label="First Name" onChange={e => this._onNameChange(e, 'firstName')} /></td>
-                                </tr><tr>
-                                    <td><Textfield label="Last Name" onChange={e => this._onNameChange(e, 'lastName')} /></td>
-                                </tr>
-                            </tbody></table>
-                        </td>
-                        <td>
-                            { this._generateLabelCheckboxTable(
-                                'Current Student', 'currentStudent',
-                                'Receives Income', 'receivesIncome',
-                                'Foster Child', 'fosterChild',
-                                'Migrant, homeless, runaway', 'migrantHomelessRunaway'
-                            )}
-                            <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Optional</div>
-                        </td>
-                    </tr></tbody></table>
-                    { this.state.optionalSectionShown && this._generateOptionalSection() }
-                </CardText>
-            </Card>
+            <Card><CardText>
+                <table><tbody><tr>
+                    <td className="applicant-name">
+                        <table><tbody>
+                            <tr>
+                                <td rowSpan="2">
+                                    <img src="baby.png" /><br/>
+                                    Child #{ this.props.applicantIndex + 1 }
+                                </td>
+                                <td><Textfield label="First Name" onChange={e => this._onNameChange(e, 'firstName')} /></td>
+                            </tr><tr>
+                                <td><Textfield label="Last Name" onChange={e => this._onNameChange(e, 'lastName')} /></td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                    <td>
+                        { this._generateLabelCheckboxTable(
+                            'Current Student', 'currentStudent',
+                            'Receives Income', 'receivesIncome',
+                            'Foster Child', 'fosterChild',
+                            'Migrant, homeless, runaway', 'migrantHomelessRunaway'
+                        )}
+                        <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Optional</div>
+                    </td>
+                </tr></tbody></table>
+                { this.state.optionalSectionShown && this._generateOptionalSection() }
+            </CardText></Card>
         );
     },
 

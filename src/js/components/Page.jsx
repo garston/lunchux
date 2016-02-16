@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
+var AssistancePrograms = require('./AssistancePrograms.jsx');
 var Homepage = require('./Homepage.jsx');
 var ApplicantInfoContent = require('./applicant-info/Content.jsx');
 var NumPeopleContent = require('./num-people/Content.jsx');
@@ -33,6 +34,9 @@ module.exports = React.createClass({
         switch(this.state.step) {
             case STEPS.APPLICANT_INFO:
                 content = <ApplicantInfoContent numApplicants={this.state.formData.numChildren} />;
+                break;
+            case STEPS.ASSISTANCE_PROGRAMS:
+                content = <AssistancePrograms />;
                 break;
             case STEPS.FORM_SUBMITTED:
                 content = <div>Form was successfully submitted.</div>;
