@@ -31,7 +31,7 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <Card><CardText>
+            <Card shadow={1}><CardText>
                 <table><tbody><tr>
                     <td className="applicant-name">
                         <table><tbody>

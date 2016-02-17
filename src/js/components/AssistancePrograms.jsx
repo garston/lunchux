@@ -30,7 +30,7 @@ module.exports = React.createClass({
 
         return (
             <div>
-                <Card><CardText>
+                <Card shadow={1}><CardText>
                     Please select applicable programs and enter case numbers
                     <table><tbody>
                         { cardRows }

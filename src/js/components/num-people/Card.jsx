@@ -25,7 +25,7 @@ module.exports = React.createClass({
         });
 
         return (
-            <Card>
+            <Card shadow={1}>
                 <CardTitle>{ header }</CardTitle>
                 <CardText>
                     <table>
