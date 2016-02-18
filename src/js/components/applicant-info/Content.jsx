@@ -30,14 +30,16 @@ module.exports = React.createClass({
 
         return (
             <div className="applicant-info-content">
-                <div>Applicant Info</div>
+                <div className="container">Applicant Info</div>
                 { applicantInfoCards }
-                <Button
-                    disabled={ _.some(this.state.areApplicantsValid, isValid => !isValid) }
-                    onClick={() => navigateForward({ applicantInfos: this._eachApplicant(index => this.refs['applicantInfoCard' + index].getFormData()) })}
-                >
-                    Next
-                </Button>
+                <div className="bottomNav container">
+                    <Button className="buttonRight" raised ripple
+                        disabled={ _.some(this.state.areApplicantsValid, isValid => !isValid) }
+                        onClick={() => navigateForward({ applicantInfos: this._eachApplicant(index => this.refs['applicantInfoCard' + index].getFormData()) })}
+                    >
+                        Next
+                    </Button>
+                </div>
             </div>
         );
     },

@@ -40,9 +40,9 @@ module.exports = React.createClass({
                                     <img src="baby.png" /><br/>
                                     Child #{ this.props.applicantIndex + 1 }
                                 </td>
-                                <td><Textfield label="First Name" onChange={e => this._onNameChange(e, 'firstName')} /></td>
+                                <td><Textfield label="First Name" floatingLabel onChange={e => this._onNameChange(e, 'firstName')} /></td>
                             </tr><tr>
-                                <td><Textfield label="Last Name" onChange={e => this._onNameChange(e, 'lastName')} /></td>
+                                <td><Textfield label="Last Name" floatingLabel onChange={e => this._onNameChange(e, 'lastName')} /></td>
                             </tr>
                         </tbody></table>
                     </td>

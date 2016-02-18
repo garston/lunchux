@@ -17,8 +17,10 @@ module.exports = React.createClass({
     render() {
         return (
             <div className="num-people-selection-content">
-                <div>Lets get started</div>
-                <div>Please start by selecting how many applicants and adults are in your household. Please select only those that share income and expenses.</div>
+                <div className="selectionHeader container">
+                <h1>Lets get started</h1>
+                <p>Please start by selecting how many applicants and adults are in your household. Please select only those that share income and expenses.</p>
+                </div>
                 <NumPeopleCard
                     header="Children"
                     helperText="Please select the number of children 18 and under and anyone who is over 18 and in grade 12 or below. A household is anyone who shares expenses and income."
@@ -38,7 +40,9 @@ module.exports = React.createClass({
                         Check if any adults are in the assistance programs SNAP, TANF, FDPIR
                     </div>
                 </NumPeopleCard>
-                <Button onClick={() => navigateForward(this.state)}>Next</Button>
+                <div className="bottomNav container">
+                    <Button className="buttonRight" raised ripple onClick={() => navigateForward(this.state)}>Next</Button>
+                </div>
             </div>
         );
     }

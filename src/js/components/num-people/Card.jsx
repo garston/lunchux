@@ -30,7 +30,7 @@ module.exports = React.createClass({
                 <CardText>
                     <table>
                         <tbody>
-                            <tr>
+                            <tr className="selectionTitle">
                                 <td>{ helperText }</td>
                                 <td/>
                             </tr>
