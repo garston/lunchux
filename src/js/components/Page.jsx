@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
-var AssistancePrograms = require('./AssistancePrograms.jsx');
+var AssistanceProgram = require('./AssistanceProgram.jsx');
 var Homepage = require('./Homepage.jsx');
 var ApplicantInfoContent = require('./applicant-info/Content.jsx');
 var NumPeopleContent = require('./num-people/Content.jsx');
@@ -35,8 +35,8 @@ module.exports = React.createClass({
             case STEPS.APPLICANT_INFO:
                 content = <ApplicantInfoContent numApplicants={this.state.formData.numChildren} />;
                 break;
-            case STEPS.ASSISTANCE_PROGRAMS:
-                content = <AssistancePrograms />;
+            case STEPS.ASSISTANCE_PROGRAM:
+                content = <AssistanceProgram />;
                 break;
             case STEPS.FORM_SUBMITTED:
                 content = <div>Form was successfully submitted.</div>;

@@ -5,7 +5,7 @@ var StoreCreator = require('../utils/StoreCreator');
 var { STEPS } = require('../utils/Util');
 
 var formData = {};
-var orderedSteps = [STEPS.HOME, STEPS.NUM_PEOPLE, STEPS.APPLICANT_INFO, STEPS.ASSISTANCE_PROGRAMS, STEPS.FORM_SUBMITTED];
+var orderedSteps = [STEPS.HOME, STEPS.NUM_PEOPLE, STEPS.APPLICANT_INFO, STEPS.ASSISTANCE_PROGRAM, STEPS.FORM_SUBMITTED];
 var step = orderedSteps[0];
 
 var ApplicationStore = StoreCreator.create({
