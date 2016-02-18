@@ -10,7 +10,7 @@ var step = orderedSteps[0];
 
 var ApplicationStore = StoreCreator.create({
     getFormData() {
-        return _.clone(formData);
+        return _.cloneDeep(formData);
     },
     getStep() {
         return step;

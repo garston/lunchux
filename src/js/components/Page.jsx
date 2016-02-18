@@ -8,10 +8,7 @@ var ApplicationStore = require('../stores/ApplicationStore');
 var { STEPS } = require('../utils/Util');
 
 function getStateFromStore(){
-    return {
-        formData: ApplicationStore.getFormData(),
-        step: ApplicationStore.getStep()
-    };
+    return { step: ApplicationStore.getStep() };
 }
 
 module.exports = React.createClass({
@@ -22,18 +19,18 @@ module.exports = React.createClass({
     },
 
     componentDidMount(){
-        ApplicationStore.addChangeListener(this.onStoreChange);
+        ApplicationStore.addChangeListener(this._onStoreChange);
     },
 
     componentWillUnmount(){
-        ApplicationStore.removeChangeListener(this.onStoreChange);
+        ApplicationStore.removeChangeListener(this._onStoreChange);
     },
 
     render() {
         var content;
         switch(this.state.step) {
             case STEPS.APPLICANT_INFO:
-                content = <ApplicantInfoContent numApplicants={this.state.formData.numChildren} />;
+                content = <ApplicantInfoContent />;
                 break;
             case STEPS.ASSISTANCE_PROGRAM:
                 content = <AssistanceProgram />;
@@ -57,7 +54,7 @@ module.exports = React.createClass({
         );
     },
 
-    onStoreChange(){
+    _onStoreChange(){
         this.setState(getStateFromStore());
     }
 });

@@ -2,13 +2,11 @@ var _ = require('lodash');
 var React = require('react');
 var { Button } = require('react-mdl');
 var ApplicantInfoCard = require('./Card.jsx');
+var ApplicationStore = require('../../stores/ApplicationStore');
 var { navigateForward } = require('../../utils/ActionCreator');
 
 module.exports = React.createClass({
     displayName: 'ApplicantInfoContent',
-    propTypes: {
-        numApplicants: React.PropTypes.number.isRequired
-    },
 
     getInitialState() {
         return {
@@ -45,6 +43,6 @@ module.exports = React.createClass({
     },
 
     _eachApplicant(fn) {
-        return _.map(_.range(this.props.numApplicants), fn);
+        return _.map(_.range(ApplicationStore.getFormData().numChildren), fn);
     }
 });
