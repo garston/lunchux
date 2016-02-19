@@ -32,7 +32,7 @@ module.exports = React.createClass({
                 <NumPeopleCard
                     header="Adults"
                     helperText="Please select the number of adults in your household that share income and expenses."
-                    imgSrc="adult.png"
+                    imgSrc="adult-02.png"
                     numSelected={this.state.numAdults}
                     onChange={numAdults => this.setState({numAdults})}
                 >
