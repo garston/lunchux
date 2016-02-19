@@ -1,5 +1,5 @@
 var _ = require('lodash');
-var { NAVIGATE_FORWARD } = require('../utils/ActionTypes');
+var { NAVIGATE_FORWARD, NAVIGATE_TO } = require('../utils/ActionTypes');
 var Dispatcher = require('../utils/Dispatcher');
 var StoreCreator = require('../utils/StoreCreator');
 var { STEPS } = require('../utils/Util');
@@ -17,12 +17,15 @@ var ApplicationStore = StoreCreator.create({
     }
 });
 
-ApplicationStore.dispatchToken = Dispatcher.register(({ action: { formData: newFormData, type } }) => {
-    switch(type) {
+ApplicationStore.dispatchToken = Dispatcher.register(({ action }) => {
+    switch(action.type) {
         case NAVIGATE_FORWARD:
-            _.merge(formData, newFormData);
-            console.log('ApplicationStore', newFormData, formData);
+            _.merge(formData, action.formData);
+            console.log('ApplicationStore', action.formData, formData);
             step = orderedSteps[orderedSteps.indexOf(step) + 1];
+            break;
+        case NAVIGATE_TO:
+            step = action.step;
             break;
     }
 
