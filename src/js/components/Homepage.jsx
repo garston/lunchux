@@ -1,7 +1,7 @@
 var React = require('react');
 var { Button, Textfield } = require('react-mdl');
 var { navigateForward } = require('../utils/ActionCreator');
-var { Card, CardText, CardTitle } = require('react-mdl');
+var { Card } = require('react-mdl');
 
 module.exports = React.createClass({
     displayName: 'Homepage',

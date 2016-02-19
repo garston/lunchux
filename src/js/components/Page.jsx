@@ -2,6 +2,7 @@ var _ = require('lodash');
 var React = require('react');
 var AssistanceProgram = require('./AssistanceProgram.jsx');
 var Homepage = require('./Homepage.jsx');
+var NavBar = require('./NavBar.jsx');
 var ApplicantInfoContent = require('./applicant-info/Content.jsx');
 var NumPeopleContent = require('./num-people/Content.jsx');
 var ApplicationStore = require('../stores/ApplicationStore');
@@ -48,7 +49,7 @@ module.exports = React.createClass({
 
         return _.contains([STEPS.HOME, STEPS.FORM_SUBMITTED], this.state.step) ? content : (
             <div>
-                <div>NAV BAR</div>
+                <NavBar />
                 { content }
             </div>
         );
