@@ -37,7 +37,7 @@ module.exports = React.createClass({
                         <table><tbody>
                             <tr>
                                 <td rowSpan="2">
-                                    <img src="baby.png" /><br/>
+                                    <img src="child-01.png" /><br/>
                                     Child #{ this.props.applicantIndex + 1 }
                                 </td>
                                 <td><Textfield label="First Name" floatingLabel onChange={e => this._onNameChange(e, 'firstName')} /></td>

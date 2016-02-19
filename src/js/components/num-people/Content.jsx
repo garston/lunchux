@@ -24,7 +24,7 @@ module.exports = React.createClass({
                 <NumPeopleCard
                     header="Children"
                     helperText="Please select the number of children 18 and under and anyone who is over 18 and in grade 12 or below. A household is anyone who shares expenses and income."
-                    imgSrc="baby.png"
+                    imgSrc="child-01.png"
                     numSelected={this.state.numChildren}
                     onChange={numChildren => this.setState({numChildren})}
                 />
@@ -35,9 +35,9 @@ module.exports = React.createClass({
                     numSelected={this.state.numAdults}
                     onChange={numAdults => this.setState({numAdults})}
                 >
-                    <div>
-                        <Checkbox onChange={e => this.setState({areAdultsInAssistanceProgram: e.target.checked})} />
-                        Check if any adults are in the assistance programs SNAP, TANF, FDPIR
+                    <div className="assistanceBox">
+                        <Checkbox ripple onChange={e => this.setState({areAdultsInAssistanceProgram: e.target.checked})} />
+                        <p>Check if any adults are in the assistance programs SNAP, TANF, FDPIR</p>
                     </div>
                 </NumPeopleCard>
                 <div className="bottomNav container">
