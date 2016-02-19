@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var React = require('react');
 var { Button, Card, CardText, Checkbox, Textfield } = require('react-mdl');
+var ApplicationStore = require('../stores/ApplicationStore');
 var { navigateForward } = require('../utils/ActionCreator');
 
 var caseNumPattern = '^[0-9a-zA-Z]+$';
@@ -12,14 +13,7 @@ module.exports = React.createClass({
     displayName: 'AssistanceProgram',
 
     getInitialState() {
-        return {
-            fdpir: false,
-            fdpirNumber: '',
-            tanf: false,
-            tanfNumber: '',
-            snap: false,
-            snapNumber: ''
-        };
+        return _.pick(ApplicationStore.getFormData(), ['fdpir', 'fdpirNumber', 'tanf', 'tanfNumber', 'snap', 'snapNumber']);
     },
 
     render() {
@@ -28,7 +22,7 @@ module.exports = React.createClass({
                 <tr key={stateKey + '-assistance-program-row'}>
                     <td>
                         <Checkbox
-                            checked={ this.state[stateKey] }
+                            checked={ !!this.state[stateKey] }
                             onChange={ e => this.setState(_.merge(this.getInitialState(), { [stateKey]: e.target.checked })) }
                         />
                     </td>

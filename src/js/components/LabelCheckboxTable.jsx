@@ -5,6 +5,7 @@ var { Checkbox } = require('react-mdl');
 module.exports = React.createClass({
     displayName: 'LabelCheckboxTable',
     propTypes: {
+        getCheckboxValue: React.PropTypes.func.isRequired,
         labelStateKeyPairs: React.PropTypes.array.isRequired,
         onCheckboxChange: React.PropTypes.func.isRequired
     },
@@ -16,7 +17,7 @@ module.exports = React.createClass({
             map(({ label, stateKey }, index) => (
                 <tr key={'label-checkbox-row' + index}>
                     <td>{ label }</td>
-                    <td><Checkbox onChange={e => this.props.onCheckboxChange(stateKey, e.target.checked)} /></td>
+                    <td><Checkbox checked={ this.props.getCheckboxValue(stateKey) } onChange={e => this.props.onCheckboxChange(stateKey, e.target.checked)} /></td>
                 </tr>
             )).
             value();

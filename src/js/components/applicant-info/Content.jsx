@@ -9,13 +9,14 @@ module.exports = React.createClass({
     displayName: 'ApplicantInfoContent',
 
     getInitialState() {
+        var applicantInfos = ApplicationStore.getFormData().applicantInfos || [];
         return {
-            areApplicantsValid: this._eachApplicant(() => false)
+            areApplicantsValid: this._mapEachApplicant(index => !!applicantInfos[index])
         };
     },
 
     render() {
-        var applicantInfoCards = this._eachApplicant(index => {
+        var applicantInfoCards = this._mapEachApplicant(index => {
             return <ApplicantInfoCard
                 applicantIndex={ index }
                 key={ 'applicantInfoCard' + index }
@@ -33,7 +34,7 @@ module.exports = React.createClass({
                 <div className="bottomNav container">
                     <Button className="buttonRight" raised ripple
                         disabled={ _.some(this.state.areApplicantsValid, isValid => !isValid) }
-                        onClick={() => navigateForward({ applicantInfos: this._eachApplicant(index => this.refs['applicantInfoCard' + index].getFormData()) })}
+                        onClick={() => navigateForward({ applicantInfos: this._mapEachApplicant(index => this.refs['applicantInfoCard' + index].getFormData()) })}
                     >
                         Next
                     </Button>
@@ -42,7 +43,7 @@ module.exports = React.createClass({
         );
     },
 
-    _eachApplicant(fn) {
+    _mapEachApplicant(fn) {
         return _.map(_.range(ApplicationStore.getFormData().numChildren), fn);
     }
 });

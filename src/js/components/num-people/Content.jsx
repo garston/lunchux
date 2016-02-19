@@ -1,25 +1,26 @@
+var _ = require('lodash');
 var React = require('react');
 var { Button, Checkbox } = require('react-mdl');
 var NumPeopleCard = require('./Card.jsx');
+var ApplicationStore = require('../../stores/ApplicationStore');
 var { navigateForward } = require('../../utils/ActionCreator');
 
 module.exports = React.createClass({
     displayName: 'NumPeopleContent',
 
     getInitialState() {
-        return {
-            areAdultsInAssistanceProgram: false,
+        return _.assign({
             numAdults: 1,
             numChildren: 1
-        };
+        }, _.pick(ApplicationStore.getFormData(), ['areAdultsInAssistanceProgram', 'numAdults', 'numChildren']));
     },
 
     render() {
         return (
             <div className="num-people-selection-content">
                 <div className="selectionHeader container">
-                <h1>Lets get started</h1>
-                <p>Please start by selecting how many applicants and adults are in your household. Please select only those that share income and expenses.</p>
+                    <h1>Lets get started</h1>
+                    <p>Please start by selecting how many applicants and adults are in your household. Please select only those that share income and expenses.</p>
                 </div>
                 <NumPeopleCard
                     header="Children"
@@ -36,7 +37,7 @@ module.exports = React.createClass({
                     onChange={numAdults => this.setState({numAdults})}
                 >
                     <div className="assistanceBox">
-                        <Checkbox ripple onChange={e => this.setState({areAdultsInAssistanceProgram: e.target.checked})} />
+                        <Checkbox checked={ !!this.state.areAdultsInAssistanceProgram } onChange={e => this.setState({areAdultsInAssistanceProgram: e.target.checked})} ripple />
                         <p>Check if any adults are in the assistance programs SNAP, TANF, FDPIR</p>
                     </div>
                 </NumPeopleCard>

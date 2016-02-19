@@ -2,6 +2,7 @@ var _ = require('lodash');
 var React = require('react');
 var { Card, CardText, Textfield } = require('react-mdl');
 var LabelCheckboxTable = require('../LabelCheckboxTable.jsx');
+var ApplicationStore = require('../../stores/ApplicationStore');
 
 module.exports = React.createClass({
     displayName: 'ApplicantInfoCard',
@@ -11,22 +12,11 @@ module.exports = React.createClass({
     },
 
     getInitialState() {
-        return {
-            optionalSectionShown: false,
-
-            asian: false,
-            black: false,
-            currentStudent: false,
-            firstName: '',
-            fosterChild: false,
-            hawaiian: false,
-            hispanicOrLatino: false,
-            indianAlaskan: false,
-            lastName: '',
-            migrantHomelessRunaway: false,
-            receivesIncome: false,
-            white: false
-        };
+        var applicantInfos = ApplicationStore.getFormData().applicantInfos;
+        var applicantInfo = applicantInfos && applicantInfos[this.props.applicantIndex];
+        return _.pick(applicantInfo || {}, [
+            'asian', 'black', 'currentStudent', 'firstName', 'fosterChild', 'hawaiian', 'hispanicOrLatino', 'indianAlaskan', 'lastName', 'migrantHomelessRunaway', 'receivesIncome', 'white'
+        ]);
     },
 
     render() {
@@ -40,9 +30,9 @@ module.exports = React.createClass({
                                     <img src="child-01.png" /><br/>
                                     Child #{ this.props.applicantIndex + 1 }
                                 </td>
-                                <td><Textfield label="First Name" floatingLabel onChange={e => this._onNameChange(e, 'firstName')} /></td>
+                                <td><Textfield floatingLabel label="First Name" onChange={e => this._onNameChange(e, 'firstName')} value={ this.state.firstName } /></td>
                             </tr><tr>
-                                <td><Textfield label="Last Name" floatingLabel onChange={e => this._onNameChange(e, 'lastName')} /></td>
+                                <td><Textfield floatingLabel label="Last Name" onChange={e => this._onNameChange(e, 'lastName')} value={ this.state.lastName } /></td>
                             </tr>
                         </tbody></table>
                     </td>
@@ -66,7 +56,11 @@ module.exports = React.createClass({
     },
 
     _generateLabelCheckboxTable(...labelStateKeyPairs) {
-        return <LabelCheckboxTable labelStateKeyPairs={labelStateKeyPairs} onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })} />
+        return <LabelCheckboxTable
+            getCheckboxValue={stateKey => !!this.state[stateKey]}
+            labelStateKeyPairs={labelStateKeyPairs}
+            onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
+        />;
     },
 
     _generateOptionalSection() {
