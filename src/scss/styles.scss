@@ -5,7 +5,6 @@
 .mdl-card {
     margin: auto;
     margin-top: 30px;
-
 }
 .container {
     width: 100%;
@@ -189,9 +188,6 @@
         }
     }
 
-
-
-
 .applicant-info-content .mdl-card {
     td.applicant-ethnicity {
         border-right: 2px solid gray;
@@ -211,5 +207,15 @@
     .toggle-optional-section-visibility {
         cursor: pointer;
         font-size: 12px;
+    }
+}
+
+.income-freq-selector td {
+    background-color: lightblue;
+    cursor: pointer;
+    padding: 10px;
+
+    &.selected {
+        background-color: blue;
     }
 }

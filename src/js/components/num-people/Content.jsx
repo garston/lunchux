@@ -4,6 +4,7 @@ var { Button, Checkbox } = require('react-mdl');
 var NumPeopleCard = require('./Card.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
 var { navigateForward } = require('../../utils/ActionCreator');
+var { ADULT_ICON, CHILD_ICON } = require('../../utils/Util');
 
 module.exports = React.createClass({
     displayName: 'NumPeopleContent',
@@ -25,14 +26,14 @@ module.exports = React.createClass({
                 <NumPeopleCard
                     header="Children"
                     helperText="Please select the number of children 18 and under and anyone who is over 18 and in grade 12 or below. A household is anyone who shares expenses and income."
-                    imgSrc="child-01.png"
+                    imgSrc={ CHILD_ICON }
                     numSelected={this.state.numChildren}
                     onChange={numChildren => this.setState({numChildren})}
                 />
                 <NumPeopleCard
                     header="Adults"
                     helperText="Please select the number of adults in your household that share income and expenses."
-                    imgSrc="adult-02.png"
+                    imgSrc={ ADULT_ICON }
                     numSelected={this.state.numAdults}
                     onChange={numAdults => this.setState({numAdults})}
                 >

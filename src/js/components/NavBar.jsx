@@ -2,7 +2,7 @@ var _ = require('lodash');
 var React = require('react');
 var ApplicationStore = require('../stores/ApplicationStore');
 var { navigateTo } = require('../utils/ActionCreator');
-var { STEPS } = require('../utils/Util');
+var { ADULT_ICON, CHILD_ICON, STEPS } = require('../utils/Util');
 
 module.exports = React.createClass({
     displayName: 'NavBar',
@@ -12,13 +12,18 @@ module.exports = React.createClass({
             switch(step){
                 case STEPS.APPLICANT_INFO:
                     return [
-                        <td className="page-step" key="applicant-info" onClick={() => navigateTo(STEPS.APPLICANT_INFO) }>Applicant Information</td>,
-                        <td className="icon-step" key="child-icons">{ this._generateIcons(ApplicationStore.getFormData().numChildren, 'child-01.png') }</td>
+                        <td className="page-step" key="applicant-info" onClick={() => navigateTo(step) }>Applicant Information</td>,
+                        <td className="icon-step" key="child-icons">{ this._generateIcons(ApplicationStore.getFormData().numChildren, CHILD_ICON) }</td>
                     ];
                 case STEPS.ASSISTANCE_PROGRAM:
-                    return <td className="page-step" key="assistance-program" onClick={() => navigateTo(STEPS.ASSISTANCE_PROGRAM) }>Assistance Program</td>;
+                    return <td className="page-step" key="assistance-program" onClick={() => navigateTo(step) }>Assistance Program</td>;
+                case STEPS.INCOME_INFO:
+                    return [
+                        <td className="page-step" key="income-info" onClick={() => navigateTo(step) }>Income and Adult Information</td>,
+                        <td className="icon-step" key="adult-icons">{ this._generateIcons(ApplicationStore.getFormData().numAdults, ADULT_ICON) }</td>
+                    ];
                 case STEPS.NUM_PEOPLE:
-                    return <td className="page-step" key="num-people" onClick={() => navigateTo(STEPS.NUM_PEOPLE) }>Applicant and Adults</td>;
+                    return <td className="page-step" key="num-people" onClick={() => navigateTo(step) }>Applicant and Adults</td>;
             }
         }).flatten().value();
 

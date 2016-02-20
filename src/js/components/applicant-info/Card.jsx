@@ -3,6 +3,7 @@ var React = require('react');
 var { Card, CardText, Textfield } = require('react-mdl');
 var LabelCheckboxTable = require('../LabelCheckboxTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
+var { CHILD_ICON } = require('../../utils/Util');
 
 module.exports = React.createClass({
     displayName: 'ApplicantInfoCard',
@@ -27,7 +28,7 @@ module.exports = React.createClass({
                         <table><tbody>
                             <tr>
                                 <td rowSpan="2">
-                                    <img src="child-01.png" /><br/>
+                                    <img src={ CHILD_ICON } /><br/>
                                     Child #{ this.props.applicantIndex + 1 }
                                 </td>
                                 <td><Textfield floatingLabel label="First Name" onChange={e => this._onNameChange(e, 'firstName')} value={ this.state.firstName } /></td>
