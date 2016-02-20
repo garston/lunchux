@@ -1,7 +1,8 @@
 var _ = require('lodash');
 var React = require('react');
-var { Card, CardText, Textfield } = require('react-mdl');
-var LabelCheckboxTable = require('../LabelCheckboxTable.jsx');
+var { Card, CardText } = require('react-mdl');
+var IconNamesTable = require('../general/IconNamesTable.jsx');
+var LabelCheckboxTable = require('../general/LabelCheckboxTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
 var { CHILD_ICON } = require('../../utils/Util');
 
@@ -25,17 +26,13 @@ module.exports = React.createClass({
             <Card shadow={1}><CardText>
                 <table><tbody><tr>
                     <td className="applicant-name">
-                        <table><tbody>
-                            <tr>
-                                <td rowSpan="2">
-                                    <img src={ CHILD_ICON } /><br/>
-                                    Child #{ this.props.applicantIndex + 1 }
-                                </td>
-                                <td><Textfield floatingLabel label="First Name" onChange={e => this._onNameChange(e, 'firstName')} value={ this.state.firstName } /></td>
-                            </tr><tr>
-                                <td><Textfield floatingLabel label="Last Name" onChange={e => this._onNameChange(e, 'lastName')} value={ this.state.lastName } /></td>
-                            </tr>
-                        </tbody></table>
+                        <IconNamesTable
+                            firstName={ this.state.firstName }
+                            icon={ CHILD_ICON }
+                            iconText={ `Child #${this.props.applicantIndex + 1}` }
+                            lastName={ this.state.lastName }
+                            onChange={(val, prop) => this._onNameChange(val, prop)}
+                        />
                     </td>
                     <td>
                         { this._generateLabelCheckboxTable(
@@ -84,7 +81,7 @@ module.exports = React.createClass({
         );
     },
 
-    _onNameChange({ target: { value }}, stateKey) {
+    _onNameChange(value, stateKey) {
         var otherStateKey = stateKey === 'firstName' ? 'lastName' : 'firstName';
         this.props.onRequiredFieldChange(!!value && !!this.state[otherStateKey]);
         this.setState({[stateKey]: value});
