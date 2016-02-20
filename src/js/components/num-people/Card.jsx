@@ -31,7 +31,7 @@ module.exports = React.createClass({
                     <table>
                         <tbody>
                             <tr className="selectionTitle">
-                                <td>{ helperText }</td>
+                                <td><p>{ helperText }</p></td>
                                 <td/>
                             </tr>
                             <tr>
@@ -40,8 +40,8 @@ module.exports = React.createClass({
                             </tr>
                         </tbody>
                     </table>
-                    { this.props.children }
                 </CardText>
+                { this.props.children }
             </Card>
         );
     }

@@ -1,3 +1,6 @@
+body {
+    font-family: Roboto;
+}
 .mdl-card, .mdl-card > .mdl-card__supporting-text > table {
     width: 100%;
     max-width: 1200px;
@@ -37,10 +40,16 @@
 
 .bottomNav {
     margin-top: 30px;
+    margin-bottom: 50px;
     .buttonRight {
         float: right;
     }
 }
+.mdl-button {
+    background-color: #00BCD4;
+}
+
+
 
 .homepage {
     width: 100%;
@@ -105,24 +114,9 @@
                 margin-bottom: 15px;
             }
         }
-    .mdl-button {
-        background-color: #00BCD4;
-    }
     .mdl-textfield__label {
         color: #646464;
 
-    }
-    .mdl-textfield--floating-label.is-focused .mdl-textfield__label {
-        color:#00BCD4;
-
-    }
-
-    .mdl-textfield__label:after {
-        background-color: #00BCD4;
-
-    }
-    .mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
-        color: #00BCD4;
     }
 
 }
@@ -152,13 +146,22 @@
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
-        border-bottom: 1px solid #00BCD4;;
+        color: #00BCD4;
+        h2 {
+            font-size: 2.5em;
+            font-weight: 300;
+        }
     }
     .mdl-card__supporting-text {
         width: initial;
         padding-left: 25px;
         padding-right: 25px;
-        padding-bottom: 30px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        table {
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
     }
     .mdl-checkbox {
         float: left;
@@ -167,21 +170,21 @@
 }
     .selectionHeader{
         height: 150px;
-        margin-top:75px;
-        h1 {
-            
-        }
-        p {
-
-        }
+        margin-top:60px;
     }
     .selectionTitle {
-        height: 75px;
+        height: auto;
         vertical-align: top;
+        p {
+           margin-bottom: 25px;
+        }
     }
     .assistanceBox {
-        margin-top: 50px;
-        padding-left: 10px;
+        height: 22px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 25px;
+        border-top:1px solid #00BCD4;
         p {
             float: left;
             margin-bottom: 0px;
