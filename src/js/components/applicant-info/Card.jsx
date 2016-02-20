@@ -23,7 +23,8 @@ module.exports = React.createClass({
 
     render() {
         return (
-            <Card shadow={1}><CardText>
+            <Card shadow={1}>
+                <CardText>
                 <table><tbody><tr>
                     <td className="applicant-name">
                         <IconNamesTable
@@ -34,7 +35,7 @@ module.exports = React.createClass({
                             onChange={(val, prop) => this._onNameChange(val, prop)}
                         />
                     </td>
-                    <td>
+                    <td className="applicant-selection">
                         { this._generateLabelCheckboxTable(
                             'Current Student', 'currentStudent',
                             'Receives Income', 'receivesIncome',
@@ -65,10 +66,10 @@ module.exports = React.createClass({
         return (
             <table><tbody><tr>
                 <td className="applicant-ethnicity">
-                    Ethnicity<br/>
+                    <h3>Ethnicity</h3>
                     { this._generateLabelCheckboxTable('Hispanic or Latino', 'hispanicOrLatino') }
-                </td><td>
-                    Race<br/>
+                </td><td className="applicant-race">
+                    <h3>Race</h3>
                     { this._generateLabelCheckboxTable(
                         'American Indian or Alaskan Native', 'indianAlaskan',
                         'Asian', 'asian',

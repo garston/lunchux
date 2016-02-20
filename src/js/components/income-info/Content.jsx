@@ -23,6 +23,10 @@ module.exports = React.createClass({
     render() {
         return (
             <div className="income-info-content">
+                <div className="selectionHeader container">
+                    <h1>Lets get started</h1>
+                    <p>Please start by selecting how many applicants and adults are in your household. Please select only those that share income and expenses.</p>
+                </div>
                 { this._getApplicantIncomeSection() }
                 { this._getAdultInfoSection() }
                 <Button

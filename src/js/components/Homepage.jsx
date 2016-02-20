@@ -22,7 +22,7 @@ module.exports = React.createClass({
                     </div>
                     <div className="heroContainer">
                         <div className="title">School Lunch Application</div>
-                        <div className="intro"><p>Welcome to the  </p></div>
+                        <div className="intro"><p>t </p></div>
                     </div>
                 </div>
                 <Card shadow={1}>

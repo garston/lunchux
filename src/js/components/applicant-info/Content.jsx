@@ -29,7 +29,11 @@ module.exports = React.createClass({
 
         return (
             <div className="applicant-info-content">
-                <div className="container">Applicant Info</div>
+                <div className="selectionHeader container">
+                    <h1>Applicant Information</h1>
+                    <p>Please fill out the information below for each applicant. Reminder that an applicant in anyone in your household who is 18 and under wither they attend school
+                        or not and anyone who is in 12th grade or below and but over 18</p>
+                </div>
                 { applicantInfoCards }
                 <div className="bottomNav container">
                     <Button className="buttonRight" raised ripple
