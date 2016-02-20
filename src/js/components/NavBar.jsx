@@ -8,18 +8,19 @@ module.exports = React.createClass({
     displayName: 'NavBar',
 
     render() {
-        var segments = [];
-        switch(ApplicationStore.getStep()){
-            case STEPS.ASSISTANCE_PROGRAM:
-                segments = [
-                    <td className="icon-step" key="child-icons">{ this._generateIcons(ApplicationStore.getFormData().numChildren, 'child-01.png') }</td>,
-                    <td className="page-step" key="assistance-program" onClick={() => navigateTo(STEPS.ASSISTANCE_PROGRAM) }>Assistance Program</td>
-                ].concat(segments);
-            case STEPS.APPLICANT_INFO:
-                segments = [<td className="page-step" key="applicant-info" onClick={() => navigateTo(STEPS.APPLICANT_INFO) }>Applicant Information</td>].concat(segments);
-            case STEPS.NUM_PEOPLE:
-                segments = [<td className="page-step" key="num-people" onClick={() => navigateTo(STEPS.NUM_PEOPLE) }>Applicant and Adults</td>].concat(segments);
-        }
+        var segments = _(ApplicationStore.getVisitedSteps()).map(step => {
+            switch(step){
+                case STEPS.APPLICANT_INFO:
+                    return [
+                        <td className="page-step" key="applicant-info" onClick={() => navigateTo(STEPS.APPLICANT_INFO) }>Applicant Information</td>,
+                        <td className="icon-step" key="child-icons">{ this._generateIcons(ApplicationStore.getFormData().numChildren, 'child-01.png') }</td>
+                    ];
+                case STEPS.ASSISTANCE_PROGRAM:
+                    return <td className="page-step" key="assistance-program" onClick={() => navigateTo(STEPS.ASSISTANCE_PROGRAM) }>Assistance Program</td>;
+                case STEPS.NUM_PEOPLE:
+                    return <td className="page-step" key="num-people" onClick={() => navigateTo(STEPS.NUM_PEOPLE) }>Applicant and Adults</td>;
+            }
+        }).flatten().value();
 
         return <table className="nav-bar"><tbody><tr>{ segments }</tr></tbody></table>;
     },
