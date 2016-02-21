@@ -1,13 +1,16 @@
+var _ = require('lodash');
 var React = require('react');
 var { Button, Card, CardText, CardTitle, Textfield } = require('react-mdl');
 var IncomeFrequencySelector = require('./IncomeFrequencySelector.jsx');
 var IconNamesTable = require('../general/IconNamesTable.jsx');
+var LabelCheckboxTable = require('../general/LabelCheckboxTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
 var { navigateForward } = require('../../utils/ActionCreator');
 var { ADULT_ICON } = require('../../utils/Util');
 
 var grossIncomePattern = '^[0-9]+$';
 var grossIncomeRegEx = new RegExp(grossIncomePattern);
+var noIncomeIncomeSrc = 'No Income';
 
 module.exports = React.createClass({
     displayName: 'IncomeInfoContent',
@@ -15,7 +18,7 @@ module.exports = React.createClass({
     getInitialState() {
         var { adultInfos, applicantInfos, applicantIncomeInfos, firstName, lastName, numAdults } = ApplicationStore.getFormData();
         return {
-            adultInfos: _.map(_.range(numAdults), index => (adultInfos && adultInfos[index]) || (index === 0 ? { firstName, lastName } : {})),
+            adultInfos: _.map(_.range(numAdults), index => (adultInfos && adultInfos[index]) || _.assign(index === 0 ? { firstName, lastName } : {}, { incomeSources: [] })),
             applicantIncomeInfos: _.map(applicantInfos, (applicantInfo, index) => applicantInfo.receivesIncome && (applicantIncomeInfos ? applicantIncomeInfos[index] : {}))
         };
     },
@@ -23,16 +26,12 @@ module.exports = React.createClass({
     render() {
         return (
             <div className="income-info-content">
-                <div className="selectionHeader container">
-                    <h1>Lets get started</h1>
-                    <p>Please start by selecting how many applicants and adults are in your household. Please select only those that share income and expenses.</p>
-                </div>
                 { this._getApplicantIncomeSection() }
                 { this._getAdultInfoSection() }
                 <Button
                     disabled={
                         _.some(this.state.applicantIncomeInfos, info => info && (!info.grossIncome || !grossIncomeRegEx.test(info.grossIncome) || !info.frequency)) ||
-                        _.some(this.state.adultInfos, info => !info.firstName || !info.lastName)
+                        _.some(this.state.adultInfos, info => !info.firstName || !info.lastName || !info.incomeSources.length)
                     }
                     onClick={() => navigateForward(this.state)}
                 >
@@ -54,6 +53,23 @@ module.exports = React.createClass({
                                 icon={ ADULT_ICON }
                                 lastName={ info.lastName }
                                 onChange={(val, prop) => this._updateStateInfoArray(info, 'adultInfos', prop, val)}
+                            />
+                        </td><td>
+                            Received Income From...
+                            <LabelCheckboxTable
+                                getCheckboxValue={incomeSrc => _.contains(info.incomeSources, incomeSrc)}
+                                labelStateKeyPairs={[
+                                    'Work', 'Work',
+                                    'Public Assistance/Child Support/Alimony', 'Public Assistance/Child Support/Alimony',
+                                    'Pensions/Retirement/Other', 'Pensions/Retirement/Other',
+                                    noIncomeIncomeSrc, noIncomeIncomeSrc
+                                ]}
+                                onCheckboxChange={(incomeSrc, isChecked) => {
+                                    var newIncomeSources = isChecked ?
+                                        (incomeSrc === noIncomeIncomeSrc ? [incomeSrc] : _.filter(info.incomeSources, src => src !== noIncomeIncomeSrc).concat(incomeSrc)) :
+                                        _.filter(info.incomeSources, src => src !== incomeSrc);
+                                    this._updateStateInfoArray(info, 'adultInfos', 'incomeSources', newIncomeSources);
+                                }}
                             />
                         </td>
                     </tr></tbody></table></CardText>
