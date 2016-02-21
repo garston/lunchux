@@ -2,7 +2,7 @@ var _ = require('lodash');
 var React = require('react');
 
 module.exports = React.createClass({
-    displayName: 'IncomeInfoIncomeFrequencySelector',
+    displayName: 'IncomeFrequencySelector',
     propTypes: {
         onChange: React.PropTypes.func.isRequired,
         value: React.PropTypes.string
