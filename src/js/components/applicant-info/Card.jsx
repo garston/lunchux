@@ -5,6 +5,7 @@ var IconNamesTable = require('../general/IconNamesTable.jsx');
 var LabelCheckboxTable = require('../general/LabelCheckboxTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
 var { CHILD_ICON } = require('../../utils/Util');
+var WordCheckboxTable = require('../general/WordCheckboxTable.jsx');
 
 module.exports = React.createClass({
     displayName: 'ApplicantInfoCard',
@@ -17,7 +18,7 @@ module.exports = React.createClass({
         var applicantInfos = ApplicationStore.getFormData().applicantInfos;
         var applicantInfo = applicantInfos && applicantInfos[this.props.applicantIndex];
         return _.pick(applicantInfo || {}, [
-            'asian', 'black', 'currentStudent', 'firstName', 'fosterChild', 'hawaiian', 'hispanicOrLatino', 'indianAlaskan', 'lastName', 'migrantHomelessRunaway', 'receivesIncome', 'white'
+            'asian', 'black', 'currentStudent', 'firstName', 'fosterChild', 'hawaiian', 'hispanicOrLatino', 'notHispanicOrLatino', 'indianAlaskan', 'lastName', 'migrantHomelessRunaway', 'receivesIncome', 'white'
         ]);
     },
 
@@ -62,16 +63,26 @@ module.exports = React.createClass({
             onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
         />;
     },
+    _generateWordCheckboxTable(...labelStateKeyPairs) {
+        return <WordCheckboxTable
+            getCheckboxValue={stateKey => !!this.state[stateKey]}
+            labelStateKeyPairs={labelStateKeyPairs}
+            onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
+        />;
+    },
 
     _generateOptionalSection() {
         return (
             <table className="tableDropdown"><tbody><tr>
                 <td className="applicant-ethnicity">
                     <h3>Ethnicity</h3>
-                    { this._generateLabelCheckboxTable('Hispanic or Latino', 'hispanicOrLatino') }
-                </td><td className="applicant-race">
+                    { this._generateWordCheckboxTable('Hispanic or Latino', 'hispanicOrLatino', 'Not Hispanic or Latino', 'notHispanicOrLatino') }
+                </td>
+                </tr>
+                <tr><
+                    td className="applicant-race">
                     <h3>Race</h3>
-                    { this._generateLabelCheckboxTable(
+                    { this._generateWordCheckboxTable(
                         'American Indian or Alaskan Native', 'indianAlaskan',
                         'Asian', 'asian',
                         'Black or African American', 'black',
