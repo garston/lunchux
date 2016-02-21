@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
-var { Card, CardText } = require('react-mdl');
+var { Card, CardText, CardTitle } = require('react-mdl');
 var IconNamesTable = require('../general/IconNamesTable.jsx');
 var LabelCheckboxTable = require('../general/LabelCheckboxTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
@@ -24,13 +24,13 @@ module.exports = React.createClass({
     render() {
         return (
             <Card shadow={1}>
+                <CardTitle>{ `Child #${this.props.applicantIndex + 1}` }</CardTitle>
                 <CardText>
                 <table><tbody><tr>
                     <td className="applicant-name">
                         <IconNamesTable
                             firstName={ this.state.firstName }
                             icon={ CHILD_ICON }
-                            iconText={ `Child #${this.props.applicantIndex + 1}` }
                             lastName={ this.state.lastName }
                             onChange={(val, prop) => this._onNameChange(val, prop)}
                         />

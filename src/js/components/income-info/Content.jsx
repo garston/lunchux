@@ -1,5 +1,5 @@
 var React = require('react');
-var { Button, Card, CardText, Textfield } = require('react-mdl');
+var { Button, Card, CardText, CardTitle, Textfield } = require('react-mdl');
 var IncomeFrequencySelector = require('./IncomeFrequencySelector.jsx');
 var IconNamesTable = require('../general/IconNamesTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
@@ -45,19 +45,19 @@ module.exports = React.createClass({
     _getAdultInfoSection() {
         var cards = _.map(this.state.adultInfos, (info, index) => {
             return (
-                <Card key={ 'adult-card' + index } shadow={1}><CardText>
-                    <table><tbody><tr>
+                <Card key={ 'adult-card' + index } shadow={1}>
+                    <CardTitle>{ index ? `Adult #${index + 1}` : 'You' }</CardTitle>
+                    <CardText><table><tbody><tr>
                         <td>
                             <IconNamesTable
                                 firstName={ info.firstName }
                                 icon={ ADULT_ICON }
-                                iconText={ index ? `Adult #${index + 1}` : 'You' }
                                 lastName={ info.lastName }
                                 onChange={(val, prop) => this._updateStateInfoArray(info, 'adultInfos', prop, val)}
                             />
                         </td>
-                    </tr></tbody></table>
-                </CardText></Card>
+                    </tr></tbody></table></CardText>
+                </Card>
             );
         });
 
