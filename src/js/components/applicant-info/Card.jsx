@@ -44,7 +44,8 @@ module.exports = React.createClass({
                         )}
                         <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Optional</div>
                     </td>
-                </tr></tbody></table>
+                </tr>
+                </tbody></table>
                 { this.state.optionalSectionShown && this._generateOptionalSection() }
             </CardText></Card>
         );
@@ -64,7 +65,7 @@ module.exports = React.createClass({
 
     _generateOptionalSection() {
         return (
-            <table><tbody><tr>
+            <table className="tableDropdown"><tbody><tr>
                 <td className="applicant-ethnicity">
                     <h3>Ethnicity</h3>
                     { this._generateLabelCheckboxTable('Hispanic or Latino', 'hispanicOrLatino') }

@@ -57,6 +57,9 @@ body {
 .mdl-button {
     background-color: #00BCD4;
 }
+.mdl-button:hover {
+    background-color: #00BCD4;
+}
 
 .selectionHeader{
     height: 150px;
@@ -166,7 +169,7 @@ table {
         color: #00BCD4;
         h2 {
             font-size: 2.5em;
-            font-weight: 300;
+            font-weight: 400;
         }
     }
     .mdl-card__supporting-text {
@@ -213,23 +216,73 @@ table {
         }
     }
     td.applicant-selection {
-
+        table{
+            width: 100%;
+            margin-left: 30px;
+            font-size: 1.2em;
+        }
+        tr{
+            line-height: 33px;
+        }
 
     }
     td.applicant-ethnicity {
         border-right: 2px solid gray;
-        width: 40%;
+        width: 60%;
+        table {
+            font-size: 1.2em;
+        }
+        tr{
+            line-height: 33px;
+        }
     }
     td.applicant-race {
-
+        table{
+            width: 100%;
+            margin-left: 30px;
+            font-size: 1.2em;
+        }
+        tr{
+            line-height: 33px;
+        }
     }
     .toggle-optional-section-visibility {
         cursor: pointer;
-        font-size: 12px;
+        font-size: 1.2em;
+        margin-top: 20px;
+        margin-left: 30px;
     }
+    .tableDropdown {
+        margin-top: 20px;
+    }
+    .mdl-card__title {
+        padding-left: 25px;
+        padding-right: 25px;
+        border-bottom: 1px solid #00BCD4;
+        h2 {
+            font-size: 2.5em;
+            font-weight: 400;
+        }
+    }
+
 }
 
+
 /////////////////////////////////
+.income-info-content .mdl-card{
+    .mdl-card__title {
+        padding-left: 25px;
+        padding-right: 25px;
+        border-bottom: 1px solid #00BCD4;
+        h2 {
+            font-size: 2.5em;
+            font-weight: 400;
+        }
+    }
+
+}
+
+
 
 .icon-names-table img {
     height: 75px;
