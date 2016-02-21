@@ -1,20 +1,18 @@
 var _ = require('lodash');
 var React = require('react');
-var { Button, Card, CardText, CardTitle } = require('react-mdl');
+var { Button, Card, CardText, CardTitle, Checkbox } = require('react-mdl');
 var IncomeInfoTable = require('./IncomeInfoTable.jsx');
 var IconNamesTable = require('../general/IconNamesTable.jsx');
-var LabelCheckboxTable = require('../general/LabelCheckboxTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
 var { navigateForward } = require('../../utils/ActionCreator');
 var { ADULT_ICON, GROSS_INCOME_PATTERN } = require('../../utils/Util');
 
 var grossIncomeRegEx = new RegExp(GROSS_INCOME_PATTERN);
 var isIncomeInfoInvalid = info => info && (!grossIncomeRegEx.test(info.grossIncome) || !info.frequency);
-var noIncomeIncomeSrc = 'No Income';
 var safeUpdateObjectInArray = (obj, arr, key, val) => _.map(arr, arrObj => arrObj === obj ? _.assign({}, obj, { [key]: val }) : arrObj);
 
-var adultIncomeSources = ['Work', 'Public Assistance/Child Support/Alimony', 'Pensions/Retirement/Other', noIncomeIncomeSrc];
-var noIncomeIndex = _.indexOf(adultIncomeSources, noIncomeIncomeSrc);
+var adultIncomeSources = ['Work', 'Public Assistance/Child Support/Alimony', 'Pensions/Retirement/Other'];
+var originalIncomeInfos = _.map(adultIncomeSources, () => false);
 
 module.exports = React.createClass({
     displayName: 'IncomeInfoContent',
@@ -22,7 +20,7 @@ module.exports = React.createClass({
     getInitialState() {
         var { adultInfos, applicantInfos, applicantIncomeInfos, firstName, lastName, numAdults } = ApplicationStore.getFormData();
         return {
-            adultInfos: _.map(_.range(numAdults), index => (adultInfos && adultInfos[index]) || _.assign(index === 0 ? { firstName, lastName } : {}, { incomeInfos: _.map(adultIncomeSources, () => false) })),
+            adultInfos: _.map(_.range(numAdults), index => (adultInfos && adultInfos[index]) || _.assign(index === 0 ? { firstName, lastName } : {}, { incomeInfos: originalIncomeInfos })),
             applicantIncomeInfos: _.map(applicantInfos, (applicantInfo, index) => applicantInfo.receivesIncome && ((applicantIncomeInfos && applicantIncomeInfos[index]) || {}))
         };
     },
@@ -40,8 +38,7 @@ module.exports = React.createClass({
                                 return true;
                             }
 
-                            return !_.compact(adultInfo.incomeInfos).length ||
-                                _.some(adultInfo.incomeInfos, (incomeInfo, incomeInfoIndex) => incomeInfoIndex !== noIncomeIndex && incomeInfo && isIncomeInfoInvalid(incomeInfo));
+                            return !_.compact(adultInfo.incomeInfos.concat([adultInfo.noIncome])).length || _.some(adultInfo.incomeInfos, isIncomeInfoInvalid);
                         })
                     }
                     onClick={() => navigateForward(this.state)}
@@ -53,19 +50,7 @@ module.exports = React.createClass({
     },
 
     _getAdultInfoSection() {
-        var cards = _.map(this.state.adultInfos, (info, index) => {
-            var incomeInfoTables = _.map(info.incomeInfos, (incomeInfo, incomeInfoIndex) => {
-                var incomeSrc = adultIncomeSources[incomeInfoIndex];
-                return incomeInfo && incomeSrc !== noIncomeIncomeSrc &&
-                    <IncomeInfoTable
-                        frequency={ incomeInfo.frequency }
-                        grossIncome={ incomeInfo.grossIncome }
-                        key={ 'income-info-' + incomeInfoIndex }
-                        label={ incomeSrc }
-                        onChange={ (prop, val) => this._updateStateInfoArray(info, 'adultInfos', 'incomeInfos', safeUpdateObjectInArray(incomeInfo, info.incomeInfos, prop, val)) }
-                    />;
-            });
-
+        var cards = _.map(this.state.adultInfos, (adultInfo, index) => {
             return (
                 <Card key={ 'adult-card' + index } shadow={1}>
                     <CardTitle>{ index ? `Adult #${index + 1}` : 'You' }</CardTitle>
@@ -73,35 +58,28 @@ module.exports = React.createClass({
                         <table><tbody><tr>
                             <td>
                                 <IconNamesTable
-                                    firstName={ info.firstName }
+                                    firstName={ adultInfo.firstName }
                                     icon={ ADULT_ICON }
-                                    lastName={ info.lastName }
-                                    onChange={(val, prop) => this._updateStateInfoArray(info, 'adultInfos', prop, val)}
+                                    lastName={ adultInfo.lastName }
+                                    onChange={(val, prop) => this._updateStateInfoArray(adultInfo, 'adultInfos', prop, val)}
                                 />
                             </td><td>
                                 Received Income From...
-                                <LabelCheckboxTable
-                                    getCheckboxValue={incomeSrc => !!info.incomeInfos[_.indexOf(adultIncomeSources, incomeSrc)]}
-                                    labelStateKeyPairs={ _(adultIncomeSources).map(src => [src, src]).flatten().value() }
-                                    onCheckboxChange={(changedIncomeSrc, isChecked) => {
-                                        var changedIncomeIndex = _.indexOf(adultIncomeSources, changedIncomeSrc);
-                                        var newIncomeInfos = _.map(info.incomeInfos, (incomeInfo, incomeInfoIndex) => {
-                                            if(incomeInfoIndex === changedIncomeIndex) {
-                                                return isChecked && {};
-                                            }
-
-                                            if(!isChecked) {
-                                                return incomeInfo;
-                                            }
-
-                                            return changedIncomeSrc !== noIncomeIncomeSrc && incomeInfoIndex !== noIncomeIndex && incomeInfo;
-                                        });
-                                        this._updateStateInfoArray(info, 'adultInfos', 'incomeInfos', newIncomeInfos);
-                                    }}
-                                />
+                                <table><tbody>
+                                    { this._getIncomeCheckboxRows(adultInfo) }
+                                    <tr>
+                                        <td>No Income</td>
+                                        <td>
+                                            <Checkbox
+                                                checked={ !!adultInfo.noIncome }
+                                                onChange={ e => this._updateAdultInfos({ adultInfo, incomeInfos: originalIncomeInfos, noIncome: e.target.checked }) }
+                                            />
+                                        </td>
+                                    </tr>
+                                </tbody></table>
                             </td>
                         </tr></tbody></table>
-                        { incomeInfoTables }
+                        { this._getIncomeInfoTables(adultInfo) }
                     </CardText>
                 </Card>
             );
@@ -134,6 +112,49 @@ module.exports = React.createClass({
                 { applicantIncomeTables }
             </div>
         );
+    },
+
+    _getIncomeCheckboxRows(adultInfo) {
+        return _.map(adultIncomeSources, (incomeSrc, index) => {
+            return (
+                <tr key={ 'income-checkbox-' + index }>
+                    <td>{ incomeSrc }</td>
+                    <td>
+                        <Checkbox
+                            checked={ !!adultInfo.incomeInfos[_.indexOf(adultIncomeSources, incomeSrc)] }
+                            onChange={ ({target: { checked }}) => {
+                                var changedIncomeIndex = _.indexOf(adultIncomeSources, incomeSrc);
+                                var incomeInfos = _.map(adultInfo.incomeInfos, (incomeInfo, incomeInfoIndex) => incomeInfoIndex === changedIncomeIndex ? checked && {} : incomeInfo);
+
+                                this._updateAdultInfos({ adultInfo, incomeInfos, noIncome: !checked && adultInfo.noIncome });
+                            }}
+                        />
+                    </td>
+                </tr>
+            );
+        });
+    },
+
+    _getIncomeInfoTables(adultInfo) {
+        return _.map(adultInfo.incomeInfos, (incomeInfo, index, incomeInfos) => {
+           return incomeInfo &&
+               <IncomeInfoTable
+                   frequency={ incomeInfo.frequency }
+                   grossIncome={ incomeInfo.grossIncome }
+                   key={ 'income-info-' + index }
+                   label={ adultIncomeSources[index] }
+                   onChange={ (prop, val) => this._updateStateInfoArray(adultInfo, 'adultInfos', 'incomeInfos', safeUpdateObjectInArray(incomeInfo, incomeInfos, prop, val)) }
+               />;
+       });
+    },
+
+    _updateAdultInfos({ adultInfo, incomeInfos, noIncome }) {
+        var adultInfos = this.state.adultInfos;
+        var adultInfoIndex = _.indexOf(adultInfos, adultInfo);
+
+        adultInfos = safeUpdateObjectInArray(adultInfos[adultInfoIndex], adultInfos, 'incomeInfos', incomeInfos);
+        adultInfos = safeUpdateObjectInArray(adultInfos[adultInfoIndex], adultInfos, 'noIncome', noIncome);
+        this.setState({ adultInfos });
     },
 
     _updateStateInfoArray(infoToUpdate, stateKey, key, val) {
