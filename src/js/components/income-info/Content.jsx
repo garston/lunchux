@@ -5,10 +5,9 @@ var IncomeInfoTableRow = require('./IncomeInfoTableRow.jsx');
 var IconNamesTable = require('../general/IconNamesTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
 var { navigateForward } = require('../../utils/ActionCreator');
-var { ADULT_ICON, GROSS_INCOME_PATTERN } = require('../../utils/Util');
+var { ADULT_ICON, ALL_NUMBERS_REGEX } = require('../../utils/Util');
 
-var grossIncomeRegEx = new RegExp(GROSS_INCOME_PATTERN);
-var isIncomeInfoInvalid = info => info && (!grossIncomeRegEx.test(info.grossIncome) || !info.frequency);
+var isIncomeInfoInvalid = info => info && (!ALL_NUMBERS_REGEX.test(info.grossIncome) || !info.frequency);
 var safeUpdateObjectInArray = (obj, arr, key, val) => _.map(arr, arrObj => arrObj === obj ? _.assign({}, obj, { [key]: val }) : arrObj);
 
 var adultIncomeSources = ['Work', 'Public Assistance/Child Support/Alimony', 'Pensions/Retirement/Other'];

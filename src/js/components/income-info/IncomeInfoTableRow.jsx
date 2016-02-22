@@ -1,7 +1,14 @@
 var React = require('react');
 var { Textfield } = require('react-mdl');
 var HorizontalBoxSelector = require('../general/HorizontalBoxSelector.jsx');
-var { GROSS_INCOME_PATTERN } = require('../../utils/Util');
+var { ALL_NUMBERS_PATTERN, ALL_NUMBERS_REGEX } = require('../../utils/Util');
+
+var allowedFrequencies = ['Week', '2 Weeks', 'Month'];
+var occurrencesPerYearByFrequency = {
+    Month: 12,
+    '2 Weeks': 26,
+    Week: 52
+};
 
 module.exports = React.createClass({
     displayName: 'IncomeInfoTableRow',
@@ -23,18 +30,19 @@ module.exports = React.createClass({
                         floatingLabel
                         label="Gross Income"
                         onChange={ e => onChange('grossIncome', e.target.value) }
-                        pattern={ GROSS_INCOME_PATTERN }
+                        pattern={ ALL_NUMBERS_PATTERN }
                         value={ grossIncome }
                     />
                 </td>
                 <td>Every</td>
                 <td>
                     <HorizontalBoxSelector
-                        allowedValues={ ['Week', '2 Weeks', 'Month'] }
+                        allowedValues={ allowedFrequencies }
                         onClick={ value => onChange('frequency', value) }
                         selectedValues={ [frequency] }
                     />
                 </td>
+                <td>{ ALL_NUMBERS_REGEX.test(grossIncome) && frequency ? `$${grossIncome * occurrencesPerYearByFrequency[frequency]}/year` : '' }</td>
             </tr>
         );
     }
