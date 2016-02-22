@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var React = require('react');
 var { Card, CardText, CardTitle } = require('react-mdl');
+var HorizontalBoxSelector = require('../general/HorizontalBoxSelector.jsx');
 var IconNamesTable = require('../general/IconNamesTable.jsx');
 var LabelCheckboxTable = require('../general/LabelCheckboxTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
@@ -16,9 +17,7 @@ module.exports = React.createClass({
     getInitialState() {
         var applicantInfos = ApplicationStore.getFormData().applicantInfos;
         var applicantInfo = applicantInfos && applicantInfos[this.props.applicantIndex];
-        return _.pick(applicantInfo || {}, [
-            'asian', 'black', 'currentStudent', 'firstName', 'fosterChild', 'hawaiian', 'hispanicOrLatino', 'indianAlaskan', 'lastName', 'migrantHomelessRunaway', 'receivesIncome', 'white'
-        ]);
+        return applicantInfo || {};
     },
 
     render() {
@@ -36,12 +35,16 @@ module.exports = React.createClass({
                         />
                     </td>
                     <td className="applicant-selection">
-                        { this._generateLabelCheckboxTable(
-                            'Current Student', 'currentStudent',
-                            'Receives Income', 'receivesIncome',
-                            'Foster Child', 'fosterChild',
-                            'Migrant, homeless, runaway', 'migrantHomelessRunaway'
-                        )}
+                        <LabelCheckboxTable
+                            getCheckboxValue={stateKey => !!this.state[stateKey]}
+                            labelStateKeyPairs={[
+                                'Current Student', 'currentStudent',
+                                'Receives Income', 'receivesIncome',
+                                'Foster Child', 'fosterChild',
+                                'Migrant, homeless, runaway', 'migrantHomelessRunaway'
+                            ]}
+                            onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
+                        />;
                         <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Optional</div>
                     </td>
                 </tr>
@@ -55,31 +58,29 @@ module.exports = React.createClass({
         return _.omit(this.state, 'optionalSectionShown');
     },
 
-    _generateLabelCheckboxTable(...labelStateKeyPairs) {
-        return <LabelCheckboxTable
-            getCheckboxValue={stateKey => !!this.state[stateKey]}
-            labelStateKeyPairs={labelStateKeyPairs}
-            onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
-        />;
-    },
-
     _generateOptionalSection() {
         return (
-            <table className="tableDropdown"><tbody><tr>
-                <td className="applicant-ethnicity">
-                    <h3>Ethnicity</h3>
-                    { this._generateLabelCheckboxTable('Hispanic or Latino', 'hispanicOrLatino') }
-                </td><td className="applicant-race">
-                    <h3>Race</h3>
-                    { this._generateLabelCheckboxTable(
-                        'American Indian or Alaskan Native', 'indianAlaskan',
-                        'Asian', 'asian',
-                        'Black or African American', 'black',
-                        'Native Hawaiian or Other Pacific Islander', 'hawaiian',
-                        'White', 'white'
-                    )}
-                </td>
-            </tr></tbody></table>
+            <table className="tableDropdown"><tbody>
+                <tr>
+                    <td>Ethnicity</td>
+                    <td>
+                        <HorizontalBoxSelector
+                            allowedValues={ ['Hispanic or Latino', 'Not Hispanic or Latino'] }
+                            onClick={ (value, selectedValues) => this.setState({ ethnicity: _.contains(selectedValues, value) ? value : '' }) }
+                            selectedValues={ _.compact([this.state.ethnicity]) }
+                        />
+                    </td>
+                </tr><tr>
+                    <td>Race</td>
+                    <td>
+                        <HorizontalBoxSelector
+                            allowedValues={ ['American Indian or Alaskan Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White'] }
+                            onClick={ (value, races) => this.setState({ races }) }
+                            selectedValues={ this.state.races || [] }
+                        />
+                    </td>
+                </tr>
+            </tbody></table>
         );
     },
 
