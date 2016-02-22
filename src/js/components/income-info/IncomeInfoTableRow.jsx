@@ -1,6 +1,6 @@
 var React = require('react');
 var { Textfield } = require('react-mdl');
-var IncomeFrequencySelector = require('./IncomeFrequencySelector.jsx');
+var HorizontalBoxSelector = require('../general/HorizontalBoxSelector.jsx');
 var { GROSS_INCOME_PATTERN } = require('../../utils/Util');
 
 module.exports = React.createClass({
@@ -28,7 +28,13 @@ module.exports = React.createClass({
                     />
                 </td>
                 <td>Every</td>
-                <td><IncomeFrequencySelector onChange={ val => onChange('frequency', val) } value={ frequency } /></td>
+                <td>
+                    <HorizontalBoxSelector
+                        allowedValues={ ['Week', '2 Weeks', 'Month'] }
+                        onClick={ value => onChange('frequency', value) }
+                        selectedValues={ [frequency] }
+                    />
+                </td>
             </tr>
         );
     }
