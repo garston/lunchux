@@ -4,7 +4,7 @@ var IncomeFrequencySelector = require('./IncomeFrequencySelector.jsx');
 var { GROSS_INCOME_PATTERN } = require('../../utils/Util');
 
 module.exports = React.createClass({
-    displayName: 'IncomeInfoTable',
+    displayName: 'IncomeInfoTableRow',
     propTypes: {
         frequency: React.PropTypes.string,
         grossIncome: React.PropTypes.string,
@@ -15,7 +15,7 @@ module.exports = React.createClass({
     render() {
         var { frequency, grossIncome, label, onChange } = this.props;
         return (
-            <table><tbody><tr>
+            <tr>
                 <td>{ label }</td>
                 <td>
                     <Textfield
@@ -29,7 +29,7 @@ module.exports = React.createClass({
                 </td>
                 <td>Every</td>
                 <td><IncomeFrequencySelector onChange={ val => onChange('frequency', val) } value={ frequency } /></td>
-            </tr></tbody></table>
+            </tr>
         );
     }
 });

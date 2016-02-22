@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var React = require('react');
 var { Button, Card, CardText, CardTitle, Checkbox } = require('react-mdl');
-var IncomeInfoTable = require('./IncomeInfoTable.jsx');
+var IncomeInfoTableRow = require('./IncomeInfoTableRow.jsx');
 var IconNamesTable = require('../general/IconNamesTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
 var { navigateForward } = require('../../utils/ActionCreator');
@@ -79,7 +79,7 @@ module.exports = React.createClass({
                                 </tbody></table>
                             </td>
                         </tr></tbody></table>
-                        { this._getIncomeInfoTables(adultInfo) }
+                        { this._getIncomeInfoTable(adultInfo) }
                     </CardText>
                 </Card>
             );
@@ -94,10 +94,10 @@ module.exports = React.createClass({
     },
 
     _getApplicantIncomeSection() {
-        var applicantIncomeTables = _(ApplicationStore.getFormData().applicantInfos).map((applicantInfo, index) => {
+        var applicantIncomeRows = _(ApplicationStore.getFormData().applicantInfos).map((applicantInfo, index) => {
             var incomeInfo = this.state.applicantIncomeInfos[index];
             return incomeInfo &&
-                <IncomeInfoTable
+                <IncomeInfoTableRow
                     frequency={ incomeInfo.frequency }
                     grossIncome={ incomeInfo.grossIncome }
                     key={ 'income-info-' + index }
@@ -106,10 +106,10 @@ module.exports = React.createClass({
                 />;
         }).compact().value();
 
-        return applicantIncomeTables.length > 0 && (
+        return applicantIncomeRows.length > 0 && (
             <div>
                 Please Enter Applicant Income Information
-                { applicantIncomeTables }
+                <table><tbody>{ applicantIncomeRows }</tbody></table>
             </div>
         );
     },
@@ -135,17 +135,18 @@ module.exports = React.createClass({
         });
     },
 
-    _getIncomeInfoTables(adultInfo) {
-        return _.map(adultInfo.incomeInfos, (incomeInfo, index, incomeInfos) => {
-           return incomeInfo &&
-               <IncomeInfoTable
+    _getIncomeInfoTable(adultInfo) {
+        var rows = _.map(adultInfo.incomeInfos, (incomeInfo, index, incomeInfos) => {
+            return incomeInfo &&
+                <IncomeInfoTableRow
                    frequency={ incomeInfo.frequency }
                    grossIncome={ incomeInfo.grossIncome }
                    key={ 'income-info-' + index }
                    label={ adultIncomeSources[index] }
                    onChange={ (prop, val) => this._updateStateInfoArray(adultInfo, 'adultInfos', 'incomeInfos', safeUpdateObjectInArray(incomeInfo, incomeInfos, prop, val)) }
-               />;
+                />;
        });
+       return <table><tbody>{ rows }</tbody></table>;
     },
 
     _updateAdultInfos({ adultInfo, incomeInfos, noIncome }) {
