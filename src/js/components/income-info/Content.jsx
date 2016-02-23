@@ -29,21 +29,23 @@ module.exports = React.createClass({
             <div className="income-info-content">
                 { this._getApplicantIncomeSection() }
                 { this._getAdultInfoSection() }
-                <Button
-                    disabled={
-                        _.some(this.state.applicantIncomeInfos, isIncomeInfoInvalid) ||
-                        _.some(this.state.adultInfos, adultInfo => {
-                            if(!adultInfo.firstName || !adultInfo.lastName) {
-                                return true;
-                            }
+                <div className="bottomNav container">
+                    <Button className="buttonRight" raised accent ripple
+                        disabled={
+                            _.some(this.state.applicantIncomeInfos, isIncomeInfoInvalid) ||
+                            _.some(this.state.adultInfos, adultInfo => {
+                                if(!adultInfo.firstName || !adultInfo.lastName) {
+                                    return true;
+                                }
 
-                            return !_.compact(adultInfo.incomeInfos.concat([adultInfo.noIncome])).length || _.some(adultInfo.incomeInfos, isIncomeInfoInvalid);
-                        })
-                    }
-                    onClick={() => navigateForward(this.state)}
-                >
-                    Next
-                </Button>
+                                return !_.compact(adultInfo.incomeInfos.concat([adultInfo.noIncome])).length || _.some(adultInfo.incomeInfos, isIncomeInfoInvalid);
+                            })
+                        }
+                        onClick={() => navigateForward(this.state)}
+                    >
+                        Next
+                    </Button>
+                </div>
             </div>
         );
     },
@@ -86,7 +88,7 @@ module.exports = React.createClass({
 
         return (
             <div>
-                Adult Information and Income
+                <div className="container"><h2>Adult Information and Income</h2></div>
                 { cards }
             </div>
         );
@@ -95,20 +97,23 @@ module.exports = React.createClass({
     _getApplicantIncomeSection() {
         var applicantIncomeRows = _(ApplicationStore.getFormData().applicantInfos).map((applicantInfo, index) => {
             var incomeInfo = this.state.applicantIncomeInfos[index];
-            return incomeInfo &&
+            return incomeInfo && <Card shadow={1}>
+                    <table><tbody>
                 <IncomeInfoTableRow
                     frequency={ incomeInfo.frequency }
                     grossIncome={ incomeInfo.grossIncome }
                     key={ 'income-info-' + index }
                     label={ `${applicantInfo.firstName} ${applicantInfo.lastName}` }
                     onChange={ (prop, val) => this._updateStateInfoArray(incomeInfo, 'applicantIncomeInfos', prop, val) }
-                />;
+                />
+                    </tbody></table>
+                </Card>
         }).compact().value();
 
         return applicantIncomeRows.length > 0 && (
             <div>
-                Please Enter Applicant Income Information
-                <table><tbody>{ applicantIncomeRows }</tbody></table>
+                <div className="container"><h2>Please Enter Applicant Income Information</h2></div>
+                { applicantIncomeRows }
             </div>
         );
     },

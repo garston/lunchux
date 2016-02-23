@@ -49,12 +49,14 @@ module.exports = React.createClass({
                         { cardRows }
                     </tbody></table>
                 </CardText></Card>
-                <Button
-                    disabled={ !_.some(stateKeys, stateKey => caseNumRegEx.test(this.state[getNumberStateKey(stateKey)])) }
-                    onClick={() => navigateForward(this.state)}
-                >
-                    Next
-                </Button>
+                <div className="bottomNav container">
+                    <Button className="buttonRight" raised accent ripple
+                        disabled={ !_.some(stateKeys, stateKey => caseNumRegEx.test(this.state[getNumberStateKey(stateKey)])) }
+                        onClick={() => navigateForward(this.state)}
+                    >
+                        Next
+                    </Button>
+                </div>
             </div>
         );
     }

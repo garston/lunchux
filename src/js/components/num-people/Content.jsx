@@ -43,7 +43,7 @@ module.exports = React.createClass({
                     </div>
                 </NumPeopleCard>
                 <div className="bottomNav container">
-                    <Button className="buttonRight" raised ripple onClick={() => navigateForward(this.state)}>Next</Button>
+                    <Button className="buttonRight" raised accent ripple onClick={() => navigateForward(this.state)}>Next</Button>
                 </div>
             </div>
         );

@@ -36,7 +36,7 @@ module.exports = React.createClass({
                 </div>
                 { applicantInfoCards }
                 <div className="bottomNav container">
-                    <Button className="buttonRight" raised ripple
+                    <Button className="buttonRight" raised accent ripple
                         disabled={ _.some(this.state.areApplicantsValid, isValid => !isValid) }
                         onClick={() => navigateForward({ applicantInfos: this._mapEachApplicant(index => this.refs['applicantInfoCard' + index].getFormData()) })}
                     >

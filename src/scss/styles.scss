@@ -34,10 +34,11 @@ body {
 
     .icon-step {
         background-color: lightgray;
+        padding: 0px;
 
         img {
-            height: 30px;
-            width: 30px;
+            height: 50px;
+            width: 50px;
         }
     }
 
@@ -53,12 +54,6 @@ body {
     .buttonRight {
         float: right;
     }
-}
-.mdl-button {
-    background-color: #00BCD4;
-}
-.mdl-button:hover {
-    background-color: #00BCD4;
 }
 
 .selectionHeader{
@@ -208,8 +203,12 @@ table {
 
 /////////////////////////////////
 .applicant-info-content .mdl-card {
+    img {
+        width: 100px;
+        height: 100px;
+    }
     td.applicant-name {
-        border-right: 2px solid gray;
+        border-right: 2px solid #00BCD4;
         width: 60%;
         td{
 
@@ -236,9 +235,9 @@ table {
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
-        border-bottom: 1px solid #00BCD4;
+        border-bottom: 1px solid lightgray;
         h2 {
-            font-size: 2.5em;
+            font-size: 1.8em;
             font-weight: 400;
         }
     }
