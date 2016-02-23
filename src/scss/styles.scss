@@ -232,9 +232,7 @@ table {
         margin-top: 20px;
         margin-left: 30px;
     }
-    .tableDropdown {
-        margin-top: 20px;
-    }
+
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
@@ -242,6 +240,59 @@ table {
         h2 {
             font-size: 2.5em;
             font-weight: 400;
+        }
+    }
+    .dropdown {
+        background-color: #eeeeee;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .tableDropdown {
+        margin-top: 10px;
+    }
+    .dropdownEthnicity {
+
+    }
+    .dropdownRace {
+
+
+    }
+    .dropdownHeader {
+        p {
+            height: 30px;
+            font-size: 1.1em;
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
+    }
+    .dropdownTitle {
+        p {
+            border-right: 1px solid grey;
+            font-size: 1.1em;
+            font-weight: 300;
+            margin-bottom: 0px;
+        }
+    }
+    .dropdownSelector {
+        padding-left: 5px;
+
+    }
+    .horizontal-box-selector td {
+        background-color: #eeeeee;
+        cursor: pointer;
+        padding: 13px;
+        color: #bababa;
+        font-size: 1.1em;
+        font-weight: 400;
+
+        &.selected {
+            color: #d40015;
+        }
+    }
+    .horizontal-box-selector td:hover {
+        color: grey;
+        &.selected {
+            color: #d40015;
         }
     }
 

@@ -44,13 +44,15 @@ module.exports = React.createClass({
                                 'Migrant, homeless, runaway', 'migrantHomelessRunaway'
                             ]}
                             onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
-                        />;
-                        <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Optional</div>
+                        />
+                        <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Racial and Ethnic Identitiy (optional)</div>
                     </td>
                 </tr>
                 </tbody></table>
-                { this.state.optionalSectionShown && this._generateOptionalSection() }
-            </CardText></Card>
+            </CardText>
+                <div className="dropdown">
+                    { this.state.optionalSectionShown && this._generateOptionalSection() }</div>
+            </Card>
         );
     },
 
@@ -62,17 +64,22 @@ module.exports = React.createClass({
         return (
             <table className="tableDropdown"><tbody>
                 <tr>
-                    <td>Ethnicity</td>
-                    <td>
+                <td className="dropdownHeader">
+                    <p>Please Select:</p>
+                </td>
+                </tr>
+                <tr className="dropdownEthnicity">
+                    <td className="dropdownTitle"><p>Ethnicity</p></td>
+                    <td className="dropdownSelector">
                         <HorizontalBoxSelector
                             allowedValues={ ['Hispanic or Latino', 'Not Hispanic or Latino'] }
                             onClick={ (value, selectedValues) => this.setState({ ethnicity: _.contains(selectedValues, value) ? value : '' }) }
                             selectedValues={ _.compact([this.state.ethnicity]) }
                         />
                     </td>
-                </tr><tr>
-                    <td>Race</td>
-                    <td>
+                </tr><tr className="dropdownRace">
+                    <td className="dropdownTitle"><p>Race</p></td>
+                    <td className="dropdownSelector">
                         <HorizontalBoxSelector
                             allowedValues={ ['American Indian or Alaskan Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White'] }
                             onClick={ (value, races) => this.setState({ races }) }
