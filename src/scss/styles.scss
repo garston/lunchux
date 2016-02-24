@@ -26,7 +26,9 @@ body {
 
 .nav-bar {
     height: 50px;
-
+    background-color: #00BCD4;
+    width: 100%;
+    font-size: 2em;
     td {
         padding: 0px 20px;
         border-right:1px solid white;
@@ -49,6 +51,28 @@ body {
         &.active-step {
             background-color: blue;
         }
+    }
+    .page-step.num-people {
+        width: 10%;
+    }
+    .page-step.applicant-info {
+        width: 10%;
+    }
+    .page-step.assistance-program {
+        width: 20%;
+    }
+
+    .page-step.income-info {
+        width: 20%;
+    }
+    .icon-step.child-icons {
+        width: inherit;
+    }
+    .icon-step.adult-icons {
+        width: inherit;
+    }
+    table {
+        height: 50px;
     }
 }
 
@@ -241,7 +265,7 @@ table {
         padding-right: 25px;
         border-bottom: 1px solid lightgray;
         h2 {
-            font-size: 1.8em;
+            font-size: 1.5em;
             font-weight: 400;
         }
     }
@@ -307,13 +331,34 @@ table {
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
-        border-bottom: 1px solid #00BCD4;
+        border-bottom: 1px solid lightgray;
         h2 {
-            font-size: 2.5em;
+            font-size: 1.5em;
             font-weight: 400;
         }
     }
+    img {
+        width: 100px;
+        height: 100px;
+    }
+    td.applicant-name {
+        border-right: 2px solid #00BCD4;
+        width: 60%;
+        td{
 
+        }
+    }
+    td.applicant-selection {
+        table{
+            width: 100%;
+            margin-left: 30px;
+            font-size: 1.2em;
+        }
+        tr{
+            line-height: 33px;
+        }
+
+    }
 }
 
 

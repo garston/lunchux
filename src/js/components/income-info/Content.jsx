@@ -57,15 +57,15 @@ module.exports = React.createClass({
                     <CardTitle>{ index ? `Adult #${index + 1}` : 'You' }</CardTitle>
                     <CardText>
                         <table><tbody><tr>
-                            <td>
+                            <td className="applicant-name">
                                 <IconNamesTable
                                     firstName={ adultInfo.firstName }
                                     icon={ ADULT_ICON }
                                     lastName={ adultInfo.lastName }
                                     onChange={(val, prop) => this._updateStateInfoArray(adultInfo, 'adultInfos', prop, val)}
                                 />
-                            </td><td>
-                                Received Income From...
+                            </td><td className="applicant-selection">
+                                <h3>Received Income From...</h3>
                                 <table><tbody>
                                     { this._getIncomeCheckboxRows(adultInfo) }
                                     <tr>
