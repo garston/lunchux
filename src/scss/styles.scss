@@ -45,6 +45,10 @@ body {
     .page-step {
         background-color: darkgray;
         cursor: pointer;
+
+        &.active-step {
+            background-color: blue;
+        }
     }
 }
 

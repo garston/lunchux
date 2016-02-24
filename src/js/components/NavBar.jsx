@@ -12,18 +12,18 @@ module.exports = React.createClass({
             switch(step){
                 case STEPS.APPLICANT_INFO:
                     return [
-                        <td className="page-step" key="applicant-info" onClick={() => navigateTo(step) }>Applicant Information</td>,
-                        <td className="icon-step" key="child-icons">{ this._generateIcons(ApplicationStore.getFormData().numChildren, CHILD_ICON) }</td>
+                        this._generateStepCell('Applicant Information', step),
+                        this._generateStepCell(this._generateIcons(ApplicationStore.getFormData().numChildren, CHILD_ICON), step)
                     ];
                 case STEPS.ASSISTANCE_PROGRAM:
-                    return <td className="page-step" key="assistance-program" onClick={() => navigateTo(step) }>Assistance Program</td>;
+                    return this._generateStepCell('Assistance Program', step);
                 case STEPS.INCOME_INFO:
                     return [
-                        <td className="page-step" key="income-info" onClick={() => navigateTo(step) }>Income and Adult Information</td>,
-                        <td className="icon-step" key="adult-icons">{ this._generateIcons(ApplicationStore.getFormData().numAdults, ADULT_ICON) }</td>
+                        this._generateStepCell('Income and Adult Information', step),
+                        this._generateStepCell(this._generateIcons(ApplicationStore.getFormData().numAdults, ADULT_ICON), step)
                     ];
                 case STEPS.NUM_PEOPLE:
-                    return <td className="page-step" key="num-people" onClick={() => navigateTo(step) }>Applicant and Adults</td>;
+                    return this._generateStepCell('Applicant and Adults', step);
             }
         }).flatten().value();
 
@@ -31,6 +31,18 @@ module.exports = React.createClass({
     },
 
     _generateIcons(num, imgSrc) {
-        return _.map(_.range(num), index => <img key={ index } src={ imgSrc } />);
+        return _.map(_.range(num), index => <img key={ 'icon-' + index } src={ imgSrc } />);
+    },
+
+    _generateStepCell(content, step) {
+        var props = _.isString(content) ? {
+            className: `page-step${step === ApplicationStore.getStep() ? ' active-step' : ''}`,
+            key: step,
+            onClick: () => navigateTo(step)
+        } : {
+            className: 'icon-step',
+            key: `${step}-icons`
+        };
+        return <td { ...props }>{ content }</td>;
     }
 });
