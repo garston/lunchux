@@ -6,35 +6,34 @@ var { navigateForward } = require('../utils/ActionCreator');
 
 var caseNumPattern = '^[0-9a-zA-Z]+$';
 var caseNumRegEx = new RegExp(caseNumPattern);
-var getNumberStateKey = stateKey => stateKey + 'Number';
-var stateKeys = ['snap', 'tanf', 'fdpir'];
 
 module.exports = React.createClass({
     displayName: 'AssistanceProgram',
 
     getInitialState() {
-        return _.pick(ApplicationStore.getFormData(), ['fdpir', 'fdpirNumber', 'tanf', 'tanfNumber', 'snap', 'snapNumber']);
+        return _.pick(ApplicationStore.getFormData(), ['assistanceProgram', 'assistanceProgramNumber']);
     },
 
     render() {
-        var cardRows = _.map(stateKeys, stateKey => {
+        var cardRows = _.map(['SNAP', 'TANF', 'FDPIR'], assistanceProgram => {
+            var isSelectedProgram = this.state.assistanceProgram === assistanceProgram;
             return (
-                <tr key={stateKey + '-assistance-program-row'}>
+                <tr key={assistanceProgram + '-assistance-program-row'}>
                     <td>
                         <Checkbox
-                            checked={ !!this.state[stateKey] }
-                            onChange={ e => this.setState(_.merge(this.getInitialState(), { [stateKey]: e.target.checked })) }
+                            checked={ isSelectedProgram }
+                            onChange={ e => this.setState({ assistanceProgram: e.target.checked ? assistanceProgram : '', assistanceProgramNumber: '' }) }
                         />
                     </td>
-                    <td>{ stateKey.toUpperCase() }</td>
+                    <td>{ assistanceProgram }</td>
                     <td>
                         <Textfield
-                            disabled={ !this.state[stateKey] }
+                            disabled={ !isSelectedProgram }
                             error="Please enter only numbers and letters"
                             label="Case Number"
-                            onChange={e => this.setState({ [getNumberStateKey(stateKey)]: e.target.value })}
+                            onChange={e => this.setState({ assistanceProgramNumber: e.target.value })}
                             pattern={ caseNumPattern }
-                            value={ this.state[getNumberStateKey(stateKey)] }
+                            value={ isSelectedProgram ? this.state.assistanceProgramNumber : '' }
                         />
                     </td>
                 </tr>
@@ -51,7 +50,7 @@ module.exports = React.createClass({
                 </CardText></Card>
                 <div className="bottomNav container">
                     <Button className="buttonRight" raised accent ripple
-                        disabled={ !_.some(stateKeys, stateKey => caseNumRegEx.test(this.state[getNumberStateKey(stateKey)])) }
+                        disabled={ !this.state.assistanceProgramNumber || !caseNumRegEx.test(this.state.assistanceProgramNumber) }
                         onClick={() => navigateForward(this.state)}
                     >
                         Next
