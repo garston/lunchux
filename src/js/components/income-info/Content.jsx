@@ -17,7 +17,7 @@ module.exports = React.createClass({
     displayName: 'IncomeInfoContent',
 
     getInitialState() {
-        var { adultInfos, applicantInfos, applicantIncomeInfos, firstName, lastName, numAdults } = ApplicationStore.getFormData();
+        var { adultInfos, applicantIncomeInfos, applicantInfos, firstName, lastName, numAdults } = ApplicationStore.getFormData();
         return {
             adultInfos: _.map(_.range(numAdults), index => (adultInfos && adultInfos[index]) || _.assign(index === 0 ? { firstName, lastName } : {}, { incomeInfos: originalIncomeInfos })),
             applicantIncomeInfos: _.map(applicantInfos, (applicantInfo, index) => applicantInfo.receivesIncome && ((applicantIncomeInfos && applicantIncomeInfos[index]) || {}))

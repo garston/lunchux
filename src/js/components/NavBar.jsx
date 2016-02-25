@@ -26,6 +26,8 @@ module.exports = React.createClass({
                     ];
                 case STEPS.NUM_PEOPLE:
                     return this._generatePageStep('Applicant and Adults', step);
+                case STEPS.REVIEW_SUBMIT:
+                    return this._generatePageStep('Review / Submit', step);
             }
         }).flatten().value();
 

@@ -472,7 +472,15 @@ table {
         }
     }
 
+.review-submit-page .income-summary-table {
+    .income-summary-total {
+        float: right;
+    }
 
+    .name-income-table {
+        width: 100%;
+    }
+}
 
 .icon-names-table img {
     height: 75px;

@@ -3,6 +3,7 @@ var React = require('react');
 var AssistanceProgram = require('./AssistanceProgram.jsx');
 var Homepage = require('./Homepage.jsx');
 var NavBar = require('./NavBar.jsx');
+var ReviewSubmit = require('./ReviewSubmit.jsx');
 var ApplicantInfoContent = require('./applicant-info/Content.jsx');
 var IncomeInfoContent = require('./income-info/Content.jsx');
 var NumPeopleContent = require('./num-people/Content.jsx');
@@ -51,6 +52,8 @@ module.exports = React.createClass({
                 return <IncomeInfoContent />;
             case STEPS.NUM_PEOPLE:
                 return <NumPeopleContent />;
+            case STEPS.REVIEW_SUBMIT:
+                return <ReviewSubmit />;
         }
     },
 

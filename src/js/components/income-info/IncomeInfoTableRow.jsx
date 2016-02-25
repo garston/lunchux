@@ -1,14 +1,9 @@
 var React = require('react');
 var { Textfield } = require('react-mdl');
 var HorizontalBoxSelector = require('../general/HorizontalBoxSelector.jsx');
-var { ALL_NUMBERS_PATTERN, ALL_NUMBERS_REGEX } = require('../../utils/Util');
+var { ALL_NUMBERS_PATTERN, ALL_NUMBERS_REGEX, computeYearlyIncome } = require('../../utils/Util');
 
 var allowedFrequencies = ['Week', '2 Weeks', 'Month'];
-var occurrencesPerYearByFrequency = {
-    Month: 12,
-    '2 Weeks': 26,
-    Week: 52
-};
 
 module.exports = React.createClass({
     displayName: 'IncomeInfoTableRow',
@@ -42,7 +37,7 @@ module.exports = React.createClass({
                         selectedValues={ [frequency] }
                     />
                 </td>
-                <td className="calculation">{ ALL_NUMBERS_REGEX.test(grossIncome) && frequency ? `$${grossIncome * occurrencesPerYearByFrequency[frequency]}/year` : '' }</td>
+                <td className="calculation">{ ALL_NUMBERS_REGEX.test(grossIncome) && frequency ? `$${computeYearlyIncome({ frequency, grossIncome })}/year` : '' }</td>
             </tr>
         );
     }

@@ -1,5 +1,11 @@
 var keyMirror = require('keymirror');
 
+var occurrencesPerYearByFrequency = {
+    Month: 12,
+    '2 Weeks': 26,
+    Week: 52
+};
+
 module.exports = {
     ADULT_ICON: 'adult-02.png',
     ALL_NUMBERS_PATTERN: '^[0-9]+$',
@@ -11,6 +17,9 @@ module.exports = {
         FORM_SUBMITTED: null,
         HOME: null,
         INCOME_INFO: null,
-        NUM_PEOPLE: null
-    })
+        NUM_PEOPLE: null,
+        REVIEW_SUBMIT: null
+    }),
+
+    computeYearlyIncome: ({ frequency, grossIncome }) => grossIncome * occurrencesPerYearByFrequency[frequency]
 };
