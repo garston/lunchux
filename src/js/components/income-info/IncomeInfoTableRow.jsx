@@ -23,7 +23,7 @@ module.exports = React.createClass({
         var { frequency, grossIncome, label, onChange } = this.props;
         return (
             <tr>
-                <td className="name">{ label }</td>
+                <td className="name"><p>{ label }</p></td>
                 <td className="enterIncome">
                     <Textfield
                         error="Please enter only numbers"

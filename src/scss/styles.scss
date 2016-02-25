@@ -318,6 +318,7 @@ table {
     }
     .horizontal-box-selector td:hover {
         color: grey;
+        border: none;
         &.selected {
             color: #d40015;
         }
@@ -361,6 +362,12 @@ table {
         tr{
             line-height: 33px;
         }
+        h3 {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-left:30px;
+            font-size: 1.7em;
+        }
 
     }
 
@@ -368,10 +375,14 @@ table {
     .applicantCard {
         .name {
             padding-left: 25px;
-            padding-right: 30px;
-            border-right: 1px solid grey;
             min-width: 250px;
-            font-size: 1.4em;
+            p {
+                padding-right: 30px;
+                border-right: 1px solid grey;
+                margin-bottom: 0px;
+                font-size: 1.2em;
+                line-height: 30px;
+            }
         }
         .enterIncome {
             padding-left: 50px;
@@ -391,6 +402,22 @@ table {
         .calculation {
             padding-left: 10px;
             padding-right: 10px;
+        }
+        .horizontal-box-selector td {
+            background-color: white;
+            cursor: pointer;
+            padding: 10px;
+
+            &.selected {
+                color: #d40015;
+            }
+        }
+        .horizontal-box-selector td:hover {
+            color: grey;
+            border-bottom: 1px solid lightgray;
+            &.selected {
+                color: #d40015;
+            }
         }
     }
     .adultCard {
@@ -398,11 +425,14 @@ table {
         padding-left: 25px;
         padding-right: 25px;
         .name {
-            padding-left: 25px;
-            padding-right: 30px;
-            border-right: 1px solid grey;
-            min-width: 250px;
-            font-size: 1.4em;
+            min-width: 360px;
+            p {
+                padding-right: 30px;
+                border-right: 1px solid grey;
+                margin-bottom: 0px;
+                font-size: 1.1em;
+                line-height: 30px;
+            }
         }
         .enterIncome {
             padding-left: 50px;
@@ -423,24 +453,24 @@ table {
             padding-left: 10px;
             padding-right: 10px;
         }
+        .horizontal-box-selector td {
+            background-color: #eeeeee;
+            cursor: pointer;
+            padding: 10px;
 
-    }
-    .horizontal-box-selector td {
-        background-color: white;
-        cursor: pointer;
-        padding: 10px;
-
-        &.selected {
-            color: #d40015;
+            &.selected {
+                color: #d40015;
+            }
+        }
+        .horizontal-box-selector td:hover {
+            color: grey;
+            border-bottom: 1px solid lightgray;
+            &.selected {
+                color: #d40015;
+            }
         }
     }
-    .horizontal-box-selector td:hover {
-        color: grey;
-        border-bottom: 1px solid lightgray;
-        &.selected {
-            color: #d40015;
-        }
-    }
+
 
 
 .icon-names-table img {
