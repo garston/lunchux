@@ -14,7 +14,7 @@ module.exports = React.createClass({
                 case STEPS.APPLICANT_INFO:
                     return [
 
-                        this._generateStepCell(<Badge text="1">Applicant Information</Badge>, step),
+                        this._generateStepCell(<Badge text="4"> Applicant Information</Badge>, step),
                         this._generateStepCell(this._generateIcons(ApplicationStore.getFormData().numChildren), step)
                     ];
                 case STEPS.ASSISTANCE_PROGRAM:
@@ -34,7 +34,7 @@ module.exports = React.createClass({
     },
 
     _generateIcons(num) {
-        return _.map(_.range(num), index => <Badge text="1"></Badge>);
+        return _.map(_.range(num), index => <Badge text="1">index</Badge>);
     },
 
     _generateStepCell(content, step) {

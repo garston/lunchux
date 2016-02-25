@@ -80,8 +80,8 @@ module.exports = React.createClass({
                                 </tbody></table>
                             </td>
                         </tr></tbody></table>
-                        { this._getIncomeInfoTable(adultInfo) }
                     </CardText>
+                    { this._getIncomeInfoTable(adultInfo) }
                 </Card>
             );
         });
@@ -97,7 +97,7 @@ module.exports = React.createClass({
     _getApplicantIncomeSection() {
         var applicantIncomeRows = _(ApplicationStore.getFormData().applicantInfos).map((applicantInfo, index) => {
             var incomeInfo = this.state.applicantIncomeInfos[index];
-            return incomeInfo && <Card shadow={1}>
+            return incomeInfo && <Card shadow={1} className="applicantCard">
                     <table><tbody>
                 <IncomeInfoTableRow
                     frequency={ incomeInfo.frequency }
@@ -150,7 +150,7 @@ module.exports = React.createClass({
                    onChange={ (prop, val) => this._updateStateInfoArray(adultInfo, 'adultInfos', 'incomeInfos', safeUpdateObjectInArray(incomeInfo, incomeInfos, prop, val)) }
                 />;
        });
-       return <table><tbody>{ rows }</tbody></table>;
+       return <div className="adultCard"><table><tbody>{ rows }</tbody></table></div>;
     },
 
     _updateAdultInfos({ adultInfo, incomeInfos, noIncome }) {

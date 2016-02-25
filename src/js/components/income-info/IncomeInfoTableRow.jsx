@@ -23,26 +23,26 @@ module.exports = React.createClass({
         var { frequency, grossIncome, label, onChange } = this.props;
         return (
             <tr>
-                <td>{ label }</td>
-                <td>
+                <td className="name">{ label }</td>
+                <td className="enterIncome">
                     <Textfield
                         error="Please enter only numbers"
                         floatingLabel
-                        label="Gross Income"
+                        label="Recieve Income Amount"
                         onChange={ e => onChange('grossIncome', e.target.value) }
                         pattern={ ALL_NUMBERS_PATTERN }
                         value={ grossIncome }
                     />
                 </td>
-                <td>Every</td>
-                <td>
+                <td className="every">EVERY</td>
+                <td className="frequencySelector">
                     <HorizontalBoxSelector
                         allowedValues={ allowedFrequencies }
                         onClick={ value => onChange('frequency', value) }
                         selectedValues={ [frequency] }
                     />
                 </td>
-                <td>{ ALL_NUMBERS_REGEX.test(grossIncome) && frequency ? `$${grossIncome * occurrencesPerYearByFrequency[frequency]}/year` : '' }</td>
+                <td className="calculation">{ ALL_NUMBERS_REGEX.test(grossIncome) && frequency ? `$${grossIncome * occurrencesPerYearByFrequency[frequency]}/year` : '' }</td>
             </tr>
         );
     }

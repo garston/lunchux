@@ -28,7 +28,7 @@ body {
     height: 50px;
     background-color: #00BCD4;
     width: 100%;
-    font-size: 2em;
+    font-size: 1.2em;
     td {
         padding: 0px 20px;
         border-right:1px solid white;
@@ -328,6 +328,10 @@ table {
 
 /////////////////////////////////
 .income-info-content .mdl-card{
+    min-height: 20px;
+    h2 {
+        font-size: 2em;
+    }
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
@@ -359,8 +363,84 @@ table {
         }
 
     }
-}
 
+}
+    .applicantCard {
+        .name {
+            padding-left: 25px;
+            padding-right: 30px;
+            border-right: 1px solid grey;
+            min-width: 250px;
+            font-size: 1.4em;
+        }
+        .enterIncome {
+            padding-left: 50px;
+            padding-right: 10px;
+        }
+        .every {
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 1em;
+            color: lightgray;
+        }
+        .frequencySelector {
+            padding-left: 10px;
+            padding-right: 10px;
+
+        }
+        .calculation {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+    .adultCard {
+        background-color: #eeeeee;
+        padding-left: 25px;
+        padding-right: 25px;
+        .name {
+            padding-left: 25px;
+            padding-right: 30px;
+            border-right: 1px solid grey;
+            min-width: 250px;
+            font-size: 1.4em;
+        }
+        .enterIncome {
+            padding-left: 50px;
+            padding-right: 10px;
+        }
+        .every {
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 1em;
+            color: lightgray;
+        }
+        .frequencySelector {
+            padding-left: 10px;
+            padding-right: 10px;
+
+        }
+        .calculation {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+    }
+    .horizontal-box-selector td {
+        background-color: white;
+        cursor: pointer;
+        padding: 10px;
+
+        &.selected {
+            color: #d40015;
+        }
+    }
+    .horizontal-box-selector td:hover {
+        color: grey;
+        border-bottom: 1px solid lightgray;
+        &.selected {
+            color: #d40015;
+        }
+    }
 
 
 .icon-names-table img {
@@ -368,12 +448,4 @@ table {
     width: 75px;
 }
 
-.horizontal-box-selector td {
-    background-color: lightblue;
-    cursor: pointer;
-    padding: 10px;
 
-    &.selected {
-        background-color: blue;
-    }
-}
