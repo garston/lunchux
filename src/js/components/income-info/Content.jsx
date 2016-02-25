@@ -97,15 +97,15 @@ module.exports = React.createClass({
     _getApplicantIncomeSection() {
         var applicantIncomeRows = _(ApplicationStore.getFormData().applicantInfos).map((applicantInfo, index) => {
             var incomeInfo = this.state.applicantIncomeInfos[index];
-            return incomeInfo && <Card shadow={1} className="applicantCard">
+            return incomeInfo &&
+                <Card className="applicantCard" key={ 'income-info-' + index } shadow={1}>
                     <table><tbody>
-                <IncomeInfoTableRow
-                    frequency={ incomeInfo.frequency }
-                    grossIncome={ incomeInfo.grossIncome }
-                    key={ 'income-info-' + index }
-                    label={ `${applicantInfo.firstName} ${applicantInfo.lastName}` }
-                    onChange={ (prop, val) => this._updateStateInfoArray(incomeInfo, 'applicantIncomeInfos', prop, val) }
-                />
+                        <IncomeInfoTableRow
+                            frequency={ incomeInfo.frequency }
+                            grossIncome={ incomeInfo.grossIncome }
+                            label={ `${applicantInfo.firstName} ${applicantInfo.lastName}` }
+                            onChange={ (prop, val) => this._updateStateInfoArray(incomeInfo, 'applicantIncomeInfos', prop, val) }
+                        />
                     </tbody></table>
                 </Card>
         }).compact().value();
