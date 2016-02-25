@@ -7,10 +7,7 @@ module.exports = React.createClass({
     displayName: 'Homepage',
 
     getInitialState() {
-        return {
-            firstName: undefined,
-            lastName: undefined
-        };
+        return {};
     },
 
     render() {

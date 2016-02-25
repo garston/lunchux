@@ -24,7 +24,7 @@ var ApplicationStore = StoreCreator.create({
 ApplicationStore.dispatchToken = Dispatcher.register(({ action }) => {
     switch(action.type) {
         case NAVIGATE_FORWARD:
-            _.merge(formData, action.formData);
+            _.assign(formData, action.formData);
             console.log('ApplicationStore', action.formData, formData);
             step = orderedSteps[orderedSteps.indexOf(step) + 1];
             visitedSteps.push(step);
