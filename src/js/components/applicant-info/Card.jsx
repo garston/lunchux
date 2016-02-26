@@ -6,6 +6,7 @@ var IconNamesTable = require('../general/IconNamesTable.jsx');
 var LabelCheckboxTable = require('../general/LabelCheckboxTable.jsx');
 var ApplicationStore = require('../../stores/ApplicationStore');
 var { CHILD_ICON } = require('../../utils/Util');
+var ReactCSSTransitionGroup = require('react/addons');
 
 module.exports = React.createClass({
     displayName: 'ApplicantInfoCard',
@@ -51,7 +52,8 @@ module.exports = React.createClass({
                 </tbody></table>
             </CardText>
                 <div className="dropdown">
-                    { this.state.optionalSectionShown && this._generateOptionalSection() }</div>
+                    { this.state.optionalSectionShown && this._generateOptionalSection() }
+                </div>
             </Card>
         );
     },

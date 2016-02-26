@@ -25,7 +25,7 @@ body {
 }
 
 .nav-bar {
-    height: 50px;
+    height: 100px;
     background-color: #00BCD4;
     width: 100%;
     font-size: 1.2em;
@@ -73,6 +73,15 @@ body {
         width: inherit;
     }
     table {
+        height: 50px;
+    }
+    .navTop{
+        height: 50px;
+        p {
+            margin-bottom: 0px;
+        }
+    }
+    .navSection{
         height: 50px;
     }
 }
@@ -373,6 +382,12 @@ table {
     }
 
 }
+    .adultIncomeSection {
+        margin-top: 120px;
+    }
+    .applicantIncomeSection {
+        margin-top: 75px;
+    }
     .applicantCard {
         .name {
             padding-left: 25px;

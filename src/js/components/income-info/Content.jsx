@@ -87,7 +87,7 @@ module.exports = React.createClass({
         });
 
         return (
-            <div>
+            <div className="adultIncomeSection">
                 <div className="container"><h2>Adult Information and Income</h2></div>
                 { cards }
             </div>
@@ -111,7 +111,7 @@ module.exports = React.createClass({
         }).compact().value();
 
         return applicantIncomeRows.length > 0 && (
-            <div>
+            <div className="applicantIncomeSection">
                 <div className="container"><h2>Please Enter Applicant Income Information</h2></div>
                 { applicantIncomeRows }
             </div>
