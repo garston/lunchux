@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
-var { Card, CardText, CardTitle } = require('react-mdl');
+var { Card, CardText, CardTitle, Icon } = require('react-mdl');
 var HorizontalBoxSelector = require('../general/HorizontalBoxSelector.jsx');
 var IconNamesTable = require('../general/IconNamesTable.jsx');
 var LabelCheckboxTable = require('../general/LabelCheckboxTable.jsx');
@@ -45,7 +45,7 @@ module.exports = React.createClass({
                             ]}
                             onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
                         />
-                        <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Racial and Ethnic Identitiy (optional)</div>
+                        <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Racial and Ethnic Identitiy (optional)<Icon name="keyboard_arrow_down" /></div>
                     </td>
                 </tr>
                 </tbody></table>

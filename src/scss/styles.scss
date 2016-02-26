@@ -25,57 +25,54 @@ body {
 }
 
 .nav-bar {
-    height: 135px;
-    background-color: #00BCD4;
+    height: 130px;
     width: 100%;
     font-size: 1.2em;
     td {
         padding: 0px 20px;
-        border-right:1px solid white;
     }
 
-    .icon-step {
-        background-color: lightgray;
-        padding: 0px;
-
-        img {
-            height: 50px;
-            margin-right: -20px;
-            width: 50px;
-        }
-    }
 
     .page-step {
         background-color: darkgray;
         cursor: pointer;
-        
+        padding-left: 22px;
+        padding-right: 22px;
+        padding-bottom: 0px;
+        padding-top: 0px;
 
         &.active-step {
             background-color: blue;
         }
+        img {
+            height: 50px;
+            width: 50px;
+            margin-right: -20px;
+            margin-left: 20px;
+        }
     }
 
-    .icon-step.child-icons {
-        width: inherit;
-    }
-    .icon-step.adult-icons {
-        width: inherit;
-    }
-    table {
-        height: 50px;
-    }
     .navTop{
-        height: 74px;
+        height: 75px;
         width: 100%;
+        background-color: #323232;
         p {
             margin-bottom: 0px;
             font-size: 2em;
+            line-height: 70px;
+            padding-left: 100px;
         }
     }
     .navSection{
-        height: 61px;
+        height: 55px;
         width: 100%;
+        background-color: #999999;
+        line-height: 55px;
+        table {
+            height: 55px;
+        }
     }
+
 }
 
 .bottomNav {
