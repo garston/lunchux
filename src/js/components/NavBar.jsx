@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
-var { Badge } = require('material-ui');
+var { Badge, Paper} = require('material-ui');
 var ApplicationStore = require('../stores/ApplicationStore');
 var { navigateTo } = require('../utils/ActionCreator');
 var { ADULT_ICON, CHILD_ICON, STEPS } = require('../utils/Util');
@@ -31,12 +31,12 @@ module.exports = React.createClass({
             }
         }).flatten().value();
 
-        return <div className="nav-bar"><div className="navTop"><div><p>Lunchboc Application</p></div><div className="material-icons orange600"></div></div>
-                <table className="navSection"><tbody><tr>{ segments }</tr></tbody></table></div>;
+        return <Paper zDepth={1}><div className="nav-bar"><div className="navTop"><p>Lunchbox Application</p></div>
+                <table className="navSection"><tbody><tr>{ segments }</tr></tbody></table></div></Paper>;
     },
 
     _generateIconStep(num, imgSrc, step) {
-        return <td className='icon-step' key={ `${step}-icons` }><img src={ imgSrc } /><Badge badgeContent={ num }>&nbsp;</Badge></td>;
+        return <td className='icon-step' key={ `${step}-icons` }><img src={ imgSrc } /><Badge badgeContent={ num } primary={true}>&nbsp;</Badge></td>;
     },
 
     _generatePageStep(content, step) {

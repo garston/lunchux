@@ -25,7 +25,7 @@ body {
 }
 
 .nav-bar {
-    height: 100px;
+    height: 135px;
     background-color: #00BCD4;
     width: 100%;
     font-size: 1.2em;
@@ -48,24 +48,13 @@ body {
     .page-step {
         background-color: darkgray;
         cursor: pointer;
+        
 
         &.active-step {
             background-color: blue;
         }
     }
-    .page-step.num-people {
-        width: 10%;
-    }
-    .page-step.applicant-info {
-        width: 10%;
-    }
-    .page-step.assistance-program {
-        width: 20%;
-    }
 
-    .page-step.income-info {
-        width: 20%;
-    }
     .icon-step.child-icons {
         width: inherit;
     }
@@ -76,13 +65,16 @@ body {
         height: 50px;
     }
     .navTop{
-        height: 50px;
+        height: 74px;
+        width: 100%;
         p {
             margin-bottom: 0px;
+            font-size: 2em;
         }
     }
     .navSection{
-        height: 50px;
+        height: 61px;
+        width: 100%;
     }
 }
 
