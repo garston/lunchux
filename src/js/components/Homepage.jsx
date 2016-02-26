@@ -24,9 +24,9 @@ module.exports = React.createClass({
                 <Card shadow={1}>
                     <div className="nameContainer">
                         <p>To start please fill out your name below to start the application</p>
-                        <Textfield label="First Name" floatingLabel onChange={e => this.setState({firstName: e.target.value})} style={{width: '300px'}}/>
-                        <Textfield label="Last Name" floatingLabel onChange={e => this.setState({lastName: e.target.value})} style={{width: '300px', marginLeft:"30px"}} />
-                        <Button raised accent ripple disabled={!this.state.firstName || !this.state.lastName} onClick={() => navigateForward(this.state)}>Get Started</Button>
+                        <Textfield floatingLabel label="First Name" onChange={e => this.setState({firstName: e.target.value})} style={{width: '300px'}}/>
+                        <Textfield floatingLabel label="Last Name" onChange={e => this.setState({lastName: e.target.value})} style={{width: '300px', marginLeft:"30px"}} />
+                        <Button accent raised ripple disabled={!this.state.firstName || !this.state.lastName} onClick={() => navigateForward(this.state)}>Get Started</Button>
                     </div>
                 </Card>
             </div>

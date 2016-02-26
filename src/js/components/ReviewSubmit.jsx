@@ -5,8 +5,15 @@ var ApplicationStore = require('../stores/ApplicationStore');
 var { navigateForward } = require('../utils/ActionCreator');
 var { computeYearlyIncome } = require('../utils/Util');
 
+var ssnPattern = '^[0-9][0-9][0-9][0-9]$';
+var ssnRegEx = new RegExp(ssnPattern);
+
 module.exports = React.createClass({
     displayName: 'ReviewSubmit',
+
+    getInitialState() {
+        return {};
+    },
 
     render() {
         var formData = ApplicationStore.getFormData();
@@ -39,6 +46,30 @@ module.exports = React.createClass({
                     </tr></tbody></table>
                 </CardText></Card>
                 { this._generateIncomeSummaryCard(formData) }
+                <Card><CardText>
+                    Please Enter Current Address<br />
+                    <Textfield floatingLabel label="Street" onChange={e => this.setState({street: e.target.value})} />
+                    <Textfield floatingLabel label="City" onChange={e => this.setState({city: e.target.value})} />
+                    <Textfield floatingLabel label="State" onChange={e => this.setState({state: e.target.value})} />
+                    <Textfield floatingLabel label="Zip Code" onChange={e => this.setState({zipCode: e.target.value})} />
+                </CardText></Card>
+                <Card><CardText>
+                    <table><tbody><tr>
+                        <td>
+                            Please enter the last four numbers of (primary income earner) social security number<br/>
+                            <Textfield error="Please enter four numbers" floatingLabel label="" onChange={e => this.setState({ssnLast4: e.target.value})} pattern={ ssnPattern } />
+                        </td><td>
+                            Please sign here
+                        </td>
+                    </tr></tbody></table>
+                </CardText></Card>
+                When you are ready click the submit button to submit your application<br />
+                <Button accent raised ripple
+                    disabled={ _.some(['city', 'ssnLast4', 'state', 'street', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
+                    onClick={() => navigateForward(this.state)}
+                >
+                    Submit
+                </Button>
             </div>
         );
     },
