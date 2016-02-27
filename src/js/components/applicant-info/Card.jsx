@@ -45,14 +45,13 @@ module.exports = React.createClass({
                             ]}
                             onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
                         />
-                        <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}>Racial and Ethnic Identitiy (optional)<Icon name="keyboard_arrow_down" /></div>
+
                     </td>
                 </tr>
                 </tbody></table>
+                    <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}><p>Racial and Ethnic Identitiy (optional)</p><Icon className="downAarow" name="keyboard_arrow_down" /></div>
             </CardText>
-                <div className="dropdown">
                     { this.state.optionalSectionShown && this._generateOptionalSection() }
-                </div>
             </Card>
         );
     },
@@ -63,14 +62,12 @@ module.exports = React.createClass({
 
     _generateOptionalSection() {
         return (
+            <div className="dropdown">
+                <p>Responding to this section is optional and does not effect eligibility for free or reduced price meals.
+                    Although optional, this information is important and helps make sure we are fully serving our community. (please select ethnicity and race below)</p>
             <table className="tableDropdown"><tbody>
-                <tr>
-                <td className="dropdownHeader">
-                    <p>Please Select:</p>
-                </td>
-                </tr>
                 <tr className="dropdownEthnicity">
-                    <td className="dropdownTitle"><p>Ethnicity</p></td>
+                    <td className="dropdownTitle"><p>Ethnicity</p><Icon name="keyboard_arrow_right"/></td>
                     <td className="dropdownSelector">
                         <HorizontalBoxSelector
                             allowedValues={ ['Hispanic or Latino', 'Not Hispanic or Latino'] }
@@ -79,7 +76,7 @@ module.exports = React.createClass({
                         />
                     </td>
                 </tr><tr className="dropdownRace">
-                    <td className="dropdownTitle"><p>Race</p></td>
+                    <td className="dropdownTitle"><p>Race</p><Icon name="keyboard_arrow_right"/></td>
                     <td className="dropdownSelector">
                         <HorizontalBoxSelector
                             allowedValues={ ['American Indian or Alaskan Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White'] }
@@ -89,6 +86,7 @@ module.exports = React.createClass({
                     </td>
                 </tr>
             </tbody></table>
+            </div>
         );
     },
 

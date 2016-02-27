@@ -1,6 +1,6 @@
 body {
     font-family: Roboto;
-    background-color: #fbfbfb;
+    background-color: #E0E0E0;
 }
 .mdl-card, .mdl-card > .mdl-card__supporting-text > table {
     width: 100%;
@@ -24,8 +24,12 @@ body {
     padding-right: 25px;
 }
 
+h1,h2 {
+    color: #424242;
+}
+
 .nav-bar {
-    height: 130px;
+    height: 132px;
     width: 100%;
     font-size: 1.2em;
     td {
@@ -34,15 +38,15 @@ body {
 
 
     .page-step {
-        background-color: darkgray;
         cursor: pointer;
-        padding-left: 22px;
-        padding-right: 22px;
+        padding-left: 25px;
+        padding-right: 25px;
         padding-bottom: 0px;
         padding-top: 0px;
 
         &.active-step {
-            background-color: blue;
+            border-bottom: 2px solid #F44336;
+            color: #F44336 ;
         }
         img {
             height: 50px;
@@ -51,22 +55,34 @@ body {
             margin-left: 20px;
         }
     }
-
+    .page-step:hover {
+        background-color: white;
+        opacity: 0.5;
+    }
     .navTop{
         height: 75px;
         width: 100%;
-        background-color: #323232;
+        background-color: #2196F3;
         p {
             margin-bottom: 0px;
-            font-size: 2em;
+            font-size: 1.6em;
             line-height: 70px;
-            padding-left: 100px;
+            padding-left: 25px;
+            float: left;
+            width:95%;
+            color: ghostwhite;
+        }
+        .material-icons {
+            line-height: 70px;
+            font-size: 2em;
+            color: ghostwhite;
+            opacity: 0.5;
         }
     }
     .navSection{
         height: 55px;
         width: 100%;
-        background-color: #999999;
+        background-color: white;
         line-height: 55px;
         table {
             height: 55px;
@@ -176,6 +192,11 @@ table {
             opacity: .2;
         }
     }
+    .icon:hover {
+        &.not-selected {
+            opacity: .4;
+        }
+    }
     .icon-counter {
         font-size: 6em;
         text-align: right;
@@ -183,12 +204,12 @@ table {
         position: relative;
         float: left;
         width: 100%;
-        color:#00BCD4;
+        color:#2196F3;
     }
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
-        color: #00BCD4;
+        color: #2196F3;
         h2 {
             font-size: 2.5em;
             font-weight: 400;
@@ -219,12 +240,13 @@ table {
         padding-top: 15px;
         padding-bottom: 15px;
         padding-left: 25px;
-        border-top:1px solid #00BCD4;
+        border-top:1px solid #2196F3;
         p {
             float: left;
             margin-bottom: 0px;
         }
     }
+
 
 
 
@@ -235,7 +257,7 @@ table {
         height: 100px;
     }
     td.applicant-name {
-        border-right: 2px solid #00BCD4;
+        border-right: 2px solid #2196F3;
         width: 60%;
         td{
 
@@ -254,27 +276,43 @@ table {
     }
     .toggle-optional-section-visibility {
         cursor: pointer;
-        font-size: 1.2em;
+        font-size: 1.1em;
         margin-top: 20px;
-        margin-left: 30px;
+        p {
+            margin-bottom: 0px;
+            float: left;
+            line-height: 30px;
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+    }
+    .toggle-optional-section-visibility:hover {
+        color: #F44336;
+        opacity: 0.9;
     }
 
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
-        border-bottom: 1px solid lightgray;
+        border-bottom: 1px solid #F5F5F5;
         h2 {
             font-size: 1.5em;
             font-weight: 400;
         }
     }
     .dropdown {
-        background-color: #eeeeee;
+        background-color: #F5F5F5;
         padding-left: 25px;
         padding-right: 25px;
+        p{
+            font-size: 1em;
+            margin-top: 15px;
+            margin-bottom: 0px;
+        }
     }
     .tableDropdown {
-        margin-top: 10px;
+        margin-top: 15px;
+        margin-bottom: 10px;
     }
     .dropdownEthnicity {
 
@@ -283,45 +321,53 @@ table {
 
 
     }
-    .dropdownHeader {
-        p {
-            height: 30px;
-            font-size: 1.1em;
-            font-weight: 300;
-            margin-bottom: 5px;
-        }
-    }
     .dropdownTitle {
+        width: 130px;
         p {
-            border-right: 1px solid grey;
-            font-size: 1.1em;
+            font-size: 1.2em;
             font-weight: 300;
             margin-bottom: 0px;
+            margin-top: 0px;
+            line-height: 30px;
+            float: left;
+            width: 90px;
+
+        }
+        .material-icons {
+            line-height: 30px;
         }
     }
     .dropdownSelector {
-        padding-left: 5px;
 
     }
     .horizontal-box-selector td {
-        background-color: #eeeeee;
         cursor: pointer;
-        padding: 13px;
-        color: #bababa;
+        padding: 10px;
+        color: #2196F3;
         font-size: 1.1em;
         font-weight: 400;
 
         &.selected {
-            color: #d40015;
+            color: white;
+            background-color: #2196F3;
         }
     }
     .horizontal-box-selector td:hover {
-        color: grey;
+        color: #1565C0;
         border: none;
+        background-color: white;
+        opacity: 0.8;
         &.selected {
-            color: #d40015;
+            color: white;
+            background-color: #2196F3
         }
     }
+
+    .material-icons.downAarow {
+        line-height: 30px;
+        font-size: 2em;
+    }
+
 
 }
 
