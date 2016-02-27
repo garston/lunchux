@@ -93,7 +93,7 @@ h1,h2,h3 {
 
 .bottomNav {
     margin-top: 30px;
-    margin-bottom: 50px;
+    padding-bottom: 100px;
     .buttonRight {
         float: right;
     }
@@ -561,7 +561,7 @@ table {
         }
         .horizontal-box-selector td:hover {
             color: grey;
-            border-bottom: 1px solid lightgray;
+            border-bottom: 1px solid #EEEEEE;
             &.selected {
                 color: #F44336;
             }
@@ -571,15 +571,76 @@ table {
 
 
 //////////////////////////////////
-.review-submit-page .income-summary-table {
-    .income-summary-total {
-        float: right;
+.review-submit-page {
+    .householdSum {
+        .mdl-card__title {
+            border-bottom: 1px solid #EEEEEE;
+            h2 {
+                margin-top: 2px;
+                margin-bottom: 2px;
+                width: 95%;
+                line-height: 40px;
+            }
+            .householdNum {
+                h2{
+
+                }
+            }
+        }
+        .householdList {
+            .barGraph {
+                width: 100%;
+                height: 50px;
+            }
+            table {
+                .householdTitle {
+                    h3 {
+                        margin-bottom: 0px;
+                        margin-top: 0px;
+                    }
+                }
+                .householdNames {
+
+                }
+                .names {
+                    width: 50%;
+                }
+            }
+        }
+        .householdOther {
+            .foster {
+
+            }
+            .mhr {
+
+            }
+            .currentStudent {
+
+            }
+
+
+        }
+    }
+    .incomeSum {
+        .income-summary-total {
+            float: right;
+        }
+
+        .name-income-table {
+            width: 100%;
+        }
+    }
+    .address {
+
+
+    }
+    .final {
+
+
     }
 
-    .name-income-table {
-        width: 100%;
-    }
 }
+
 
 ///////////////////////////////
 .icon-names-table img {

@@ -28,42 +28,38 @@ module.exports = React.createClass({
                 <Card shadow={1} className="householdSum">
                     <CardTitle>
                         <h2>Total Household Members</h2>
-                        <div>{ numAdults + numChildren }</div>
+                        <div className="householdNum"><h2>{ numAdults + numChildren }</h2></div>
                     </CardTitle>
-                    <CardText>
+                    <CardText className="householdList">
+                        <div className="barGraph"></div>
                     <table><tbody>
                         <tr>
-                            <th>Applicants</th>
-                            <th>Adults</th>
+                            <td className="householdTitle"><h3>Applicants</h3></td>
+                            <td className="householdTitle"><h3>Adults</h3></td>
                         </tr><tr>
-                            <td>{ this._generateNameTable(applicantInfos) }</td>
-                            <td>{ this._generateNameTable(adultInfos) }</td>
+                            <td className="householdNames">{ this._generateNameTable(applicantInfos) }</td>
+                            <td className="householdNames">{ this._generateNameTable(adultInfos) }</td>
                         </tr>
                     </tbody></table>
                     </CardText>
-                    <CardText>
-                    <table><tbody><tr>
-                        <td>Foster</td>
-                        <td>{ this._computeNumApplicantsThatAre('fosterChild', applicantInfos) }</td>
-                        <td>Migrant, Homeless, Runaway</td>
-                        <td>{ this._computeNumApplicantsThatAre('migrantHomelessRunaway', applicantInfos) }</td>
-                        <td>Current Students</td>
-                        <td>{ this._computeNumApplicantsThatAre('currentStudent', applicantInfos) }</td>
-                    </tr></tbody></table>
+                    <CardText className="householdOther">
+                        <div className="foster"><h3>Foster</h3><h3>{ this._computeNumApplicantsThatAre('fosterChild', applicantInfos) }</h3></div>
+                        <div className="mhr"><h3>Migrant, Homeless, Runaway</h3><h3>{ this._computeNumApplicantsThatAre('migrantHomelessRunaway', applicantInfos) }</h3></div>
+                        <div className="currentStudents"><h3>Current Students</h3><h3>{ this._computeNumApplicantsThatAre('currentStudent', applicantInfos) }</h3></div>
                 </CardText></Card>
                 { this._generateIncomeSummaryCard(formData) }
                 <div className="selectionHeader container">
                     <h2>Submit</h2>
                     <p>Please fill out the information below then click submit when you are ready to submit the alpplication</p>
                 </div>
-                <Card shadow={1}><CardText>
+                <Card shadow={1} className="address"><CardText>
                     Please Enter Current Address<br />
                     <Textfield floatingLabel label="Street" onChange={e => this.setState({street: e.target.value})} />
                     <Textfield floatingLabel label="City" onChange={e => this.setState({city: e.target.value})} />
                     <Textfield floatingLabel label="State" onChange={e => this.setState({state: e.target.value})} />
                     <Textfield floatingLabel label="Zip Code" onChange={e => this.setState({zipCode: e.target.value})} />
                 </CardText></Card>
-                <Card shadow={1}><CardText>
+                <Card shadow={1} className="final"><CardText>
                     <table><tbody><tr>
                         <td>
                             <Textfield floatingLabel label="" />
@@ -132,7 +128,7 @@ module.exports = React.createClass({
 
     _generateNameTable(infos) {
         var rows = _.map(infos, (info, index) => <tr key={ index }><td><Icon name="fiber_manual_record" /></td><td>{ `${info.firstName} ${info.lastName}` }</td></tr>);
-        return <table><tbody>{ rows }</tbody></table>;
+        return <table className="names"><tbody>{ rows }</tbody></table>;
     },
 
     _generateNameIncomeTable(incomeByPerson, totalIncomeForTable, totalIncome) {
