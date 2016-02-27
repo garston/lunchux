@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
-var { Button, Card, CardText, Checkbox, Textfield } = require('react-mdl');
+var { Button, Card, CardText, CardTitle, Checkbox, Textfield } = require('react-mdl');
 var ApplicationStore = require('../stores/ApplicationStore');
 var { navigateForward } = require('../utils/ActionCreator');
 
@@ -27,7 +27,7 @@ module.exports = React.createClass({
                     </td>
                     <td>{ assistanceProgram }</td>
                     <td>
-                        <Textfield
+                        <Textfield floatingLabel
                             disabled={ !isSelectedProgram }
                             error="Please enter only numbers and letters"
                             label="Case Number"
@@ -41,9 +41,11 @@ module.exports = React.createClass({
         });
 
         return (
-            <div>
-                <Card shadow={1}><CardText>
-                    Please select the program and enter the case number
+            <div className="assistanceProgram">
+                <div className="selectionHeader container"><h2>Assistance Program Selection</h2></div>
+                <Card shadow={1}>
+                    <CardTitle><h2>Please select the program and enter the case number</h2></CardTitle>
+                    <CardText>
                     <table><tbody>
                         { cardRows }
                     </tbody></table>

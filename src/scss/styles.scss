@@ -24,7 +24,7 @@ body {
     padding-right: 25px;
 }
 
-h1,h2 {
+h1,h2,h3 {
     color: #424242;
 }
 
@@ -70,12 +70,12 @@ h1,h2 {
             padding-left: 25px;
             float: left;
             width:95%;
-            color: ghostwhite;
+            color: white;
         }
         .material-icons {
             line-height: 70px;
             font-size: 2em;
-            color: ghostwhite;
+            color: white;
             opacity: 0.5;
         }
     }
@@ -100,8 +100,8 @@ h1,h2 {
 }
 
 .selectionHeader{
-    height: 150px;
     margin-top:50px;
+    margin-bottom: 50px;
 }
 table {
     border-collapse: collapse;
@@ -294,10 +294,11 @@ table {
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
-        border-bottom: 1px solid #F5F5F5;
+        border-bottom: 1px solid #EEEEEE;
         h2 {
             font-size: 1.5em;
             font-weight: 400;
+            color: #424242;
         }
     }
     .dropdown {
@@ -372,6 +373,25 @@ table {
 }
 
 
+
+/////////////////////////////
+    .assistanceProgram {
+        .mdl-card__title {
+            padding-left: 25px;
+            padding-right: 25px;
+            border-bottom: 1px solid #EEEEEE;
+            h2 {
+                font-size: 1.5em;
+                font-weight: 400;
+                margin-bottom: 0px;
+                color: #424242;
+                margin-top: 0px;
+            }
+        }
+
+    }
+
+
 /////////////////////////////////
 .income-info-content .mdl-card{
     min-height: 20px;
@@ -381,10 +401,12 @@ table {
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
-        border-bottom: 1px solid lightgray;
+        border-bottom: 1px solid #EEEEEE;
         h2 {
             font-size: 1.5em;
             font-weight: 400;
+            margin-bottom: 0px;
+            color: #424242;
         }
     }
     img {
@@ -392,7 +414,7 @@ table {
         height: 100px;
     }
     td.applicant-name {
-        border-right: 2px solid #00BCD4;
+        border-right: 2px solid #2196F3;
         width: 60%;
         td{
 
@@ -418,10 +440,17 @@ table {
 
 }
     .adultIncomeSection {
-        margin-top: 120px;
+        margin-top: 50px;
+        h2 {
+            margin-bottom: 45px;
+        }
     }
     .applicantIncomeSection {
-        margin-top: 75px;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        h2{
+            margin-bottom: 45px;
+        }
     }
     .applicantCard {
         .name {
@@ -460,19 +489,19 @@ table {
             padding: 10px;
 
             &.selected {
-                color: #d40015;
+                color: #F44336;
             }
         }
         .horizontal-box-selector td:hover {
             color: grey;
-            border-bottom: 1px solid lightgray;
+            border-bottom: 1px solid #EEEEEE;
             &.selected {
-                color: #d40015;
+                color: #F44336;
             }
         }
     }
     .adultCard {
-        background-color: #eeeeee;
+        background-color: #F5F5F5;
         padding-left: 25px;
         padding-right: 25px;
         .name {
@@ -510,18 +539,21 @@ table {
             padding: 10px;
 
             &.selected {
-                color: #d40015;
+                color: #F44336;
             }
         }
         .horizontal-box-selector td:hover {
             color: grey;
             border-bottom: 1px solid lightgray;
             &.selected {
-                color: #d40015;
+                color: #F44336;
             }
         }
     }
 
+
+
+//////////////////////////////////
 .review-submit-page .income-summary-table {
     .income-summary-total {
         float: right;
@@ -532,6 +564,7 @@ table {
     }
 }
 
+///////////////////////////////
 .icon-names-table img {
     height: 75px;
     width: 75px;

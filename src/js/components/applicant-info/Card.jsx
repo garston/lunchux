@@ -64,7 +64,7 @@ module.exports = React.createClass({
         return (
             <div className="dropdown">
                 <p>Responding to this section is optional and does not effect eligibility for free or reduced price meals.
-                    Although optional, this information is important and helps make sure we are fully serving our community. (please select ethnicity and race below)</p>
+                    This information however is important and helps make sure we are fully serving our community. (Please select ethnicity and race below)</p>
             <table className="tableDropdown"><tbody>
                 <tr className="dropdownEthnicity">
                     <td className="dropdownTitle"><p>Ethnicity</p><Icon name="keyboard_arrow_right"/></td>
