@@ -29,7 +29,7 @@ h1,h2,h3 {
 }
 
 .nav-bar {
-    height: 132px;
+    height: 133px;
     width: 100%;
     font-size: 1.2em;
     td {
@@ -45,7 +45,7 @@ h1,h2,h3 {
         padding-top: 0px;
 
         &.active-step {
-            border-bottom: 2px solid #F44336;
+            border-bottom: 3px solid #F44336;
             color: #F44336 ;
         }
         img {
@@ -131,6 +131,7 @@ table {
                 margin-left: auto;
                 margin-right: auto;
                 opacity: 0.3;
+
             }
         }
 
@@ -142,16 +143,20 @@ table {
             top: 20%;
             position: relative;
             .title {
-                font-weight: bold;
-                font-size: 5em;
-                padding-top: 5%;
-                color: #ffffff
+                h1 {
+                    font-weight: bold;
+                    font-size: 5em;
+                    padding-top: 5%;
+                    color: #ffffff
+                }
             }
             .intro {
-                font-size: 2em;
-                padding-top: 10%;
-                text-align: left;
-                color: #eeeeee;
+                h3{
+                    font-size: 2em;
+                    padding-top: 10%;
+                    text-align: left;
+                    color: #eeeeee;
+                }
             }
         }
     }
@@ -219,7 +224,7 @@ table {
         padding-bottom: 0px;
         padding-top: 0px;
         table {
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
     }
     .mdl-checkbox {
@@ -245,6 +250,18 @@ table {
             float: left;
             margin-bottom: 0px;
         }
+    }
+    .numberRow {
+        width: 770px;
+        border-top: 2px solid lightgray;
+        margin-left: 25px;
+        .numberOne {
+            float: left;
+        }
+        .numberEight {
+            float: right;
+        }
+
     }
 
 

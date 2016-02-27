@@ -17,8 +17,8 @@ module.exports = React.createClass({
                         <img src="hero.jpg"/>
                     </div>
                     <div className="heroContainer">
-                        <div className="title">School Lunch Application</div>
-                        <div className="intro"><p>t </p></div>
+                        <div className="title"><h1>School Lunch Application</h1></div>
+                        <div className="intro"><h3>t </h3></div>
                     </div>
                 </div>
                 <Card shadow={1}>
