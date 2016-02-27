@@ -15,13 +15,13 @@ module.exports = React.createClass({
         var segments = _(ApplicationStore.getVisitedSteps()).map(step => {
             switch(step){
                 case STEPS.APPLICANT_INFO:
-                    return this._generateIconStep('Applicant Information', step, numChildren, CHILD_ICON);
+                    return this._generateIconStep('Children', step, numChildren, CHILD_ICON);
                 case STEPS.ASSISTANCE_PROGRAM:
                     return this._generatePageStep('Assistance Program', step);
                 case STEPS.INCOME_INFO:
-                    return this._generateIconStep('Income and Adult Information', step, numAdults, ADULT_ICON);
+                    return this._generateIconStep('Income and Adults', step, numAdults, ADULT_ICON);
                 case STEPS.NUM_PEOPLE:
-                    return this._generatePageStep('Applicant and Adults', step);
+                    return this._generatePageStep('Household Member Selection', step);
                 case STEPS.REVIEW_SUBMIT:
                     return this._generatePageStep('Review / Submit', step);
             }
@@ -37,7 +37,7 @@ module.exports = React.createClass({
             key: step,
             onClick: () => navigateTo(step)
         };
-        return <td { ...props }>{ content }<img src={ imgSrc } /><Badge text={ num } >&nbsp;</Badge></td>;
+        return <td { ...props }>{ content }<Badge text={ num } >&nbsp;</Badge></td>;
     },
 
     _generatePageStep(content, step) {

@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
-var { Button, Card, CardText, Icon, Textfield } = require('react-mdl');
+var { Button, Card, CardText, CardTitle, Icon, Textfield } = require('react-mdl');
 var ApplicationStore = require('../stores/ApplicationStore');
 var { navigateForward } = require('../utils/ActionCreator');
 var { computeYearlyIncome } = require('../utils/Util');
@@ -21,12 +21,16 @@ module.exports = React.createClass({
 
         return (
             <div className="review-submit-page">
-                Please review the information below
-                <Card shadow={1}><CardText>
-                    <table><tbody><tr>
-                        <td>Total Household Members</td>
-                        <td>{ numAdults + numChildren }</td>
-                    </tr></tbody></table>
+                <div className="selectionHeader container">
+                    <h2>Summary</h2>
+                    <p>Please review the information below to make sure everything is accurate</p>
+                </div>
+                <Card shadow={1} className="householdSum">
+                    <CardTitle>
+                        <h2>Total Household Members</h2>
+                        <div>{ numAdults + numChildren }</div>
+                    </CardTitle>
+                    <CardText>
                     <table><tbody>
                         <tr>
                             <th>Applicants</th>
@@ -36,6 +40,8 @@ module.exports = React.createClass({
                             <td>{ this._generateNameTable(adultInfos) }</td>
                         </tr>
                     </tbody></table>
+                    </CardText>
+                    <CardText>
                     <table><tbody><tr>
                         <td>Foster</td>
                         <td>{ this._computeNumApplicantsThatAre('fosterChild', applicantInfos) }</td>
@@ -46,30 +52,43 @@ module.exports = React.createClass({
                     </tr></tbody></table>
                 </CardText></Card>
                 { this._generateIncomeSummaryCard(formData) }
-                <Card><CardText>
+                <div className="selectionHeader container">
+                    <h2>Submit</h2>
+                    <p>Please fill out the information below then click submit when you are ready to submit the alpplication</p>
+                </div>
+                <Card shadow={1}><CardText>
                     Please Enter Current Address<br />
                     <Textfield floatingLabel label="Street" onChange={e => this.setState({street: e.target.value})} />
                     <Textfield floatingLabel label="City" onChange={e => this.setState({city: e.target.value})} />
                     <Textfield floatingLabel label="State" onChange={e => this.setState({state: e.target.value})} />
                     <Textfield floatingLabel label="Zip Code" onChange={e => this.setState({zipCode: e.target.value})} />
                 </CardText></Card>
-                <Card><CardText>
+                <Card shadow={1}><CardText>
                     <table><tbody><tr>
+                        <td>
+                            <Textfield floatingLabel label="" />
+                            <Textfield floatingLabel label="" />
+                        </td>
                         <td>
                             Please enter the last four numbers of (primary income earner) social security number<br/>
                             <Textfield error="Please enter four numbers" floatingLabel label="" onChange={e => this.setState({ssnLast4: e.target.value})} pattern={ ssnPattern } />
-                        </td><td>
-                            Please sign here
-                        </td>
-                    </tr></tbody></table>
+                        </td></tr>
+                    </tbody></table>
+                    <div>
+                        <Textfield floatingLabel label="" />
+                        Signature
+                    </div>
                 </CardText></Card>
-                When you are ready click the submit button to submit your application<br />
-                <Button accent raised ripple
-                    disabled={ _.some(['city', 'ssnLast4', 'state', 'street', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
-                    onClick={() => navigateForward(this.state)}
-                >
-                    Submit
-                </Button>
+                <div className="bottomNav container">
+                    <p>Disclosure Statement</p>
+                    <p>When you are ready click the submit button to submit your application</p>
+                    <Button accent raised ripple
+                        disabled={ _.some(['city', 'ssnLast4', 'state', 'street', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
+                        onClick={() => navigateForward(this.state)}
+                    >
+                        Submit
+                    </Button>
+                </div>
             </div>
         );
     },
@@ -95,12 +114,14 @@ module.exports = React.createClass({
         var totalIncome = adultTotalIncome + applicantTotalIncome;
 
         return totalIncome > 0 && (
-            <Card shadow={1}><CardText>
+            <Card shadow={1} className="incomeSum">
+                <CardTitle>
+                    <h3>Applicant Income</h3>
+                    <h3>Adult Income</h3>
+                    <div><span className="income-summary-total">Total ${ adultTotalIncome + applicantTotalIncome } /year</span></div>
+                </CardTitle><CardText>
                 <table className="income-summary-table"><tbody>
                     <tr>
-                        <td>Applicant Income</td>
-                        <td>Adult Income<span className="income-summary-total">Total ${ adultTotalIncome + applicantTotalIncome } /year</span></td>
-                    </tr><tr>
                         <td>{ this._generateNameIncomeTable(applicantIncomeByPerson, applicantTotalIncome, totalIncome) }</td>
                         <td>{ this._generateNameIncomeTable(adultIncomeByPerson, adultTotalIncome, totalIncome) }</td>
                     </tr>
