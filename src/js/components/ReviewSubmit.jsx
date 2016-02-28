@@ -74,6 +74,10 @@ module.exports = React.createClass({
                             <Textfield floatingLabel label="State" className="state" onChange={e => this.setState({state: e.target.value})} />
                             <Textfield floatingLabel label="Zip Code" className="zip" onChange={e => this.setState({zipCode: e.target.value})} />
                         </div>
+                        <div className="todaysDate">
+                            <h3>Enter Today's Date</h3>
+                            <Textfield floatingLabel label="MM/DD/YYYY" onChange={e => this.setState({todayDate: e.target.value})} />
+                        </div>
                     </div>
                     <div className="extraInfo">
                         <div className="ssn">
@@ -81,23 +85,20 @@ module.exports = React.createClass({
                             <p>XXX-XXX-</p><Textfield error="Please enter four numbers" floatingLabel label="SSN" onChange={e => this.setState({ssnLast4: e.target.value})} pattern={ ssnPattern } />
                             <Checkbox ripple><p className="noSSN">Check if no SSN</p></Checkbox>
                         </div>
-                        <div className="todaysDate">
-                            <h3>Enter Today's Date</h3>
-                            <Textfield floatingLabel label="MM/DD/YYYY" onChange={e => this.setState({todayDate: e.target.value})} />
-                        </div>
-                    </div>
-                    </div>
-                    <div className="signature">
                         <div className="verifyName">
                             <h3>Please Enter Name Again</h3>
                             <Textfield floatingLabel label="First Name" onChange={e => this.setState({signatureFirstName: e.target.value})} />
                             <Textfield floatingLabel label="Last Name" onChange={e => this.setState({signatureLastName: e.target.value})} /></div>
+                    </div>
+                    </div>
+                    <div className="signature">
                         <div className="submitSignature">
                             <h3>Please Sign in the Box Below</h3>
                             <p>The person signing is furnishing true information and to advise that person that the application is being made in connection with the receipt of Federal funds;
                                 School officials may verify the information on the application; and Deliberate misrepresentation of the information may subject the applicant to prosecution under State and Federal statutes.</p>
-                            <canvas height="70" id="signature-canvas" width="460" /><br />
+                            <canvas height="70" id="signature-canvas" width="600" /><br />
                         </div>
+
                     </div>
                 </Card>
                 <div className="bottomNav container">
