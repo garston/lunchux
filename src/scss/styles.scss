@@ -44,6 +44,10 @@ h1,h2,h3 {
         padding-bottom: 0px;
         padding-top: 0px;
 
+        &:hover {
+            background-color: white;
+            opacity: 0.5;
+        }
         &.active-step {
             border-bottom: 3px solid #F44336;
             color: #F44336 ;
@@ -54,10 +58,6 @@ h1,h2,h3 {
             margin-right: -20px;
             margin-left: 20px;
         }
-    }
-    .page-step:hover {
-        background-color: white;
-        opacity: 0.5;
     }
     .navTop{
         height: 75px;
