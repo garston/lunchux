@@ -98,7 +98,6 @@ module.exports = React.createClass({
                                 School officials may verify the information on the application; and Deliberate misrepresentation of the information may subject the applicant to prosecution under State and Federal statutes.</p>
                             <canvas height="70" id="signature-canvas" width="600" /><br />
                         </div>
-
                     </div>
                 </Card>
                 <div className="bottomNav container">

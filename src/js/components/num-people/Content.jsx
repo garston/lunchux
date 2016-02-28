@@ -11,8 +11,8 @@ module.exports = React.createClass({
 
     getInitialState() {
         return _.assign({
-            numAdults: 1,
-            numChildren: 1
+            numAdults: 0,
+            numChildren: 0
         }, _.pick(ApplicationStore.getFormData(), ['areAdultsInAssistanceProgram', 'numAdults', 'numChildren']));
     },
 

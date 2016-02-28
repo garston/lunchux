@@ -62,7 +62,7 @@ h1,h2,h3 {
     .navTop{
         height: 75px;
         width: 100%;
-        background-color: #2196F3;
+        background-color: #3F51B5;
         p {
             margin-bottom: 0px;
             font-size: 1.6em;
@@ -209,12 +209,12 @@ table {
         position: relative;
         float: left;
         width: 100%;
-        color:#2196F3;
+        color:#3F51B5;
     }
     .mdl-card__title {
         padding-left: 25px;
         padding-right: 25px;
-        color: #2196F3;
+        color: #3F51B5;
         h2 {
             font-size: 2.5em;
             font-weight: 400;
@@ -245,7 +245,7 @@ table {
         padding-top: 15px;
         padding-bottom: 15px;
         padding-left: 25px;
-        border-top:1px solid #2196F3;
+        border-top:1px solid #3F51B5;
         p {
             float: left;
             margin-bottom: 0px;
@@ -274,7 +274,7 @@ table {
         height: 100px;
     }
     td.applicant-name {
-        border-right: 2px solid #2196F3;
+        border-right: 2px solid #3F51B5;
         width: 60%;
         td{
 
@@ -295,17 +295,22 @@ table {
         cursor: pointer;
         font-size: 1.1em;
         margin-top: 20px;
+        color: #F44336;
         p {
             margin-bottom: 0px;
             float: left;
             line-height: 30px;
             font-size: 1.2em;
             margin-right: 8px;
+            color: #F44336;
         }
     }
     .toggle-optional-section-visibility:hover {
-        color: #F44336;
+        color: grey;
         opacity: 0.9;
+        p {
+            color: grey;
+        }
     }
 
     .mdl-card__title {
@@ -324,23 +329,18 @@ table {
         padding-right: 25px;
         p{
             font-size: 1em;
-            margin-top: 15px;
-            margin-bottom: 0px;
+            margin-top: 20px;
+            margin-bottom:20px;
         }
     }
     .tableDropdown {
         margin-top: 15px;
         margin-bottom: 10px;
     }
-    .dropdownEthnicity {
-
-    }
-    .dropdownRace {
-
-
-    }
     .dropdownTitle {
         width: 130px;
+        padding-bottom: 5px;
+        padding-top: 5px;
         p {
             font-size: 1.2em;
             font-weight: 300;
@@ -356,18 +356,23 @@ table {
         }
     }
     .dropdownSelector {
-
+        padding-bottom: 5px;
+        padding-top: 5px;
     }
     .horizontal-box-selector td {
         cursor: pointer;
         padding: 10px;
-        color: #2196F3;
+        color: #3F51B5;
         font-size: 1.1em;
         font-weight: 400;
+        border-right: 2px solid #F5F5F5;
+        border-left: 2px solid #F5F5F5;
 
         &.selected {
             color: white;
-            background-color: #2196F3;
+            background-color: #3F51B5;
+            border-right: 2px solid #F5F5F5;
+            border-left: 2px solid #F5F5F5;
         }
     }
     .horizontal-box-selector td:hover {
@@ -375,9 +380,11 @@ table {
         border: none;
         background-color: white;
         opacity: 0.8;
+        border-right: 2px solid #F5F5F5;
+        border-left: 2px solid #F5F5F5;
         &.selected {
             color: white;
-            background-color: #2196F3
+            background-color: #3F51B5
         }
     }
 
@@ -431,7 +438,7 @@ table {
         height: 100px;
     }
     td.applicant-name {
-        border-right: 2px solid #2196F3;
+        border-right: 2px solid #3F51B5;
         width: 60%;
         td{
 
@@ -590,7 +597,7 @@ table {
                 margin-bottom: 2px;
                 width: 10%;
                 text-align: right;
-                color: #2196F3;
+                color: #3F51B5;
                 font-size: 3em;
             }
         }
@@ -605,7 +612,7 @@ table {
                     margin-top: 0px;
                     margin-bottom: 0px;
                     .progressbar {
-                        background-color: #2196F3;
+                        background-color: #3F51B5;
                     }
                     .bufferbar {
                         background-image: none;
@@ -618,7 +625,7 @@ table {
                 .border {
                     border-right: 1px solid #EEEEEE;
                     .material-icons {
-                        color: #2196F3;
+                        color: #3F51B5;
                     }
                 }
                 .material-icons {
@@ -666,7 +673,7 @@ table {
             }
             .householdSelectionNumber {
                 float: right;
-                color: #2196F3;
+                color: #3F51B5;
             }
             .foster {
                 float: left;
@@ -705,7 +712,7 @@ table {
                 margin-bottom: 2px;
                 width: 30%;
                 text-align: right;
-                color: #2196F3;
+                color: #3F51B5;
                 font-size: 2em;
             }
         }
@@ -748,7 +755,7 @@ table {
                 }
                 .material-icons {
                     float: left;
-                    color: #2196F3;
+                    color: #3F51B5;
                     padding-right: 10px;
                 }
                 p {

@@ -49,7 +49,7 @@ module.exports = React.createClass({
                     </td>
                 </tr>
                 </tbody></table>
-                    <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}><p>Racial and Ethnic Identitiy (optional)</p><Icon className="downAarow" name="keyboard_arrow_down" /></div>
+                    <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}><p>Racial and Ethnic Identitiy (optional but helpful)</p><Icon className="downAarow" name="keyboard_arrow_down" /></div>
             </CardText>
                     { this.state.optionalSectionShown && this._generateOptionalSection() }
             </Card>
