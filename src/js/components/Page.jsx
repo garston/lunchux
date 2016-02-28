@@ -11,7 +11,7 @@ var ApplicationStore = require('../stores/ApplicationStore');
 var { STEPS } = require('../utils/Util');
 
 function getStateFromStore(){
-    return { step: ApplicationStore.getStep() };
+    return { applicationId: ApplicationStore.getApplicationId(), step: ApplicationStore.getStep() };
 }
 
 module.exports = React.createClass({
@@ -45,7 +45,7 @@ module.exports = React.createClass({
             case STEPS.ASSISTANCE_PROGRAM:
                 return <AssistanceProgram />;
             case STEPS.FORM_SUBMITTED:
-                return <div>Form was successfully submitted.</div>;
+                return <div>Form was successfully submitted. Your application ID is: { this.state.applicationId }</div>;
             case STEPS.HOME:
                 return <Homepage />;
             case STEPS.INCOME_INFO:

@@ -3,7 +3,7 @@ var React = require('react');
 var SignaturePad = require('signature_pad');
 var { Button, Card, CardTitle, Icon, Textfield, ProgressBar, Checkbox } = require('react-mdl');
 var ApplicationStore = require('../stores/ApplicationStore');
-var { navigateForward } = require('../utils/ActionCreator');
+var { submitApplication } = require('../utils/ActionCreator');
 var { computeYearlyIncome } = require('../utils/Util');
 
 var ssnPattern = '^[0-9][0-9][0-9][0-9]$';
@@ -132,7 +132,7 @@ module.exports = React.createClass({
                     <div><p>When you are ready click the submit button to submit your application</p>
                     <Button accent raised ripple
                         disabled={ _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'ssnLast4', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
-                        onClick={() => navigateForward(this.state)}
+                        onClick={() => submitApplication(this.state)}
                     >
                         Submit
                     </Button></div>

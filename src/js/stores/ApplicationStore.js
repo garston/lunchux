@@ -1,15 +1,19 @@
 var _ = require('lodash');
-var { NAVIGATE_FORWARD, NAVIGATE_TO } = require('../utils/ActionTypes');
+var { APPLICATION_SUBMITTED, NAVIGATE_FORWARD, NAVIGATE_TO } = require('../utils/ActionTypes');
 var Dispatcher = require('../utils/Dispatcher');
 var StoreCreator = require('../utils/StoreCreator');
 var { STEPS } = require('../utils/Util');
 
+var applicationId;
 var formData = {};
 var orderedSteps = [STEPS.HOME, STEPS.NUM_PEOPLE, STEPS.APPLICANT_INFO, STEPS.ASSISTANCE_PROGRAM, STEPS.INCOME_INFO, STEPS.REVIEW_SUBMIT, STEPS.FORM_SUBMITTED];
 var step = orderedSteps[0];
 var visitedSteps = [step];
 
 var ApplicationStore = StoreCreator.create({
+    getApplicationId() {
+        return applicationId;
+    },
     getFormData() {
         return _.cloneDeep(formData);
     },
@@ -23,6 +27,10 @@ var ApplicationStore = StoreCreator.create({
 
 ApplicationStore.dispatchToken = Dispatcher.register(({ action }) => {
     switch(action.type) {
+        case APPLICATION_SUBMITTED:
+            applicationId = action.applicationId;
+            step = STEPS.FORM_SUBMITTED;
+            break;
         case NAVIGATE_FORWARD:
             _.assign(formData, action.formData);
             console.log('ApplicationStore', action.formData, formData);
