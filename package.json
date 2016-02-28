@@ -30,8 +30,7 @@
   },
   "scripts": {
     "build": "npm install;webpack",
-    "postinstall": "webpack",
-    "start": "node server.js"
+    "start": "webpack;node server.js"
   },
   "repository": {
     "type": "git",
