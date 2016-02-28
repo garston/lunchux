@@ -6,6 +6,8 @@ var ApplicationStore = require('../stores/ApplicationStore');
 var { submitApplication } = require('../utils/ActionCreator');
 var { computeYearlyIncome } = require('../utils/Util');
 
+var datePattern = '^[01][0-9]/[0-3][0-9]/[0-9][0-9][0-9][0-9]$';
+var dateRegEx = new RegExp(datePattern);
 var ssnPattern = '^[0-9][0-9][0-9][0-9]$';
 var ssnRegEx = new RegExp(ssnPattern);
 
@@ -76,7 +78,12 @@ module.exports = React.createClass({
                         </div>
                         <div className="todaysDate">
                             <h3>Enter Today's Date</h3>
-                            <Textfield floatingLabel label="MM/DD/YYYY" onChange={e => this.setState({todayDate: e.target.value})} />
+                            <Textfield floatingLabel
+                                error="Please enter the date in the form MM/DD/YYYY"
+                                label="MM/DD/YYYY"
+                                onChange={e => this.setState({todayDate: e.target.value})}
+                                pattern={ datePattern }
+                            />
                         </div>
                     </div>
                     <div className="extraInfo">
@@ -139,6 +146,7 @@ module.exports = React.createClass({
                     <Button accent raised ripple
                         disabled={
                             _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) ||
+                            !dateRegEx.test(this.state.todayDate) ||
                             (!this.state.noSSN && (!this.state.ssnLast4 || !ssnRegEx.test(this.state.ssnLast4)))
                         }
                         onClick={() => submitApplication(this.state)}
