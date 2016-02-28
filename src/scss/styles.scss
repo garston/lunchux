@@ -574,70 +574,213 @@ table {
 .review-submit-page {
     .householdSum {
         .mdl-card__title {
-            border-bottom: 1px solid #EEEEEE;
-            h2 {
+            padding-right: 25px;
+            padding-left: 25px;
+            .householdNumName {
                 margin-top: 2px;
                 margin-bottom: 2px;
-                width: 95%;
                 line-height: 40px;
+                float: left;
+                width: 90%;
+                font-size: 2em;
             }
             .householdNum {
-                h2{
-
-                }
+                float: right;
+                margin-top: 2px;
+                margin-bottom: 2px;
+                width: 10%;
+                text-align: right;
+                color: #2196F3;
+                font-size: 2em;
             }
         }
         .householdList {
+            padding-top: 0px;
+            padding-bottom: 40px;
             .barGraph {
                 width: 100%;
                 height: 50px;
             }
             table {
                 .householdTitle {
+                    width: 50%;
+                    padding-bottom: 15px;
                     h3 {
                         margin-bottom: 0px;
                         margin-top: 0px;
+                        font-size: 1.5em;
                     }
                 }
                 .householdNames {
-
+                    vertical-align: top;
                 }
                 .names {
-                    width: 50%;
+                    width: 100%;
+                    .material-icons {
+                        float: left;
+                        color: #2196F3;
+                        padding-right: 10px;
+                    }
+                    p {
+                        margin-bottom: 5px;
+                        font-size: 1.2em;
+                    }
                 }
             }
         }
         .householdOther {
+            width: 100%;
+            border-top: 1px solid #EEEEEE;
+            .householdSelection, .householdSelectionNumber {
+                float: left;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                padding-right: 25px;
+                padding-left: 25px;
+                font-size: 1.5em;
+            }
+            .householdSelectionNumber {
+                float: right;
+                color: #2196F3;
+            }
             .foster {
-
+                float: left;
+                width: calc(29% - 2px);
+                height: 100%;
+                border-right: 1px solid #EEEEEE;
             }
             .mhr {
-
+                float: left;
+                width: 42%;
+                height: 100%;
+                border-right: 1px solid #EEEEEE;
             }
-            .currentStudent {
-
+            .currentStudents {
+                float: left;
+                width: 29%;
+                height: 100%;
             }
-
-
         }
     }
     .incomeSum {
-        .income-summary-total {
-            float: right;
+        .mdl-card__title {
+            padding-right: 25px;
+            padding-left: 25px;
+            .incomeNumName {
+                margin-top: 2px;
+                margin-bottom: 2px;
+                line-height: 40px;
+                float: left;
+                width: 70%;
+                font-size: 2em;
+            }
+            .incomeNum {
+                float: right;
+                margin-top: 2px;
+                margin-bottom: 2px;
+                width: 30%;
+                text-align: right;
+                color: #2196F3;
+                font-size: 2em;
+            }
         }
 
-        .name-income-table {
+        .income-summary-table {
+            .incomeTitle {
+                width: 50%;
+                padding-bottom: 15px;
+                h3 {
+                    margin-bottom: 0px;
+                    margin-top: 0px;
+                    font-size: 1.5em;
+                }
+            }
+            .incomeNames {
+                vertical-align: top;
+                .name-income-table {
+                    width: 100%;
+                    .incomeNameList {
+                        float: left;
+                    }
+                    .incomeGraph {
+                        float: right;
+                        width: 20%;
+                    }
+                }
+            }
+            .material-icons {
+                float: left;
+                color: #2196F3;
+                padding-right: 10px;
+            }
+            p {
+                margin-bottom: 5px;
+                font-size: 1.2em;
+            }
+        }
+    }
+    .submitSection {
+        .address {
+            width: 60%;
+            float: left;
+            h3 {
+                margin-bottom: 0px;
+                margin-top: 0px;
+                font-size: 1.6em;
+            }
+            .streetField {
+                height: 100px;
+                float: left;
+                .mdl-textfield {
+                    padding-right: 15px;
+                }
+                .street {
+                    width: 400px;
+                }
+                .apt {
+                    width: 100px;
+                }
+            }
+            .additionalField {
+                height: 100px;
+                float: left;
+                .mdl-textfield {
+                    padding-right: 15px;
+                }
+                .city{
+                    width: 300px;
+                }
+                .state {
+                    width: 100px;
+                }
+                .zip {
+                    width: 100px;
+                }
+
+            }
+        }
+        .extraInfo {
+            width: 40%;
+            float: left;
+
+        }
+        .signature {
+            padding-right: 25px;
+            padding-left: 25px;
+            border-top: 2px solid #EEEEEE;
             width: 100%;
+            .verifyName {
+                float: left;
+                width: 60%;
+            }
+            .submitSignature {
+                width: 40%;
+                float: left;
+            }
+
         }
     }
-    .address {
 
-
-    }
-    .final {
-
-
-    }
 
 }
 

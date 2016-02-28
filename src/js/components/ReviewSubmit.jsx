@@ -27,14 +27,14 @@ module.exports = React.createClass({
                 </div>
                 <Card shadow={1} className="householdSum">
                     <CardTitle>
-                        <h2>Total Household Members</h2>
-                        <div className="householdNum"><h2>{ numAdults + numChildren }</h2></div>
+                        <h2 className="householdNumName">Total Household Members</h2>
+                        <h2 className="householdNum">{ numAdults + numChildren }</h2>
                     </CardTitle>
                     <CardText className="householdList">
                         <div className="barGraph"></div>
                     <table><tbody>
                         <tr>
-                            <td className="householdTitle"><h3>Applicants</h3></td>
+                            <td className="householdTitle"><h3>Child</h3></td>
                             <td className="householdTitle"><h3>Adults</h3></td>
                         </tr><tr>
                             <td className="householdNames">{ this._generateNameTable(applicantInfos) }</td>
@@ -42,48 +42,55 @@ module.exports = React.createClass({
                         </tr>
                     </tbody></table>
                     </CardText>
-                    <CardText className="householdOther">
-                        <div className="foster"><h3>Foster</h3><h3>{ this._computeNumApplicantsThatAre('fosterChild', applicantInfos) }</h3></div>
-                        <div className="mhr"><h3>Migrant, Homeless, Runaway</h3><h3>{ this._computeNumApplicantsThatAre('migrantHomelessRunaway', applicantInfos) }</h3></div>
-                        <div className="currentStudents"><h3>Current Students</h3><h3>{ this._computeNumApplicantsThatAre('currentStudent', applicantInfos) }</h3></div>
-                </CardText></Card>
+                    <div className="householdOther">
+                        <div className="foster"><h3 className="householdSelection">Foster</h3><h3 className="householdSelectionNumber">{ this._computeNumApplicantsThatAre('fosterChild', applicantInfos) }</h3></div>
+                        <div className="mhr"><h3 className="householdSelection">Migrant, Homeless, Runaway</h3><h3 className="householdSelectionNumber">{ this._computeNumApplicantsThatAre('migrantHomelessRunaway', applicantInfos) }</h3></div>
+                        <div className="currentStudents"><h3 className="householdSelection">Current Students</h3><h3 className="householdSelectionNumber">{ this._computeNumApplicantsThatAre('currentStudent', applicantInfos) }</h3></div>
+                </div></Card>
                 { this._generateIncomeSummaryCard(formData) }
                 <div className="selectionHeader container">
                     <h2>Submit</h2>
                     <p>Please fill out the information below then click submit when you are ready to submit the alpplication</p>
                 </div>
-                <Card shadow={1} className="address"><CardText>
-                    Please Enter Current Address<br />
-                    <Textfield floatingLabel label="Street" onChange={e => this.setState({street: e.target.value})} />
-                    <Textfield floatingLabel label="City" onChange={e => this.setState({city: e.target.value})} />
-                    <Textfield floatingLabel label="State" onChange={e => this.setState({state: e.target.value})} />
-                    <Textfield floatingLabel label="Zip Code" onChange={e => this.setState({zipCode: e.target.value})} />
-                </CardText></Card>
-                <Card shadow={1} className="final"><CardText>
-                    <table><tbody><tr>
-                        <td>
-                            <Textfield floatingLabel label="" />
-                            <Textfield floatingLabel label="" />
-                        </td>
-                        <td>
-                            Please enter the last four numbers of (primary income earner) social security number<br/>
-                            <Textfield error="Please enter four numbers" floatingLabel label="" onChange={e => this.setState({ssnLast4: e.target.value})} pattern={ ssnPattern } />
-                        </td></tr>
-                    </tbody></table>
-                    <div>
-                        <Textfield floatingLabel label="" />
-                        Signature
+                <Card shadow={1} className="submitSection"><CardText>
+                    <div className="address">
+                        <h3>Please Enter Current Address</h3>
+                        <div className="streetField">
+                            <Textfield floatingLabel label="Street" className="street" onChange={e => this.setState({street: e.target.value})} />
+                            <Textfield floatingLabel label="Apt" className="apt" onChange={e => this.setState({street: e.target.value})} />
+                        </div>
+                        <div className="additionalField">
+                            <Textfield floatingLabel label="City" className="city" onChange={e => this.setState({city: e.target.value})} />
+                            <Textfield floatingLabel label="State" className="state" onChange={e => this.setState({state: e.target.value})} />
+                            <Textfield floatingLabel label="Zip Code" className="zip" onChange={e => this.setState({zipCode: e.target.value})} />
+                        </div>
                     </div>
-                </CardText></Card>
+                    <div className="extraInfo">
+                        <div>
+                            <p>Please enter the last four numbers of (primary income earner) social security number</p>
+                            <Textfield error="Please enter four numbers" floatingLabel label="" onChange={e => this.setState({ssnLast4: e.target.value})} pattern={ ssnPattern } />
+                        </div>
+                        <div>
+                            <p>Enter Todays Date</p>
+                            <Textfield floatingLabel label="date" />
+                        </div>
+                    </div></CardText>
+                    <div className="signature">
+                        <div className="verifyName">
+                        <Textfield floatingLabel label="First Name" />
+                        <Textfield floatingLabel label="Last Name" /></div>
+                        <div className="submitSignature"><p>Signature</p></div>
+                    </div>
+                </Card>
                 <div className="bottomNav container">
-                    <p>Disclosure Statement</p>
-                    <p>When you are ready click the submit button to submit your application</p>
+                    <div><p>Disclosure Statement</p></div>
+                    <div><p>When you are ready click the submit button to submit your application</p>
                     <Button accent raised ripple
                         disabled={ _.some(['city', 'ssnLast4', 'state', 'street', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
                         onClick={() => navigateForward(this.state)}
                     >
                         Submit
-                    </Button>
+                    </Button></div>
                 </div>
             </div>
         );
@@ -112,14 +119,17 @@ module.exports = React.createClass({
         return totalIncome > 0 && (
             <Card shadow={1} className="incomeSum">
                 <CardTitle>
-                    <h3>Applicant Income</h3>
-                    <h3>Adult Income</h3>
-                    <div><span className="income-summary-total">Total ${ adultTotalIncome + applicantTotalIncome } /year</span></div>
+                    <h2 className="incomeNumName">Applicant Income</h2>
+                    <h2 className="incomeNum">Total ${ adultTotalIncome + applicantTotalIncome } /year</h2>
                 </CardTitle><CardText>
                 <table className="income-summary-table"><tbody>
                     <tr>
-                        <td>{ this._generateNameIncomeTable(applicantIncomeByPerson, applicantTotalIncome, totalIncome) }</td>
-                        <td>{ this._generateNameIncomeTable(adultIncomeByPerson, adultTotalIncome, totalIncome) }</td>
+                        <td className="incomeTitle"><h3>Child</h3></td>
+                        <td className="incomeTitle"><h3>Adults</h3></td>
+                    </tr>
+                    <tr>
+                        <td className="incomeNames">{ this._generateNameIncomeTable(applicantIncomeByPerson, applicantTotalIncome, totalIncome) }</td>
+                        <td className="incomeNames">{ this._generateNameIncomeTable(adultIncomeByPerson, adultTotalIncome, totalIncome) }</td>
                     </tr>
                 </tbody></table>
             </CardText></Card>
@@ -127,7 +137,7 @@ module.exports = React.createClass({
     },
 
     _generateNameTable(infos) {
-        var rows = _.map(infos, (info, index) => <tr key={ index }><td><Icon name="fiber_manual_record" /></td><td>{ `${info.firstName} ${info.lastName}` }</td></tr>);
+        var rows = _.map(infos, (info, index) => <tr key={ index }><td><Icon name="fiber_manual_record" /><p>{ `${info.firstName} ${info.lastName}` }</p></td></tr>);
         return <table className="names"><tbody>{ rows }</tbody></table>;
     },
 
@@ -136,19 +146,17 @@ module.exports = React.createClass({
             return totalIncome && (
                 <tr key={ index }>
                     <td><Icon name="fiber_manual_record" /></td>
-                    <td>{ firstName } { lastName }</td>
+                    <td><p>{ firstName } { lastName }</p></td>
                     <td>.........</td>
-                    <td>${ totalIncome } /year</td>
+                    <td><p>${ totalIncome } /year</p></td>
                 </tr>
             );
         }).compact().value();
         return (
-            <table className="name-income-table"><tbody>
-                <tr>
-                    <td><table><tbody>{ rows }</tbody></table></td>
-                    <td>{ Math.round((totalIncomeForTable/totalIncome) * 100) }%</td>
-                </tr>
-            </tbody></table>
+            <div className="name-income-table">
+                <div className="incomeNameList"><table><tbody>{ rows }</tbody></table></div>
+                <div className="incomeGraph">{ Math.round((totalIncomeForTable/totalIncome) * 100) }%</div>
+            </div>
         );
     }
 });
