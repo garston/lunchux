@@ -64,7 +64,7 @@ module.exports = React.createClass({
                         <h3>Please Enter Current Address</h3>
                         <div className="streetField">
                             <Textfield floatingLabel label="Street" className="street" onChange={e => this.setState({street: e.target.value})} />
-                            <Textfield floatingLabel label="Apt" className="apt" onChange={e => this.setState({street: e.target.value})} />
+                            <Textfield floatingLabel label="Apt" className="apt" onChange={e => this.setState({apt: e.target.value})} />
                         </div>
                         <div className="additionalField">
                             <Textfield floatingLabel label="City" className="city" onChange={e => this.setState({city: e.target.value})} />
@@ -78,14 +78,14 @@ module.exports = React.createClass({
                             <Textfield error="Please enter four numbers" floatingLabel label="" onChange={e => this.setState({ssnLast4: e.target.value})} pattern={ ssnPattern } />
                         </div>
                         <div>
-                            <p>Enter Todays Date</p>
-                            <Textfield floatingLabel label="date" />
+                            <p>Enter Today's Date</p>
+                            <Textfield floatingLabel label="" onChange={e => this.setState({todayDate: e.target.value})} />
                         </div>
                     </div></CardText>
                     <div className="signature">
                         <div className="verifyName">
-                        <Textfield floatingLabel label="First Name" />
-                        <Textfield floatingLabel label="Last Name" /></div>
+                        <Textfield floatingLabel label="First Name" onChange={e => this.setState({signatureFirstName: e.target.value})} />
+                        <Textfield floatingLabel label="Last Name" onChange={e => this.setState({signatureLastName: e.target.value})} /></div>
                         <div className="submitSignature">
                             <p>Signature</p>
                             <canvas height="50" id="signature" width="300" /><br />
@@ -96,7 +96,7 @@ module.exports = React.createClass({
                     <div><p>Disclosure Statement</p></div>
                     <div><p>When you are ready click the submit button to submit your application</p>
                     <Button accent raised ripple
-                        disabled={ _.some(['city', 'signature', 'ssnLast4', 'state', 'street', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
+                        disabled={ _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'ssnLast4', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
                         onClick={() => navigateForward(this.state)}
                     >
                         Submit
