@@ -82,8 +82,15 @@ module.exports = React.createClass({
                     <div className="extraInfo">
                         <div className="ssn">
                             <h3>Please enter the last four numbers of (primary income earner) social security number</h3>
-                            <p>XXX-XXX-</p><Textfield error="Please enter four numbers" floatingLabel label="SSN" onChange={e => this.setState({ssnLast4: e.target.value})} pattern={ ssnPattern } />
-                            <Checkbox ripple><p className="noSSN">Check if no SSN</p></Checkbox>
+                            <p>XXX-XX-</p>
+                            <Textfield floatingLabel
+                                error="Please enter four numbers"
+                                label="SSN"
+                                onChange={e => this.setState({noSSN: false, ssnLast4: e.target.value})}
+                                pattern={ ssnPattern }
+                                value={ this.state.ssnLast4 }
+                            />
+                            <Checkbox ripple checked={ this.state.noSSN } onChange={e => this.setState({noSSN: e.target.checked, ssnLast4: ''})}><p className="noSSN">Check if no SSN</p></Checkbox>
                         </div>
                         <div className="verifyName">
                             <h3>Please Enter Name Again</h3>
@@ -130,7 +137,10 @@ module.exports = React.createClass({
                     </p></div>
                     <div><p>When you are ready click the submit button to submit your application</p>
                     <Button accent raised ripple
-                        disabled={ _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'ssnLast4', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
+                        disabled={
+                            _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) ||
+                            (!this.state.noSSN && (!this.state.ssnLast4 || !ssnRegEx.test(this.state.ssnLast4)))
+                        }
                         onClick={() => submitApplication(this.state)}
                     >
                         Submit
