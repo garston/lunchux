@@ -63,29 +63,28 @@ module.exports = React.createClass({
     _generateOptionalSection() {
         return (
             <div className="dropdown">
-                <p>Responding to this section is optional and does not effect eligibility for free or reduced price meals.
-                    This information however is important and helps make sure we are fully serving our community. (Please select ethnicity and race below)</p>
-            <table className="tableDropdown"><tbody>
-                <tr className="dropdownEthnicity">
-                    <td className="dropdownTitle"><p>Ethnicity</p><Icon name="keyboard_arrow_right"/></td>
-                    <td className="dropdownSelector">
-                        <HorizontalBoxSelector
-                            allowedValues={ ['Hispanic or Latino', 'Not Hispanic or Latino'] }
-                            onClick={ (value, selectedValues) => this.setState({ ethnicity: _.contains(selectedValues, value) ? value : '' }) }
-                            selectedValues={ _.compact([this.state.ethnicity]) }
-                        />
-                    </td>
-                </tr><tr className="dropdownRace">
-                    <td className="dropdownTitle"><p>Race</p><Icon name="keyboard_arrow_right"/></td>
-                    <td className="dropdownSelector">
-                        <HorizontalBoxSelector
-                            allowedValues={ ['American Indian or Alaskan Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White'] }
-                            onClick={ (value, races) => this.setState({ races }) }
-                            selectedValues={ this.state.races || [] }
-                        />
-                    </td>
-                </tr>
-            </tbody></table>
+                <p>We are required to ask for information about your children’s race and ethnicity. This information is important and helps to make sure we are fully serving our community. Responding to this section is optional and does not affect your children’s eligibility for free or reduced price meals.</p>
+                <table className="tableDropdown"><tbody>
+                    <tr className="dropdownEthnicity">
+                        <td className="dropdownTitle"><p>Ethnicity</p><Icon name="keyboard_arrow_right"/></td>
+                        <td className="dropdownSelector">
+                            <HorizontalBoxSelector
+                                allowedValues={ ['Hispanic or Latino', 'Not Hispanic or Latino'] }
+                                onClick={ (value, selectedValues) => this.setState({ ethnicity: _.contains(selectedValues, value) ? value : '' }) }
+                                selectedValues={ _.compact([this.state.ethnicity]) }
+                            />
+                        </td>
+                    </tr><tr className="dropdownRace">
+                        <td className="dropdownTitle"><p>Race</p><Icon name="keyboard_arrow_right"/></td>
+                        <td className="dropdownSelector">
+                            <HorizontalBoxSelector
+                                allowedValues={ ['American Indian or Alaskan Native', 'Asian', 'Black or African American', 'Native Hawaiian or Other Pacific Islander', 'White'] }
+                                onClick={ (value, races) => this.setState({ races }) }
+                                selectedValues={ this.state.races || [] }
+                            />
+                        </td>
+                    </tr>
+                </tbody></table>
             </div>
         );
     },

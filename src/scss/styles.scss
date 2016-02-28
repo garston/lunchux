@@ -770,19 +770,18 @@ table {
             border-top: 2px solid #EEEEEE;
             width: 100%;
             .verifyName {
-                float: left;
-                width: 60%;
+                width: 55%;
+            }
+            .sidePadding {
+                width: 5%;
             }
             .submitSignature {
-                width: 40%;
-                float: left;
+                width: 35%;
             }
-
+            #signature-canvas {
+                border: 1px solid black;
+            }
         }
-    }
-
-    #signature {
-        border: 1px solid black;
     }
 }
 
