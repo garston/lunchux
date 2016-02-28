@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
+var SignaturePad = require('signature_pad');
 var { Button, Card, CardText, CardTitle, Icon, Textfield } = require('react-mdl');
 var ApplicationStore = require('../stores/ApplicationStore');
 var { navigateForward } = require('../utils/ActionCreator');
@@ -13,6 +14,12 @@ module.exports = React.createClass({
 
     getInitialState() {
         return {};
+    },
+
+    componentDidMount() {
+        var signaturePad = new SignaturePad(document.getElementById('signature'), {
+            onEnd: () => this.setState({ signature: signaturePad.toDataURL() })
+        });
     },
 
     render() {
@@ -79,14 +86,17 @@ module.exports = React.createClass({
                         <div className="verifyName">
                         <Textfield floatingLabel label="First Name" />
                         <Textfield floatingLabel label="Last Name" /></div>
-                        <div className="submitSignature"><p>Signature</p></div>
+                        <div className="submitSignature">
+                            <p>Signature</p>
+                            <canvas height="50" id="signature" width="300" /><br />
+                        </div>
                     </div>
                 </Card>
                 <div className="bottomNav container">
                     <div><p>Disclosure Statement</p></div>
                     <div><p>When you are ready click the submit button to submit your application</p>
                     <Button accent raised ripple
-                        disabled={ _.some(['city', 'ssnLast4', 'state', 'street', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
+                        disabled={ _.some(['city', 'signature', 'ssnLast4', 'state', 'street', 'zipCode'], stateKey => !this.state[stateKey]) || !ssnRegEx.test(this.state.ssnLast4) }
                         onClick={() => navigateForward(this.state)}
                     >
                         Submit
