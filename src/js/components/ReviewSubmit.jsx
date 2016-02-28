@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var React = require('react');
 var SignaturePad = require('signature_pad');
-var { Button, Card, CardText, CardTitle, Icon, Textfield } = require('react-mdl');
+var { Button, Card, CardTitle, Icon, Textfield, ProgressBar, Checkbox } = require('react-mdl');
 var ApplicationStore = require('../stores/ApplicationStore');
 var { navigateForward } = require('../utils/ActionCreator');
 var { computeYearlyIncome } = require('../utils/Util');
@@ -37,18 +37,20 @@ module.exports = React.createClass({
                         <h2 className="householdNumName">Total Household Members</h2>
                         <h2 className="householdNum">{ numAdults + numChildren }</h2>
                     </CardTitle>
-                    <CardText className="householdList">
-                        <div className="barGraph"></div>
+                    <div className="householdList">
+                        <div className="barGraph">
+                            <ProgressBar progress={(numChildren/(numAdults + numChildren))*100} />
+                        </div>
                     <table><tbody>
                         <tr>
-                            <td className="householdTitle"><h3>Child</h3></td>
+                            <td className="householdTitle border"><h3>Child</h3></td>
                             <td className="householdTitle"><h3>Adults</h3></td>
                         </tr><tr>
-                            <td className="householdNames">{ this._generateNameTable(applicantInfos) }</td>
+                            <td className="householdNames border">{ this._generateNameTable(applicantInfos) }</td>
                             <td className="householdNames">{ this._generateNameTable(adultInfos) }</td>
                         </tr>
                     </tbody></table>
-                    </CardText>
+                    </div>
                     <div className="householdOther">
                         <div className="foster"><h3 className="householdSelection">Foster</h3><h3 className="householdSelectionNumber">{ this._computeNumApplicantsThatAre('fosterChild', applicantInfos) }</h3></div>
                         <div className="mhr"><h3 className="householdSelection">Migrant, Homeless, Runaway</h3><h3 className="householdSelectionNumber">{ this._computeNumApplicantsThatAre('migrantHomelessRunaway', applicantInfos) }</h3></div>
@@ -59,7 +61,8 @@ module.exports = React.createClass({
                     <h2>Submit</h2>
                     <p>Please fill out the information below then click submit when you are ready to submit the alpplication</p>
                 </div>
-                <Card shadow={1} className="submitSection"><CardText>
+                <Card shadow={1} className="submitSection">
+                    <div>
                     <div className="address">
                         <h3>Please Enter Current Address</h3>
                         <div className="streetField">
@@ -73,35 +76,29 @@ module.exports = React.createClass({
                         </div>
                     </div>
                     <div className="extraInfo">
-                        <div>
-                            <p>Please enter the last four numbers of (primary income earner) social security number</p>
-                            <Textfield error="Please enter four numbers" floatingLabel label="" onChange={e => this.setState({ssnLast4: e.target.value})} pattern={ ssnPattern } />
+                        <div className="ssn">
+                            <h3>Please enter the last four numbers of (primary income earner) social security number</h3>
+                            <p>XXX-XXX-</p><Textfield error="Please enter four numbers" floatingLabel label="SSN" onChange={e => this.setState({ssnLast4: e.target.value})} pattern={ ssnPattern } />
+                            <Checkbox ripple><p className="noSSN">Check if no SSN</p></Checkbox>
                         </div>
-                        <div>
-                            <p>Enter Today's Date</p>
-                            <Textfield floatingLabel label="" onChange={e => this.setState({todayDate: e.target.value})} />
+                        <div className="todaysDate">
+                            <h3>Enter Today's Date</h3>
+                            <Textfield floatingLabel label="MM/DD/YYYY" onChange={e => this.setState({todayDate: e.target.value})} />
                         </div>
-                    </div></CardText>
-                    <table className="signature"><tbody><tr>
-                        <td className="sidePadding" />
-                        <td className="verifyName">
+                    </div>
+                    </div>
+                    <div className="signature">
+                        <div className="verifyName">
+                            <h3>Please Enter Name Again</h3>
                             <Textfield floatingLabel label="First Name" onChange={e => this.setState({signatureFirstName: e.target.value})} />
-                            <Textfield floatingLabel label="Last Name" onChange={e => this.setState({signatureLastName: e.target.value})} />
-                        </td>
-                        <td className="submitSignature">
-                            <p>
-                                Signature<br/>
-                                <br/>
-                                The person signing is furnishing true information and to advise that person that the application is being made in connection with the receipt of Federal funds;<br/>
-                                <br/>
-                                School officials may verify the information on the application; and<br/>
-                                <br/>
-                                Deliberate misrepresentation of the information may subject the applicant to prosecution under State and Federal statutes.<br/>
-                            </p>
-                            <canvas height="50" id="signature-canvas" width="300" /><br />
-                        </td>
-                        <td className="sidePadding" />
-                    </tr></tbody></table>
+                            <Textfield floatingLabel label="Last Name" onChange={e => this.setState({signatureLastName: e.target.value})} /></div>
+                        <div className="submitSignature">
+                            <h3>Please Sign in the Box Below</h3>
+                            <p>The person signing is furnishing true information and to advise that person that the application is being made in connection with the receipt of Federal funds;
+                                School officials may verify the information on the application; and Deliberate misrepresentation of the information may subject the applicant to prosecution under State and Federal statutes.</p>
+                            <canvas height="70" id="signature-canvas" width="460" /><br />
+                        </div>
+                    </div>
                 </Card>
                 <div className="bottomNav container">
                     <div><p>
@@ -166,20 +163,22 @@ module.exports = React.createClass({
         return totalIncome > 0 && (
             <Card shadow={1} className="incomeSum">
                 <CardTitle>
-                    <h2 className="incomeNumName">Applicant Income</h2>
-                    <h2 className="incomeNum">Total ${ adultTotalIncome + applicantTotalIncome } /year</h2>
-                </CardTitle><CardText>
+                    <h2 className="incomeNumName">Total Income</h2>
+                    <h2 className="incomeNum"> ${ adultTotalIncome + applicantTotalIncome }/year</h2>
+                </CardTitle>
+                <div className="incomeList">
                 <table className="income-summary-table"><tbody>
                     <tr>
-                        <td className="incomeTitle"><h3>Child</h3></td>
+                        <td className="incomeTitle border"><h3>Child</h3></td>
                         <td className="incomeTitle"><h3>Adults</h3></td>
                     </tr>
                     <tr>
-                        <td className="incomeNames">{ this._generateNameIncomeTable(applicantIncomeByPerson, applicantTotalIncome, totalIncome) }</td>
+                        <td className="incomeNames border">{ this._generateNameIncomeTable(applicantIncomeByPerson, applicantTotalIncome, totalIncome) }</td>
                         <td className="incomeNames">{ this._generateNameIncomeTable(adultIncomeByPerson, adultTotalIncome, totalIncome) }</td>
                     </tr>
                 </tbody></table>
-            </CardText></Card>
+                </div>
+            </Card>
         );
     },
 

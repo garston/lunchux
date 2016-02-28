@@ -591,20 +591,47 @@ table {
                 width: 10%;
                 text-align: right;
                 color: #2196F3;
-                font-size: 2em;
+                font-size: 3em;
             }
         }
         .householdList {
             padding-top: 0px;
-            padding-bottom: 40px;
+            padding-bottom: 0px;
             .barGraph {
                 width: 100%;
-                height: 50px;
+                .mdl-progress {
+                    width: 100%;
+                    height: 20px;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    .progressbar {
+                        background-color: #2196F3;
+                    }
+                    .bufferbar {
+                        background-image: none;
+                        background-color: #F44336;
+                    }
+                }
             }
             table {
+                width: 100%;
+                .border {
+                    border-right: 1px solid #EEEEEE;
+                    .material-icons {
+                        color: #2196F3;
+                    }
+                }
+                .material-icons {
+                    float: left;
+                    color: #F44336;
+                    padding-right: 10px;
+                }
                 .householdTitle {
                     width: 50%;
-                    padding-bottom: 15px;
+                    padding-bottom: 5px;
+                    padding-left: 25px;
+                    padding-right: 25px;
+                    padding-top: 20px;
                     h3 {
                         margin-bottom: 0px;
                         margin-top: 0px;
@@ -613,14 +640,12 @@ table {
                 }
                 .householdNames {
                     vertical-align: top;
+                    padding-bottom: 25px;
+                    padding-left: 25px;
+                    padding-right: 25px;
                 }
                 .names {
                     width: 100%;
-                    .material-icons {
-                        float: left;
-                        color: #2196F3;
-                        padding-right: 10px;
-                    }
                     p {
                         margin-bottom: 5px;
                         font-size: 1.2em;
@@ -684,38 +709,52 @@ table {
                 font-size: 2em;
             }
         }
-
-        .income-summary-table {
-            .incomeTitle {
-                width: 50%;
-                padding-bottom: 15px;
-                h3 {
-                    margin-bottom: 0px;
-                    margin-top: 0px;
-                    font-size: 1.5em;
+        .incomeList {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            border-top: 1px solid #EEEEEE;
+            .income-summary-table {
+                width: 100%;
+                .border {
+                    border-right: 1px solid #EEEEEE;
                 }
-            }
-            .incomeNames {
-                vertical-align: top;
-                .name-income-table {
-                    width: 100%;
-                    .incomeNameList {
-                        float: left;
-                    }
-                    .incomeGraph {
-                        float: right;
-                        width: 20%;
+                .incomeTitle {
+                    width: 50%;
+                    padding-bottom: 5px;
+                    padding-left: 25px;
+                    padding-right: 25px;
+                    padding-top: 20px;
+                    h3 {
+                        margin-bottom: 0px;
+                        margin-top: 0px;
+                        font-size: 1.5em;
                     }
                 }
-            }
-            .material-icons {
-                float: left;
-                color: #2196F3;
-                padding-right: 10px;
-            }
-            p {
-                margin-bottom: 5px;
-                font-size: 1.2em;
+                .incomeNames {
+                    vertical-align: top;
+                    padding-bottom: 25px;
+                    padding-left: 25px;
+                    padding-right: 25px;
+                    .name-income-table {
+                        width: 100%;
+                        .incomeNameList {
+                            float: left;
+                        }
+                        .incomeGraph {
+                            float: right;
+                            width: 20%;
+                        }
+                    }
+                }
+                .material-icons {
+                    float: left;
+                    color: #2196F3;
+                    padding-right: 10px;
+                }
+                p {
+                    margin-bottom: 5px;
+                    font-size: 1.2em;
+                }
             }
         }
     }
@@ -726,35 +765,37 @@ table {
             h3 {
                 margin-bottom: 0px;
                 margin-top: 0px;
-                font-size: 1.6em;
+                font-size: 1.3em;
+                padding-top: 20px;
+                padding-left: 25px;
             }
             .streetField {
-                height: 100px;
                 float: left;
+                padding-left: 25px;
                 .mdl-textfield {
-                    padding-right: 15px;
+                    margin-right: 20px;
                 }
                 .street {
-                    width: 400px;
+                    width: 320px;
                 }
                 .apt {
                     width: 100px;
                 }
             }
             .additionalField {
-                height: 100px;
                 float: left;
+                padding-left: 25px;
                 .mdl-textfield {
-                    padding-right: 15px;
+                    margin-right: 20px;
                 }
                 .city{
-                    width: 300px;
+                    width: 250px;
                 }
                 .state {
-                    width: 100px;
+                    width: 60px;
                 }
                 .zip {
-                    width: 100px;
+                    width: 90px;
                 }
 
             }
@@ -762,24 +803,85 @@ table {
         .extraInfo {
             width: 40%;
             float: left;
+            .ssn {
+                padding-right: 25px;
+                padding-top: 20px;
+                h3 {
+                    font-size: 1.1em;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    line-height: 28px;
+                }
+                p {
+                    float: left;
+                    margin-bottom: 0px;
+                    padding-top: 20px;
+                    line-height: 28px;
+                    font-size: 1.1em;
+                }
+                .mdl-textfield {
+                    width: 100px;
+                    margin-right: 50px;
+                }
+                .mdl-checkbox {
+                    width: 25px;
+                }
+                .noSSN {
+                    padding-top: 0px;
+                    line-height: 24px;
+                    width: 300px;
+                    font-size: 1em;
+                }
+            }
+            .todaysDate {
+                padding-right: 25px;
+                padding-top: 20px;
+                h3 {
+                    font-size: 1.1em;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    line-height: 28px;
+                    float: left;
+                    padding-top: 20PX;
+                    PADDING-RIGHT: 20px;
+                }
+                .mdl-textfield {
+                    width: 100px;
+                }
+            }
 
         }
         .signature {
             padding-right: 25px;
             padding-left: 25px;
             border-top: 2px solid #EEEEEE;
-            width: 100%;
             .verifyName {
-                width: 55%;
-            }
-            .sidePadding {
-                width: 5%;
+                float: left;
+                width: 60%;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                h3 {
+                    font-size: 1.1em;
+                    padding-bottom: 0px;
+                    padding-top: 0px;
+                }
+                .mdl-textfield {
+                    margin-right: 20px;
+                }
             }
             .submitSignature {
-                width: 35%;
-            }
-            #signature-canvas {
-                border: 1px solid black;
+                width: 40%;
+                float: left;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                h3 {
+                    font-size: 1.1em;
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                }
+                #signature-canvas {
+                    border: 1px solid #EEEEEE;
+                }
             }
         }
     }
