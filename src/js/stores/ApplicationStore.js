@@ -6,9 +6,27 @@ var { STEPS } = require('../utils/Util');
 
 var applicationId;
 var formData = {};
-var orderedSteps = [STEPS.HOME, STEPS.NUM_PEOPLE, STEPS.APPLICANT_INFO, STEPS.ASSISTANCE_PROGRAM, STEPS.INCOME_INFO, STEPS.REVIEW_SUBMIT, STEPS.FORM_SUBMITTED];
-var step = orderedSteps[0];
-var visitedSteps = [step];
+var visitedSteps = [STEPS.HOME];
+
+var getCurrentStep = () => _.last(visitedSteps);
+var getNextStep = () => {
+    switch(getCurrentStep()) {
+        case STEPS.HOME:
+            return STEPS.NUM_PEOPLE;
+        case STEPS.NUM_PEOPLE:
+            return STEPS.APPLICANT_INFO;
+        case STEPS.APPLICANT_INFO:
+            if(formData.areAdultsInAssistanceProgram) {
+                return STEPS.ASSISTANCE_PROGRAM;
+            }else if(_.every(formData.applicantInfos, info => info.fosterChild)) {
+                return STEPS.REVIEW_SUBMIT;
+            }
+            return STEPS.INCOME_INFO;
+        case STEPS.ASSISTANCE_PROGRAM:
+        case STEPS.INCOME_INFO:
+            return STEPS.REVIEW_SUBMIT;
+    }
+};
 
 var ApplicationStore = StoreCreator.create({
     getApplicationId() {
@@ -18,7 +36,7 @@ var ApplicationStore = StoreCreator.create({
         return _.cloneDeep(formData);
     },
     getStep() {
-        return step;
+        return getCurrentStep();
     },
     getVisitedSteps() {
         return _.clone(visitedSteps);
@@ -29,17 +47,14 @@ ApplicationStore.dispatchToken = Dispatcher.register(({ action }) => {
     switch(action.type) {
         case APPLICATION_SUBMITTED:
             applicationId = action.applicationId;
-            step = STEPS.FORM_SUBMITTED;
+            visitedSteps.push(STEPS.FORM_SUBMITTED);
             break;
         case NAVIGATE_FORWARD:
             _.assign(formData, action.formData);
-            console.log('ApplicationStore', action.formData, formData);
-            step = orderedSteps[orderedSteps.indexOf(step) + 1];
-            visitedSteps.push(step);
+            visitedSteps.push(getNextStep());
             break;
         case NAVIGATE_TO:
-            step = action.step;
-            visitedSteps = _.slice(visitedSteps, 0, _.indexOf(visitedSteps, step) + 1);
+            visitedSteps = _.slice(visitedSteps, 0, _.indexOf(visitedSteps, action.step) + 1);
             break;
     }
 
