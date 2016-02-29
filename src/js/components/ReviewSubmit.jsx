@@ -28,6 +28,21 @@ module.exports = React.createClass({
         var formData = ApplicationStore.getFormData();
         var { adultInfos, applicantInfos, numAdults, numChildren } = formData;
 
+        var ssnSection = adultInfos && (
+            <div className="ssn">
+                <h3>Please enter the last four numbers of the primary income earners social security number</h3>
+                <p>XXX - XX - </p>
+                <Textfield floatingLabel
+                    error="Please enter four numbers"
+                    label="SSN"
+                    onChange={e => this.setState({noSSN: false, ssnLast4: e.target.value})}
+                    pattern={ ssnPattern }
+                    value={ this.state.ssnLast4 }
+                />
+                <Checkbox ripple checked={ this.state.noSSN } onChange={e => this.setState({noSSN: e.target.checked, ssnLast4: ''})}><p className="noSSN">Check if no SSN</p></Checkbox>
+            </div>
+        );
+
         return (
             <div className="review-submit-page">
                 <div className="selectionHeader container">
@@ -89,18 +104,7 @@ module.exports = React.createClass({
                         </div>
                     </div>
                     <div className="extraInfo">
-                        <div className="ssn">
-                            <h3>Please enter the last four numbers of the primary income earners social security number</h3>
-                            <p>XXX - XX - </p>
-                            <Textfield floatingLabel
-                                error="Please enter four numbers"
-                                label="SSN"
-                                onChange={e => this.setState({noSSN: false, ssnLast4: e.target.value})}
-                                pattern={ ssnPattern }
-                                value={ this.state.ssnLast4 }
-                            />
-                            <Checkbox ripple checked={ this.state.noSSN } onChange={e => this.setState({noSSN: e.target.checked, ssnLast4: ''})}><p className="noSSN">Check if no SSN</p></Checkbox>
-                        </div>
+                        { ssnSection }
                         <div className="verifyName">
                             <h3>Please Enter Your Name</h3>
                             <Textfield floatingLabel label="First Name" onChange={e => this.setState({signatureFirstName: e.target.value})} />
@@ -116,15 +120,16 @@ module.exports = React.createClass({
                         </div>
                         <div className="submitButton"><p>When you are ready click the submit button to submit your application</p>
                             <Button accent raised ripple
-                                    disabled={
-                            _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) ||
-                            !dateRegEx.test(this.state.todayDate) ||
-                            (!this.state.noSSN && (!this.state.ssnLast4 || !ssnRegEx.test(this.state.ssnLast4)))
-                        }
-                                    onClick={() => submitApplication(this.state)}
+                                disabled={
+                                    _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) ||
+                                    !dateRegEx.test(this.state.todayDate) ||
+                                    (!!ssnSection && !this.state.noSSN && (!this.state.ssnLast4 || !ssnRegEx.test(this.state.ssnLast4)))
+                                }
+                                onClick={() => submitApplication(this.state)}
                             >
                                 Submit
-                            </Button></div>
+                            </Button>
+                        </div>
                     </div>
                 </Card>
                 <div className="bottomNav container">
@@ -155,7 +160,6 @@ module.exports = React.createClass({
                         <br/>
                         We may share your eligibility information with education, health, and nutrition programs to help them evaluate, fund, or determine benefits for their programs, auditors for program reviews, and law enforcement officials to help them look into violations of program rules.<br/>
                     </p></div>
-
                 </div>
             </div>
         );
