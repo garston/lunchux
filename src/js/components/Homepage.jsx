@@ -32,8 +32,15 @@ module.exports = React.createClass({
 
                         <Textfield floatingLabel label="First Name" onChange={e => this.setState({firstName: e.target.value})} style={{width: '300px'}}/>
                         <Textfield floatingLabel label="Last Name" onChange={e => this.setState({lastName: e.target.value})} style={{width: '300px', marginLeft:"30px"}} />
-                        <Button accent raised ripple disabled={!this.state.firstName || !this.state.lastName} onClick={() => navigateForward(this.state)}>Get Started</Button>
-
+                        <Button accent raised ripple
+                            disabled={!this.state.firstName || !this.state.lastName}
+                            onClick={() => {
+                                window.onbeforeunload = () => 'Are you sure you want to navigate away? You will lose all application data. If you want to go back to a previous step, please use the navigation at the top of the application.';
+                                navigateForward(this.state);
+                            }}
+                        >
+                            Get Started
+                        </Button>
                     </div>
                     </Paper>
                 </div>
