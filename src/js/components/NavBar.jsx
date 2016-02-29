@@ -9,6 +9,10 @@ var { STEPS } = require('../utils/Util');
 module.exports = React.createClass({
     displayName: 'NavBar',
 
+    componentDidUpdate() {
+        React.findDOMNode(this).scrollIntoView();
+    },
+
     render() {
         var { numAdults, numChildren } = ApplicationStore.getFormData();
         var segments = _(ApplicationStore.getVisitedSteps()).map(step => {
