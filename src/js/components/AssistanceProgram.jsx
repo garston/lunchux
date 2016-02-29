@@ -42,9 +42,10 @@ module.exports = React.createClass({
 
         return (
             <div className="assistanceProgram">
-                <div className="selectionHeader container"><h2>Assistance Program Selection</h2></div>
+                <div className="selectionHeader container"><h2>Assistance Program Information</h2></div>
                 <Card shadow={1}>
-                    <CardTitle><h2>Please select the program and enter the case number</h2></CardTitle>
+                    <CardTitle><h2>Please select the program you currently participate in and enter in the case number. If you participate in more than
+                        one program you only need to select one. </h2></CardTitle>
                     <CardText>
                     <table><tbody>
                         { cardRows }

@@ -31,8 +31,9 @@ module.exports = React.createClass({
         return (
             <div className="review-submit-page">
                 <div className="selectionHeader container">
-                    <h2>Summary</h2>
-                    <p>Please review the information below to make sure everything is accurate</p>
+                    <h2>Review</h2>
+                    <p>Please review the information below to make sure everything is accurate. As a reminder If any changes do need to be made please go back to the appropriate section to make the changes.
+                        Your changes are saved so you will not loose any information previously entered but please be sure to review each section as any changes you make can affect other sections. </p>
                 </div>
                 <Card shadow={1} className="householdSum">
                     <CardTitle>
@@ -60,8 +61,9 @@ module.exports = React.createClass({
                 </div></Card>
                 { this._generateIncomeSummaryCard(formData) }
                 <div className="selectionHeader container">
-                    <h2>Submit</h2>
-                    <p>Please fill out the information below then click submit when you are ready to submit the alpplication</p>
+                    <h2>Additional Information</h2>
+                    <p>Please fill out the information below to complete your application. Once everything has been completed please click the submit button to complete your application.
+                    Keep in mind that once submitted you will not be able to edit your submission.</p>
                 </div>
                 <Card shadow={1} className="submitSection">
                     <div>
@@ -88,8 +90,8 @@ module.exports = React.createClass({
                     </div>
                     <div className="extraInfo">
                         <div className="ssn">
-                            <h3>Please enter the last four numbers of (primary income earner) social security number</h3>
-                            <p>XXX-XX-</p>
+                            <h3>Please enter the last four numbers of the primary income earners social security number</h3>
+                            <p>XXX - XX - </p>
                             <Textfield floatingLabel
                                 error="Please enter four numbers"
                                 label="SSN"
@@ -100,7 +102,7 @@ module.exports = React.createClass({
                             <Checkbox ripple checked={ this.state.noSSN } onChange={e => this.setState({noSSN: e.target.checked, ssnLast4: ''})}><p className="noSSN">Check if no SSN</p></Checkbox>
                         </div>
                         <div className="verifyName">
-                            <h3>Please Enter Name Again</h3>
+                            <h3>Please Enter Your Name</h3>
                             <Textfield floatingLabel label="First Name" onChange={e => this.setState({signatureFirstName: e.target.value})} />
                             <Textfield floatingLabel label="Last Name" onChange={e => this.setState({signatureLastName: e.target.value})} /></div>
                     </div>
@@ -181,7 +183,7 @@ module.exports = React.createClass({
         return totalIncome > 0 && (
             <Card shadow={1} className="incomeSum">
                 <CardTitle>
-                    <h2 className="incomeNumName">Total Income</h2>
+                    <h2 className="incomeNumName">Total Household Income</h2>
                     <h2 className="incomeNum"> ${ adultTotalIncome + applicantTotalIncome }/year</h2>
                 </CardTitle>
                 <div className="incomeList">
@@ -211,7 +213,7 @@ module.exports = React.createClass({
                 <tr key={ index }>
                     <td><Icon name="fiber_manual_record" /></td>
                     <td><p>{ firstName } { lastName }</p></td>
-                    <td>.........</td>
+                    <td></td>
                     <td><p>${ totalIncome } /year</p></td>
                 </tr>
             );
@@ -219,7 +221,7 @@ module.exports = React.createClass({
         return (
             <div className="name-income-table">
                 <div className="incomeNameList"><table><tbody>{ rows }</tbody></table></div>
-                <div className="incomeGraph">{ Math.round((totalIncomeForTable/totalIncome) * 100) }%</div>
+          /*      <div className="incomeGraph">{ Math.round((totalIncomeForTable/totalIncome) * 100) }%</div> */
             </div>
         );
     }

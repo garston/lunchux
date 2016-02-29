@@ -65,7 +65,7 @@ module.exports = React.createClass({
                                     onChange={(val, prop) => this._updateStateInfoArray(adultInfo, 'adultInfos', prop, val)}
                                 />
                             </td><td className="applicant-selection">
-                                <h3>Received Income From...</h3>
+                                <h3>Receives Income From...</h3>
                                 <table><tbody>
                                     { this._getIncomeCheckboxRows(adultInfo) }
                                     <tr>
@@ -88,7 +88,10 @@ module.exports = React.createClass({
 
         return (
             <div className="adultIncomeSection">
-                <div className="container"><h2>Adult Information and Income</h2></div>
+                <div className="container selectionHeader"><h2>Adult Information and Income</h2>
+                    <p>Please enter each adult's name and select the all the appropriate boxes that reflects what type of income
+                        they receive or if they do not receive any income. If any income is received please enter the amount and
+                        frequency each child receives to get the total gross income. </p></div>
                 { cards }
             </div>
         );
@@ -112,7 +115,9 @@ module.exports = React.createClass({
 
         return applicantIncomeRows.length > 0 && (
             <div className="applicantIncomeSection">
-                <div className="container"><h2>Please Enter Applicant Income Information</h2></div>
+                <div className="container selectionHeader"><h2>Child Income</h2>
+                    <p>Please enter the income information for the children you selected that receives income in the children's section.
+                        Please enter the amount and frequency each child receives to get the total gross income.  </p></div>
                 { applicantIncomeRows }
             </div>
         );

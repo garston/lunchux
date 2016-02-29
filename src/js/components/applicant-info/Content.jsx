@@ -30,9 +30,9 @@ module.exports = React.createClass({
         return (
             <div className="applicant-info-content">
                 <div className="selectionHeader container">
-                    <h2>Applicant Information</h2>
-                    <p>Please fill out the information below for each applicant. Reminder that an applicant in anyone in your household who is 18 and under wither they attend school
-                        or not and anyone who is in 12th grade or below and but over 18</p>
+                    <h2>Child Information</h2>
+                    <p>Please fill out the information below for each child. There is a card for each child you selected in the household members tab. Please fill out each child's name and check
+                    any boxes that apply to that child. Also although optional, please fill out the ethnicity and race information in the drop down box</p>
                 </div>
                 { applicantInfoCards }
                 <div className="bottomNav container">

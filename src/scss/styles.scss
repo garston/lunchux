@@ -69,14 +69,52 @@ h1,h2,h3 {
             line-height: 70px;
             padding-left: 25px;
             float: left;
-            width:95%;
             color: white;
         }
-        .material-icons {
-            line-height: 70px;
-            font-size: 2em;
-            color: white;
-            opacity: 0.5;
+        .help {
+            position: relative;
+            float: right;
+            margin-right: 25px;
+            margin-top: 20px;
+            .mdl-button {
+                width: 30px;
+                height: 30px;
+                .material-icons {
+                    font-size: 1.7em;
+                    color: white;
+                    opacity: 0.5;
+                    left: 8px;
+                }
+            }
+            .mdl-menu__container {
+                ul {
+                    height: 800px;
+                    width: 450px;
+                    li {
+                        display: flex;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        margin-bottom: 20px;
+                        h3 {
+                            font-size: 1.2em;
+                            color: #1565C0;
+                            margin-top: 2px;
+                            margin-bottom: 2px;
+                            float: left;
+                            line-height: 25px;
+                            width: 200px;
+                        }
+                        p {
+                            color: #424242;
+                            font-size: 1.2em;
+                            margin-top: 2px;
+                            margin-bottom: 2px;
+                            padding-left: 10px;
+                            line-height: 25px;
+                        }
+                    }
+                }
+            }
         }
     }
     .navSection{
@@ -102,6 +140,13 @@ h1,h2,h3 {
 .selectionHeader{
     margin-top:50px;
     margin-bottom: 50px;
+    h2 {
+        font-size: 3.2em;
+    }
+    p {
+        font-size: 1.3em;
+        line-height: 30px;
+    }
 }
 table {
     border-collapse: collapse;
@@ -113,73 +158,75 @@ table {
     width: 100%;
     height: 100%;
     position: absolute;
-    font-size: 100%;
+    background-color: #E0E0E0;
     .heroImage {
         width: 100%;
-        height: 70%;
-        background-color: #666666;
+        height: 100%;
+        background-color: #E0E0E0;
+        position: absolute;
         .image{
             position: absolute;
             width: 100%;
-            height: 70%;
+            height: 100%;
             overflow: hidden;
-
             img{
                 width: 100%;
                 min-width: 1000px;
                 top: 0%;
                 margin-left: auto;
                 margin-right: auto;
-                opacity: 0.3;
+                opacity: 0.0;
 
             }
         }
 
+    }
+    .start {
+        width: 70%;
+        top: 20%;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #3F51B5;
+        max-width: 1000px;
         .heroContainer {
-            width: 1000px;
+            width: 800px;
             margin-left: auto;
             margin-right: auto;
-            text-align: center;
+            text-align: left;
             top: 20%;
             position: relative;
-            .title {
-                h1 {
-                    font-weight: bold;
-                    font-size: 5em;
-                    padding-top: 5%;
-                    color: #ffffff
-                }
+            h1 {
+                font-weight: bold;
+                font-size: 4.2em;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                padding-top: 30px;
+                padding-bottom: 20px;
+                text-align: center;
+                color: whitesmoke;
             }
-            .intro {
-                h3{
-                    font-size: 2em;
-                    padding-top: 10%;
-                    text-align: left;
-                    color: #eeeeee;
-                }
+            h3 {
+                font-size: 1.3em;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                padding-top: 10px;
+                padding-bottom: 20px;
+                line-height: 30px;
+                color: whitesmoke;
             }
         }
-    }
-    .mdl-card {
-        max-width: 100%;
-        margin-top: 3px;
-        height: 30%;
-    }
         .nameContainer {
             width: 800px;
             margin-left: auto;
             margin-right: auto;
-            top: 20%;
-            position: relative;
-            font-size: 2em;
+            padding-bottom: 30px;
+            padding-top: 30px;
             Button {
-                margin-left: 30px;
+                margin-left: 47px;
                 margin-bottom: 15px;
             }
         }
-    .mdl-textfield__label {
-        color: #646464;
-
     }
 
 }
@@ -238,17 +285,20 @@ table {
         vertical-align: top;
         p {
            margin-bottom: 25px;
+            font-size: 1.2em;
+            line-height: 28px;
         }
     }
     .assistanceBox {
         height: 22px;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 20px;
+        padding-bottom: 20px;
         padding-left: 25px;
         border-top:1px solid #3F51B5;
         p {
             float: left;
             margin-bottom: 0px;
+            font-size: 1em;
         }
     }
     .numberRow {
@@ -287,7 +337,14 @@ table {
             font-size: 1.2em;
         }
         tr{
-            line-height: 33px;
+            line-height: 34px;
+            font-size: 1.1em;
+        }
+        h3 {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-left:30px;
+            font-size: 1.6em;
         }
 
     }
@@ -306,10 +363,10 @@ table {
         }
     }
     .toggle-optional-section-visibility:hover {
-        color: grey;
+        color: #424242;
         opacity: 0.9;
         p {
-            color: grey;
+            color: #424242;
         }
     }
 
@@ -324,7 +381,7 @@ table {
         }
     }
     .dropdown {
-        background-color: #F5F5F5;
+        background-color: #FAFAFA;
         padding-left: 25px;
         padding-right: 25px;
         p{
@@ -448,16 +505,17 @@ table {
         table{
             width: 100%;
             margin-left: 30px;
-            font-size: 1.2em;
+            font-size: 1.1em;
         }
         tr{
-            line-height: 33px;
+            line-height: 34px;
+            font-size: 1.1em;
         }
         h3 {
             margin-top: 0px;
             margin-bottom: 0px;
             margin-left:30px;
-            font-size: 1.7em;
+            font-size: 1.6em;
         }
 
     }
@@ -481,22 +539,29 @@ table {
             padding-left: 25px;
             min-width: 250px;
             p {
-                padding-right: 30px;
-                border-right: 1px solid grey;
                 margin-bottom: 0px;
                 font-size: 1.2em;
+                line-height: 30px;
+                float: left;
+                width: 350px;
+            }
+            .material-icons {
                 line-height: 30px;
             }
         }
         .enterIncome {
             padding-left: 50px;
             padding-right: 10px;
+            .mdl-textfield {
+                width: 200px;
+            }
         }
         .every {
-            padding-left: 15px;
-            padding-right: 15px;
-            font-size: 1em;
-            color: lightgray;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 1.1em;
+            color: #424242;
+            font-weight: 500;
         }
         .frequencySelector {
             padding-left: 10px;
@@ -504,49 +569,61 @@ table {
 
         }
         .calculation {
-            padding-left: 10px;
+            padding-left: 30px;
             padding-right: 10px;
+            color: #3F51B5;
+            font-size: 1.3em;
+            font-weight: 500;
         }
         .horizontal-box-selector td {
             background-color: white;
+            color: #9E9E9E;
             cursor: pointer;
             padding: 10px;
 
             &.selected {
-                color: #F44336;
+                background-color: #3F51B5;
+                color: white;
             }
         }
         .horizontal-box-selector td:hover {
-            color: grey;
-            border-bottom: 1px solid #EEEEEE;
+            color: #3F51B5;
             &.selected {
-                color: #F44336;
+                color: white;
+                background-color: #3F51B5;
             }
         }
     }
     .adultCard {
-        background-color: #F5F5F5;
+        background-color: #FAFAFA;
         padding-left: 25px;
         padding-right: 25px;
         .name {
             min-width: 360px;
             p {
-                padding-right: 30px;
-                border-right: 1px solid grey;
                 margin-bottom: 0px;
                 font-size: 1.1em;
+                line-height: 30px;
+                float: left;
+                width: 350px;
+            }
+            .material-icons {
                 line-height: 30px;
             }
         }
         .enterIncome {
             padding-left: 50px;
             padding-right: 10px;
+            .mdl-textfield {
+                width: 200px;
+            }
         }
         .every {
-            padding-left: 15px;
-            padding-right: 15px;
-            font-size: 1em;
-            color: lightgray;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 1.1em;
+            color: #424242;
+            font-weight: 500;
         }
         .frequencySelector {
             padding-left: 10px;
@@ -554,23 +631,28 @@ table {
 
         }
         .calculation {
-            padding-left: 10px;
+            padding-left: 30px;
             padding-right: 10px;
+            color: #3F51B5;
+            font-size: 1.3em;
+            font-weight: 500;
         }
         .horizontal-box-selector td {
-            background-color: #eeeeee;
+            background-color: #FAFAFA;
+            color: #9E9E9E;
             cursor: pointer;
             padding: 10px;
 
             &.selected {
-                color: #F44336;
+                background-color: #3F51B5;
+                color: white;
             }
         }
         .horizontal-box-selector td:hover {
-            color: grey;
-            border-bottom: 1px solid #EEEEEE;
+            color: #3F51B5;
             &.selected {
-                color: #F44336;
+                color: white;
+                background-color: #3F51B5;
             }
         }
     }
@@ -775,6 +857,7 @@ table {
                 font-size: 1.3em;
                 padding-top: 20px;
                 padding-left: 25px;
+                color: #3F51B5;
             }
             .streetField {
                 float: left;
@@ -817,6 +900,7 @@ table {
                     float: left;
                     padding-top: 20PX;
                     padding-right: 20px;
+                    color: #3F51B5;
                 }
                 .mdl-textfield {
                     width: 100px;
@@ -834,13 +918,14 @@ table {
                     margin-top: 0px;
                     margin-bottom: 0px;
                     line-height: 28px;
+                    color: #3F51B5;
                 }
                 p {
                     float: left;
                     margin-bottom: 0px;
                     padding-top: 20px;
                     line-height: 28px;
-                    font-size: 1.1em;
+                    font-size: 1em;
                 }
                 .mdl-textfield {
                     width: 100px;
@@ -865,6 +950,7 @@ table {
                     font-size: 1.1em;
                     margin-bottom: 0px;
                     margin-top: 0px;
+                    color: #3F51B5;
                 }
                 .mdl-textfield {
                     margin-right: 20px;
@@ -885,6 +971,7 @@ table {
                     font-size: 1.1em;
                     margin-top: 0px;
                     margin-bottom: 15px;
+                    color: #3F51B5;
                 }
                 #signature-canvas {
                     border: 1px solid #EEEEEE;

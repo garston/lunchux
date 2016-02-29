@@ -1,5 +1,5 @@
 var React = require('react');
-var { Textfield } = require('react-mdl');
+var { Textfield, Icon } = require('react-mdl');
 var HorizontalBoxSelector = require('../general/HorizontalBoxSelector.jsx');
 var { ALL_NUMBERS_PATTERN, ALL_NUMBERS_REGEX, computeYearlyIncome } = require('../../utils/Util');
 
@@ -18,7 +18,7 @@ module.exports = React.createClass({
         var { frequency, grossIncome, label, onChange } = this.props;
         return (
             <tr>
-                <td className="name"><p>{ label }</p></td>
+                <td className="name"><p>{ label }</p><Icon name="keyboard_arrow_right"/></td>
                 <td className="enterIncome">
                     <Textfield
                         error="Please enter only numbers"
@@ -37,7 +37,7 @@ module.exports = React.createClass({
                         selectedValues={ [frequency] }
                     />
                 </td>
-                <td className="calculation">{ ALL_NUMBERS_REGEX.test(grossIncome) && frequency ? `$${computeYearlyIncome({ frequency, grossIncome })}/year` : '' }</td>
+                <td className="calculation">= { ALL_NUMBERS_REGEX.test(grossIncome) && frequency ? `$${computeYearlyIncome({ frequency, grossIncome })}/year` : '' }</td>
             </tr>
         );
     }

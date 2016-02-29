@@ -35,13 +35,14 @@ module.exports = React.createClass({
                         />
                     </td>
                     <td className="applicant-selection">
+                        <h3>Is a...</h3>
                         <LabelCheckboxTable
                             getCheckboxValue={stateKey => !!this.state[stateKey]}
                             labelStateKeyPairs={[
                                 'Current Student', 'currentStudent',
-                                'Receives Income', 'receivesIncome',
                                 'Foster Child', 'fosterChild',
-                                'Migrant, homeless, runaway', 'migrantHomelessRunaway'
+                                'Migrant, homeless, runaway', 'migrantHomelessRunaway',
+                                'Receive Income', 'receivesIncome'
                             ]}
                             onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
                         />
@@ -49,7 +50,7 @@ module.exports = React.createClass({
                     </td>
                 </tr>
                 </tbody></table>
-                    <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}><p>Racial and Ethnic Identitiy (optional but helpful)</p><Icon className="downAarow" name="keyboard_arrow_down" /></div>
+                    <div className="toggle-optional-section-visibility" onClick={() => this.setState({ optionalSectionShown: !this.state.optionalSectionShown })}><p>Racial and Ethnic Identitiy (optional)</p><Icon className="downAarow" name="keyboard_arrow_down" /></div>
             </CardText>
                     { this.state.optionalSectionShown && this._generateOptionalSection() }
             </Card>
@@ -63,7 +64,8 @@ module.exports = React.createClass({
     _generateOptionalSection() {
         return (
             <div className="dropdown">
-                <p>We are required to ask for information about your children’s race and ethnicity. This information is important and helps to make sure we are fully serving our community. Responding to this section is optional and does not affect your children’s eligibility for free or reduced price meals.</p>
+                <p>We are required to ask for information about your children’s race and ethnicity. This information is important and helps to make sure we are fully serving our community.
+                    Responding to this section is optional and does not affect your children’s eligibility for free or reduced price meals.</p>
                 <table className="tableDropdown"><tbody>
                     <tr className="dropdownEthnicity">
                         <td className="dropdownTitle"><p>Ethnicity</p><Icon name="keyboard_arrow_right"/></td>

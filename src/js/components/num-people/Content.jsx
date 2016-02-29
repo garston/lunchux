@@ -20,12 +20,16 @@ module.exports = React.createClass({
         return (
             <div className="num-people-selection-content">
                 <div className="selectionHeader container">
-                    <h2>Lets get started</h2>
-                    <p>Please start by selecting how many applicants and adults are in your household. Please select only those that share income and expenses.</p>
+                    <h2>Household Member Selection</h2>
+                    <p>First start by selecting the number of people in your household. A household member includes anyone who is living with you and shares income and expenses, even if not related.
+                        If you need to go back and make any changes please use the navigation on the top left, do not hit the back button as this will exit the application. Also if you need help
+                        click the question mark at the top right for additional information.
+                    </p>
                 </div>
                 <NumPeopleCard
                     header="Children"
-                    helperText="Please select the number of children 18 and under and anyone who is over 18 and in grade 12 or below. A household is anyone who shares expenses and income."
+                    helperText="Please select the number of children 18 and under and anyone who is over 18 and in grade 12 or below. A household is anyone who shares expenses and income. Anyone 18
+                    and over but in grade 12 or below is considered a child."
                     imgSrc={ CHILD_ICON }
                     numSelected={this.state.numChildren}
                     onChange={numChildren => this.setState({numChildren})}
@@ -37,7 +41,7 @@ module.exports = React.createClass({
                 </NumPeopleCard>
                 <NumPeopleCard
                     header="Adults"
-                    helperText="Please select the number of adults in your household that share income and expenses."
+                    helperText="Please select the number of adult household members including yourself. DO NOT count any household members already included in the above section."
                     imgSrc={ ADULT_ICON }
                     numSelected={this.state.numAdults}
                     onChange={numAdults => this.setState({numAdults})}
@@ -48,7 +52,7 @@ module.exports = React.createClass({
                     </div>
                     <div className="assistanceBox">
                         <Checkbox checked={ !!this.state.areAdultsInAssistanceProgram } onChange={e => this.setState({areAdultsInAssistanceProgram: e.target.checked})} ripple />
-                        <p>Check if any adults are in the assistance programs SNAP, TANF, FDPIR</p>
+                        <p>Check if any household members currently participate in either the SNAP, TANF, or FDPIR assistance programs.</p>
                     </div>
                 </NumPeopleCard>
                 <div className="bottomNav container">
