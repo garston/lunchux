@@ -44,15 +44,15 @@ module.exports = React.createClass({
                         <div className="barGraph">
                             <ProgressBar progress={(numChildren/(numAdults + numChildren))*100} />
                         </div>
-                    <table><tbody>
-                        <tr>
-                            <td className="householdTitle border"><h3>Child</h3></td>
-                            <td className="householdTitle"><h3>Adults</h3></td>
-                        </tr><tr>
-                            <td className="householdNames border">{ this._generateNameTable(applicantInfos) }</td>
-                            <td className="householdNames">{ this._generateNameTable(adultInfos) }</td>
-                        </tr>
-                    </tbody></table>
+                        <table><tbody>
+                            <tr>
+                                <td className="householdTitle border"><h3>Children</h3></td>
+                                <td className="householdTitle"><h3>Adults{ !adultInfos && ` (${numAdults})`}</h3></td>
+                            </tr><tr>
+                                <td className="householdNames border">{ this._generateNameTable(applicantInfos) }</td>
+                                <td className="householdNames">{ adultInfos && this._generateNameTable(adultInfos) }</td>
+                            </tr>
+                        </tbody></table>
                     </div>
                     <div className="householdOther">
                         <div className="foster"><h3 className="householdSelection">Foster</h3><h3 className="householdSelectionNumber">{ this._computeNumApplicantsThatAre('fosterChild', applicantInfos) }</h3></div>
