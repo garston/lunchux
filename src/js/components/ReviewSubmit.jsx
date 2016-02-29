@@ -114,6 +114,17 @@ module.exports = React.createClass({
                                 School officials may verify the information on the application; and Deliberate misrepresentation of the information may subject the applicant to prosecution under State and Federal statutes.</p>
                             <canvas height="70" id="signature-canvas" width="600" /><br />
                         </div>
+                        <div className="submitButton"><p>When you are ready click the submit button to submit your application</p>
+                            <Button accent raised ripple
+                                    disabled={
+                            _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) ||
+                            !dateRegEx.test(this.state.todayDate) ||
+                            (!this.state.noSSN && (!this.state.ssnLast4 || !ssnRegEx.test(this.state.ssnLast4)))
+                        }
+                                    onClick={() => submitApplication(this.state)}
+                            >
+                                Submit
+                            </Button></div>
                     </div>
                 </Card>
                 <div className="bottomNav container">
@@ -144,17 +155,7 @@ module.exports = React.createClass({
                         <br/>
                         We may share your eligibility information with education, health, and nutrition programs to help them evaluate, fund, or determine benefits for their programs, auditors for program reviews, and law enforcement officials to help them look into violations of program rules.<br/>
                     </p></div>
-                    <div><p>When you are ready click the submit button to submit your application</p>
-                    <Button accent raised ripple
-                        disabled={
-                            _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) ||
-                            !dateRegEx.test(this.state.todayDate) ||
-                            (!this.state.noSSN && (!this.state.ssnLast4 || !ssnRegEx.test(this.state.ssnLast4)))
-                        }
-                        onClick={() => submitApplication(this.state)}
-                    >
-                        Submit
-                    </Button></div>
+
                 </div>
             </div>
         );
