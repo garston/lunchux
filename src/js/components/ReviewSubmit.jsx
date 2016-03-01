@@ -201,7 +201,7 @@ module.exports = React.createClass({
                 <div className="incomeList">
                 <table className="income-summary-table"><tbody>
                     <tr>
-                        <td className="incomeTitle border"><h3>Child</h3></td>
+                        <td className="incomeTitle border"><h3>Children</h3></td>
                         <td className="incomeTitle"><h3>Adults</h3></td>
                     </tr>
                     <tr>
@@ -233,7 +233,7 @@ module.exports = React.createClass({
         return (
             <div className="name-income-table">
                 <div className="incomeNameList"><table><tbody>{ rows }</tbody></table></div>
-          /*      <div className="incomeGraph">{ Math.round((totalIncomeForTable/totalIncome) * 100) }%</div> */
+                <div className="incomeGraph">{ Math.round((totalIncomeForTable/totalIncome) * 100) }%</div>
             </div>
         );
     }
