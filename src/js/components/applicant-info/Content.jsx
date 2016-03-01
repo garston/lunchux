@@ -32,7 +32,7 @@ module.exports = React.createClass({
                 <div className="selectionHeader container">
                     <h2>Child Information</h2>
                     <p>Please fill out the information below for each child. There is a card for each child you selected in the household members tab. Please fill out each child's name and check
-                    any boxes that apply to that child. Also although optional, please fill out the ethnicity and race information in the drop down box</p>
+                    any boxes that apply to that child. Also although optional, please fill out the ethnicity and race information in the drop down box.</p>
                 </div>
                 { applicantInfoCards }
                 <div className="bottomNav container">

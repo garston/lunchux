@@ -35,6 +35,7 @@ module.exports = React.createClass({
                 <Textfield floatingLabel
                     error="Please enter four numbers"
                     label="SSN"
+                    maxLength="4"
                     onChange={e => this.setState({noSSN: false, ssnLast4: e.target.value})}
                     pattern={ ssnPattern }
                     value={ this.state.ssnLast4 }
@@ -90,8 +91,8 @@ module.exports = React.createClass({
                         </div>
                         <div className="additionalField">
                             <Textfield floatingLabel label="City" className="city" onChange={e => this.setState({city: e.target.value})} />
-                            <Textfield floatingLabel label="State" className="state" onChange={e => this.setState({state: e.target.value})} />
-                            <Textfield floatingLabel label="Zip Code" className="zip" onChange={e => this.setState({zipCode: e.target.value})} />
+                            <Textfield floatingLabel label="State" className="state" maxLength="2" onChange={e => this.setState({state: e.target.value})} />
+                            <Textfield floatingLabel label="Zip Code" className="zip" maxLength="5" onChange={e => this.setState({zipCode: e.target.value})} />
                         </div>
                         <div className="phoneEmail">
                             <h3>Phone:</h3>
