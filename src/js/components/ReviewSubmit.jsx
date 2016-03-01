@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var React = require('react');
 var SignaturePad = require('signature_pad');
-var { Button, Card, CardTitle, Icon, Textfield, ProgressBar, Checkbox } = require('react-mdl');
+var { Button, Card, CardTitle, Icon, Textfield, ProgressBar, Checkbox} = require('react-mdl');
 var ApplicationStore = require('../stores/ApplicationStore');
 var { submitApplication } = require('../utils/ActionCreator');
 var { computeYearlyIncome } = require('../utils/Util');
@@ -30,9 +30,9 @@ module.exports = React.createClass({
 
         var ssnSection = adultInfos && (
             <div className="ssn">
-                <h3>Please enter the last four numbers of the primary income earners social security number</h3>
+                <h3>Please enter the last four digits your social security number or another adult household member if you do not have one.</h3>
                 <p>XXX - XX - </p>
-                <Textfield floatingLabel
+                <Textfield floatingLabel maxLength="4"
                     error="Please enter four numbers"
                     label="SSN"
                     maxLength="4"
@@ -84,7 +84,7 @@ module.exports = React.createClass({
                 <Card shadow={1} className="submitSection">
                     <div>
                     <div className="address">
-                        <h3>Please Enter Current Address, Email, and Phone Number (optional)"</h3>
+                        <h3>Please Enter Current Address, Email, and Phone (optional)</h3>
                         <div className="streetField">
                             <Textfield floatingLabel label="Street" className="street" onChange={e => this.setState({street: e.target.value})} />
                             <Textfield floatingLabel label="Apt" className="apt" onChange={e => this.setState({apt: e.target.value})} />
@@ -93,10 +93,11 @@ module.exports = React.createClass({
                             <Textfield floatingLabel label="City" className="city" onChange={e => this.setState({city: e.target.value})} />
                             <Textfield floatingLabel label="State" className="state" maxLength="2" onChange={e => this.setState({state: e.target.value})} />
                             <Textfield floatingLabel label="Zip Code" className="zip" maxLength="5" onChange={e => this.setState({zipCode: e.target.value})} />
+
                         </div>
                         <div className="phoneEmail">
                             <h3>Phone:</h3>
-                            <Textfield floatingLabel label="(xxx) xxx-xxxx" className="phone" onChange={e => this.setState({phone: e.target.value})} />
+                            <Textfield floatingLabel label="xxx-xxx-xxxx" maxLength="12" className="phone" onChange={e => this.setState({phone: e.target.value})} />
                             <h3>Email:</h3>
                             <Textfield floatingLabel label="email@example.com" className="email" onChange={e => this.setState({email: e.target.value})} />
                         </div>
@@ -231,15 +232,13 @@ module.exports = React.createClass({
                 <tr key={ index }>
                     <td><Icon name="fiber_manual_record" /></td>
                     <td><p>{ firstName }{ middleInitial ? ' ' + middleInitial : '' } { lastName }</p></td>
-                    <td></td>
-                    <td><p>${ totalIncome } /year</p></td>
+                    <td><p className="incomeSumList">${ totalIncome } /year</p></td>
                 </tr>
             );
         }).compact().value();
         return (
             <div className="name-income-table">
                 <div className="incomeNameList"><table><tbody>{ rows }</tbody></table></div>
-                <div className="incomeGraph">{ Math.round((totalIncomeForTable/totalIncome) * 100) }%</div>
             </div>
         );
     }

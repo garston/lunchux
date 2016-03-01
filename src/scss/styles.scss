@@ -1,6 +1,6 @@
 body {
     font-family: Roboto;
-    background-color: #E0E0E0;
+    background-color: #EEEEEE;
 }
 .mdl-card, .mdl-card > .mdl-card__supporting-text > table {
     width: 100%;
@@ -50,7 +50,7 @@ h1,h2,h3 {
         }
         &.active-step {
             border-bottom: 3px solid #F44336;
-            color: #F44336 ;
+            color: #F44336;
         }
         img {
             height: 50px;
@@ -80,16 +80,18 @@ h1,h2,h3 {
                 width: 30px;
                 height: 30px;
                 .material-icons {
-                    font-size: 1.7em;
+                    font-size: 1.5em;
                     color: white;
                     opacity: 0.5;
-                    left: 8px;
+                    left: 9px;
                 }
             }
             .mdl-menu__container {
                 ul {
                     width: 475px;
                     padding-top: 25px;
+                    padding-left: 25px;
+                    padding-right: 25px;
                     li {
                         display: flex;
                         padding-left: 15px;
@@ -97,7 +99,7 @@ h1,h2,h3 {
                         margin-bottom: 20px;
                         h3 {
                             font-size: 1.2em;
-                            color: #1565C0;
+                            color: #F44336;
                             margin-top: 2px;
                             margin-bottom: 2px;
                             float: left;
@@ -224,7 +226,7 @@ table {
             padding-bottom: 30px;
             padding-top: 30px;
             Button {
-                margin-left: 47px;
+                margin-left: 45px;
                 margin-bottom: 15px;
             }
         }
@@ -327,13 +329,21 @@ table {
     td.applicant-name {
         border-right: 2px solid #3F51B5;
         width: 60%;
-        td{
-
+       .middleIn {
+           width: 40px;
+           margin-left: 20px;
+       }
+        .lastName {
+            width: 320px;
         }
+        .firstName {
+            width: 260px;
+        }
+
     }
     td.applicant-selection {
         table{
-            width: 100%;
+            width: 99%;
             margin-left: 30px;
             font-size: 1.2em;
         }
@@ -498,13 +508,20 @@ table {
     td.applicant-name {
         border-right: 2px solid #3F51B5;
         width: 60%;
-        td{
-
+        .middleIn {
+            width: 40px;
+            margin-left: 20px;
+        }
+        .lastName {
+            width: 320px;
+        }
+        .firstName {
+            width: 260px;
         }
     }
     td.applicant-selection {
         table{
-            width: 100%;
+            width: 97%;
             margin-left: 30px;
             font-size: 1.1em;
         }
@@ -551,15 +568,15 @@ table {
             }
         }
         .enterIncome {
-            padding-left: 50px;
+            padding-left: 30px;
             padding-right: 10px;
             .mdl-textfield {
-                width: 200px;
+                width: 180px;
             }
         }
         .every {
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
             font-size: 1.1em;
             color: #424242;
             font-weight: 500;
@@ -570,8 +587,7 @@ table {
 
         }
         .calculation {
-            padding-left: 30px;
-            padding-right: 10px;
+            padding-left: 15px;
             color: #3F51B5;
             font-size: 1.3em;
             font-weight: 500;
@@ -613,15 +629,15 @@ table {
             }
         }
         .enterIncome {
-            padding-left: 50px;
+            padding-left: 30px;
             padding-right: 10px;
             .mdl-textfield {
-                width: 200px;
+                width: 180px;
             }
         }
         .every {
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
             font-size: 1.1em;
             color: #424242;
             font-weight: 500;
@@ -632,8 +648,7 @@ table {
 
         }
         .calculation {
-            padding-left: 30px;
-            padding-right: 10px;
+            padding-left: 15px;
             color: #3F51B5;
             font-size: 1.3em;
             font-weight: 500;
@@ -699,7 +714,7 @@ table {
                     }
                     .bufferbar {
                         background-image: none;
-                        background-color: #F44336;
+                        background-color: #9FA8DA;
                     }
                 }
             }
@@ -713,7 +728,7 @@ table {
                 }
                 .material-icons {
                     float: left;
-                    color: #F44336;
+                    color: #9FA8DA;
                     padding-right: 10px;
                 }
                 .householdTitle {
@@ -844,6 +859,9 @@ table {
                 p {
                     margin-bottom: 5px;
                     font-size: 1.2em;
+                }
+                .incomeSumList {
+                    padding-left: 50px;
                 }
             }
         }

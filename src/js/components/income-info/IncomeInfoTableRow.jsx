@@ -20,7 +20,7 @@ module.exports = React.createClass({
             <tr>
                 <td className="name"><p>{ label }</p><Icon name="keyboard_arrow_right"/></td>
                 <td className="enterIncome">
-                    <Textfield
+                    <Textfield maxLength="7"
                         error="Please enter only numbers"
                         floatingLabel
                         label="Receive Income Amount"

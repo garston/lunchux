@@ -42,7 +42,7 @@ module.exports = React.createClass({
                             labelStateKeyPairs={[
                                 'Current Student', 'currentStudent',
                                 'Foster Child', 'fosterChild',
-                                'Migrant, homeless, runaway', 'migrantHomelessRunaway',
+                                'Migrant, Homeless, Runaway', 'migrantHomelessRunaway',
                                 'Receive Income', 'receivesIncome'
                             ]}
                             onCheckboxChange={(stateKey, value) => this.setState({ [stateKey]: value })}
