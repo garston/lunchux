@@ -18,7 +18,7 @@ module.exports = React.createClass({
                 <tr>
                     <td rowSpan="2"><img src={ icon } /></td>
                     <td><Textfield floatingLabel label="First Name" className ="firstName" onChange={e => onChange(e.target.value, 'firstName')} value={ firstName } /></td>
-                    <td><Textfield floatingLabel label="Middle Initial" className ="middleIn" maxLength="1" onChange={e => onChange(e.target.value, 'middleInitial')} value={ middleInitial } /></td>
+                    <td><Textfield floatingLabel label="MI" className ="middleIn" maxLength="1" onChange={e => onChange(e.target.value, 'middleInitial')} value={ middleInitial } /></td>
                 </tr><tr>
                     <td colSpan="2"><Textfield floatingLabel label="Last Name" className ="lastName" onChange={e => onChange(e.target.value, 'lastName')} value={ lastName } /></td>
                 </tr>
