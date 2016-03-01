@@ -125,7 +125,10 @@ module.exports = React.createClass({
                                     !dateRegEx.test(this.state.todayDate) ||
                                     (!!ssnSection && !this.state.noSSN && (!this.state.ssnLast4 || !ssnRegEx.test(this.state.ssnLast4)))
                                 }
-                                onClick={() => submitApplication(this.state)}
+                                onClick={() => {
+                                    window.onbeforeunload = null;
+                                    submitApplication(this.state);
+                                }}
                             >
                                 Submit
                             </Button>
