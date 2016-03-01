@@ -1,9 +1,10 @@
 var keyMirror = require('keymirror');
 
 var occurrencesPerYearByFrequency = {
-    Month: 12,
     '2 Weeks': 26,
-    Week: 52
+    Month: 12,
+    Week: 52,
+    Year: 1
 };
 
 module.exports = {

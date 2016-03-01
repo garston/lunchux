@@ -3,7 +3,7 @@ var { Textfield, Icon } = require('react-mdl');
 var HorizontalBoxSelector = require('../general/HorizontalBoxSelector.jsx');
 var { ALL_NUMBERS_PATTERN, ALL_NUMBERS_REGEX, computeYearlyIncome } = require('../../utils/Util');
 
-var allowedFrequencies = ['Week', '2 Weeks', 'Month'];
+var allowedFrequencies = ['Week', '2 Weeks', 'Month', 'Year'];
 
 module.exports = React.createClass({
     displayName: 'IncomeInfoTableRow',
