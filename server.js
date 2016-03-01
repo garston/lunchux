@@ -1,11 +1,12 @@
 var bodyParser = require('body-parser');
 var express = require('express');
 var fs = require('fs');
+var serveIndex = require('serve-index');
 
 var app = express();
-
 app.listen(process.env.PORT || 3000, function() {});
 app.use(express.static(__dirname + '/assets'));
+app.use('/applications', serveIndex(__dirname + '/assets/applications'));
 app.use(express.static(__dirname + '/build'));
 app.use(bodyParser.json());
 
