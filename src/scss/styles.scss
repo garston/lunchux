@@ -226,8 +226,12 @@ table {
             padding-bottom: 30px;
             padding-top: 30px;
             Button {
-                margin-left: 45px;
                 margin-bottom: 15px;
+                margin-left: 44px;
+                margin-top: 10px;
+            }
+            .mdl-textfield {
+                float: left;
             }
         }
     }
