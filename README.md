@@ -9,3 +9,7 @@ Clone the repo and execute `npm run build`.
 ## Starting the server
 
 Run `npm start` then browse to `http://localhost:3000`
+
+## License
+
+Released under the [MIT License](http://www.opensource.org/licenses/MIT).
