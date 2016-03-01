@@ -23,7 +23,7 @@ module.exports = React.createClass({
                     <Textfield
                         error="Please enter only numbers"
                         floatingLabel
-                        label="Recieve Income Amount"
+                        label="Receive Income Amount"
                         onChange={ e => onChange('grossIncome', e.target.value) }
                         pattern={ ALL_NUMBERS_PATTERN }
                         value={ grossIncome }
