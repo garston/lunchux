@@ -32,7 +32,7 @@ module.exports = React.createClass({
             <div className="ssn">
                 <h3>Please enter the last four digits your social security number or another adult household member if you do not have one.</h3>
                 <p>XXX - XX - </p>
-                <Textfield floatingLabel maxLength="4"
+                <Textfield floatingLabel
                     error="Please enter four numbers"
                     label="SSN"
                     maxLength="4"
