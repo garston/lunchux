@@ -29,7 +29,6 @@ module.exports = React.createClass({
                     </div>
                     <Paper zDepth={2}>
                     <div className="nameContainer">
-
                         <Textfield floatingLabel label="First Name" onChange={e => this.setState({firstName: e.target.value})} style={{width: '300px'}}/>
                         <Textfield floatingLabel label="Last Name" onChange={e => this.setState({lastName: e.target.value})} style={{width: '300px', marginLeft:"30px"}} />
                         <Button accent raised ripple

@@ -88,6 +88,10 @@ module.exports = React.createClass({
                             <Textfield floatingLabel label="Street" className="street" onChange={e => this.setState({street: e.target.value})} />
                             <Textfield floatingLabel label="Apt" className="apt" onChange={e => this.setState({apt: e.target.value})} />
                         </div>
+                        <div>
+                            <Textfield floatingLabel label="Phone" onChange={e => this.setState({phone: e.target.value})} />
+                            <Textfield floatingLabel label="Email" onChange={e => this.setState({email: e.target.value})} />
+                        </div>
                         <div className="additionalField">
                             <Textfield floatingLabel label="City" className="city" onChange={e => this.setState({city: e.target.value})} />
                             <Textfield floatingLabel label="State" className="state" onChange={e => this.setState({state: e.target.value})} />
@@ -121,7 +125,7 @@ module.exports = React.createClass({
                         <div className="submitButton"><p>When you are ready click the submit button to submit your application</p>
                             <Button accent raised ripple
                                 disabled={
-                                    _.some(['city', 'signature', 'signatureFirstName', 'signatureLastName', 'state', 'street', 'todayDate', 'zipCode'], stateKey => !this.state[stateKey]) ||
+                                    _.some(['signature', 'signatureFirstName', 'signatureLastName', 'todayDate'], stateKey => !this.state[stateKey]) ||
                                     !dateRegEx.test(this.state.todayDate) ||
                                     (!!ssnSection && !this.state.noSSN && (!this.state.ssnLast4 || !ssnRegEx.test(this.state.ssnLast4)))
                                 }
