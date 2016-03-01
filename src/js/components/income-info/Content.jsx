@@ -62,6 +62,7 @@ module.exports = React.createClass({
                                     firstName={ adultInfo.firstName }
                                     icon={ ADULT_ICON }
                                     lastName={ adultInfo.lastName }
+                                    middleInitial={ adultInfo.middleInitial }
                                     onChange={(val, prop) => this._updateStateInfoArray(adultInfo, 'adultInfos', prop, val)}
                                 />
                             </td><td className="applicant-selection">
@@ -98,7 +99,7 @@ module.exports = React.createClass({
     },
 
     _getApplicantIncomeSection() {
-        var applicantIncomeRows = _(ApplicationStore.getFormData().applicantInfos).map((applicantInfo, index) => {
+        var applicantIncomeRows = _(ApplicationStore.getFormData().applicantInfos).map(({firstName, lastName, middleInitial}, index) => {
             var incomeInfo = this.state.applicantIncomeInfos[index];
             return incomeInfo &&
                 <Card className="applicantCard" key={ 'income-info-' + index } shadow={1}>
@@ -106,7 +107,7 @@ module.exports = React.createClass({
                         <IncomeInfoTableRow
                             frequency={ incomeInfo.frequency }
                             grossIncome={ incomeInfo.grossIncome }
-                            label={ `${applicantInfo.firstName} ${applicantInfo.lastName}` }
+                            label={ `${firstName}${middleInitial ? ' ' + middleInitial : ''} ${lastName}` }
                             onChange={ (prop, val) => this._updateStateInfoArray(incomeInfo, 'applicantIncomeInfos', prop, val) }
                         />
                     </tbody></table>

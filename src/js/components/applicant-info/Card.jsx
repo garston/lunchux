@@ -31,6 +31,7 @@ module.exports = React.createClass({
                             firstName={ this.state.firstName }
                             icon={ CHILD_ICON }
                             lastName={ this.state.lastName }
+                            middleInitial={ this.state.middleInitial }
                             onChange={(val, prop) => this._onNameChange(val, prop)}
                         />
                     </td>
@@ -92,8 +93,7 @@ module.exports = React.createClass({
     },
 
     _onNameChange(value, stateKey) {
-        var otherStateKey = stateKey === 'firstName' ? 'lastName' : 'firstName';
-        this.props.onRequiredFieldChange(!!value && !!this.state[otherStateKey]);
+        this.props.onRequiredFieldChange(_.every(['firstName', 'lastName'], sk => sk === stateKey ? value : this.state[sk]));
         this.setState({[stateKey]: value});
     }
 });

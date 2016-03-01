@@ -218,16 +218,18 @@ module.exports = React.createClass({
     },
 
     _generateNameTable(infos) {
-        var rows = _.map(infos, (info, index) => <tr key={ index }><td><Icon name="fiber_manual_record" /><p>{ `${info.firstName} ${info.lastName}` }</p></td></tr>);
+        var rows = _.map(infos, ({firstName, lastName, middleInitial}, index) => {
+            return <tr key={ index }><td><Icon name="fiber_manual_record" /><p>{ `${firstName}${middleInitial ? ' ' + middleInitial : ''} ${lastName}` }</p></td></tr>;
+        });
         return <table className="names"><tbody>{ rows }</tbody></table>;
     },
 
     _generateNameIncomeTable(incomeByPerson, totalIncomeForTable, totalIncome) {
-        var rows = _(incomeByPerson).map(({ personInfo: {firstName, lastName}, totalIncome }, index) => {
+        var rows = _(incomeByPerson).map(({ personInfo: {firstName, lastName, middleInitial}, totalIncome }, index) => {
             return totalIncome && (
                 <tr key={ index }>
                     <td><Icon name="fiber_manual_record" /></td>
-                    <td><p>{ firstName } { lastName }</p></td>
+                    <td><p>{ firstName }{ middleInitial ? ' ' + middleInitial : '' } { lastName }</p></td>
                     <td></td>
                     <td><p>${ totalIncome } /year</p></td>
                 </tr>
