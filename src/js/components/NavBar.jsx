@@ -36,8 +36,19 @@ module.exports = React.createClass({
                 <div className="help">
                     <IconButton name="help" id="helpDropdown"/>
                     <Menu target="helpDropdown" align="right" valign="bottom"  ripple>
-                        <li><h3>Household:</h3><p>Anyone can enter informaaskjdkas djalsdkjsalkd sgsgsdgdgsdg sdfs sdfdsfsf </p></li>
-                        <li><h3>What:</h3><p>Anyone can enter informaaskjdkas djalsdkjsalkd sgsgsdgdgsdg sdfs sdfdsfsf  </p></li>
+                        <li><h3>Household:</h3>
+                            <p>A household member is anyone who shares income and expenses. Even if they are not related to yo
+                            u they can still be counted as a household member. </p></li>
+                        <li><h3>Foster, Homeless, Migrant, Runaway:</h3>
+                            <p>Please check the appropriate box in the Child section. Are eligible for free meals.
+                            </p></li>
+                        <li><h3>SNAP, TANF, FDPIR:</h3>
+                            <p>Call your local government department to obtain the the information about the program and to obtain case numbers.  </p></li>
+                        <li><h3>Child Income:</h3>
+                            <p>Only report money received from outside your household that is paid directly to your child. Example include income from work, social security, disability, pension or trust, or anyone outside the household who gives them money on a regular basis.
+                            </p></li>
+                        <li><h3>Foster, Homeless, Migrant, Runaway:</h3>
+                            <p>Anyone can enter informaaskjdkas djalsdkjsalkd sgsgsdgdgsdg sdfs sdfdsfsf  </p></li>
                     </Menu>
                 </div>
             </div>

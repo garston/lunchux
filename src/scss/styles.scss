@@ -88,8 +88,8 @@ h1,h2,h3 {
             }
             .mdl-menu__container {
                 ul {
-                    height: 800px;
-                    width: 450px;
+                    width: 475px;
+                    padding-top: 25px;
                     li {
                         display: flex;
                         padding-left: 15px;
@@ -111,6 +111,7 @@ h1,h2,h3 {
                             margin-bottom: 2px;
                             padding-left: 10px;
                             line-height: 25px;
+                            width: 400px;
                         }
                     }
                 }
@@ -887,11 +888,8 @@ table {
                 .zip {
                     width: 90px;
                 }
-
             }
-            .todaysDate {
-                padding-top: 10px;
-                float: left;
+            .phoneEmail {
                 h3 {
                     font-size: 1.1em;
                     margin-top: 0px;
@@ -902,8 +900,15 @@ table {
                     padding-right: 20px;
                     color: #3F51B5;
                 }
-                .mdl-textfield {
-                    width: 100px;
+                .phone {
+                    width: 250px;
+                    float: left;
+                    margin-right: 100px;
+                }
+                .email {
+                    width: 280px;
+                    float: left;
+                    margin-right: 100px;
                 }
             }
         }
@@ -954,6 +959,23 @@ table {
                 }
                 .mdl-textfield {
                     margin-right: 20px;
+                }
+            }
+            .todaysDate {
+                padding-top: 10px;
+                float: left;
+                h3 {
+                    font-size: 1.1em;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    line-height: 28px;
+                    float: left;
+                    padding-top: 20PX;
+                    padding-right: 20px;
+                    color: #3F51B5;
+                }
+                .mdl-textfield {
+                    width: 100px;
                 }
             }
         }

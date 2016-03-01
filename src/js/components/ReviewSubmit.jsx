@@ -83,28 +83,21 @@ module.exports = React.createClass({
                 <Card shadow={1} className="submitSection">
                     <div>
                     <div className="address">
-                        <h3>Please Enter Current Address</h3>
+                        <h3>Please Enter Current Address, Email, and Phone Number (optional)"</h3>
                         <div className="streetField">
                             <Textfield floatingLabel label="Street" className="street" onChange={e => this.setState({street: e.target.value})} />
                             <Textfield floatingLabel label="Apt" className="apt" onChange={e => this.setState({apt: e.target.value})} />
-                        </div>
-                        <div>
-                            <Textfield floatingLabel label="Phone" onChange={e => this.setState({phone: e.target.value})} />
-                            <Textfield floatingLabel label="Email" onChange={e => this.setState({email: e.target.value})} />
                         </div>
                         <div className="additionalField">
                             <Textfield floatingLabel label="City" className="city" onChange={e => this.setState({city: e.target.value})} />
                             <Textfield floatingLabel label="State" className="state" onChange={e => this.setState({state: e.target.value})} />
                             <Textfield floatingLabel label="Zip Code" className="zip" onChange={e => this.setState({zipCode: e.target.value})} />
                         </div>
-                        <div className="todaysDate">
-                            <h3>Enter Today's Date</h3>
-                            <Textfield floatingLabel
-                                error="Please enter the date in the form MM/DD/YYYY"
-                                label="MM/DD/YYYY"
-                                onChange={e => this.setState({todayDate: e.target.value})}
-                                pattern={ datePattern }
-                            />
+                        <div className="phoneEmail">
+                            <h3>Phone:</h3>
+                            <Textfield floatingLabel label="(xxx) xxx-xxxx" className="phone" onChange={e => this.setState({phone: e.target.value})} />
+                            <h3>Email:</h3>
+                            <Textfield floatingLabel label="email@example.com" className="email" onChange={e => this.setState({email: e.target.value})} />
                         </div>
                     </div>
                     <div className="extraInfo">
@@ -112,7 +105,17 @@ module.exports = React.createClass({
                         <div className="verifyName">
                             <h3>Please Enter Your Name</h3>
                             <Textfield floatingLabel label="First Name" onChange={e => this.setState({signatureFirstName: e.target.value})} />
-                            <Textfield floatingLabel label="Last Name" onChange={e => this.setState({signatureLastName: e.target.value})} /></div>
+                            <Textfield floatingLabel label="Last Name" onChange={e => this.setState({signatureLastName: e.target.value})} />
+                        </div>
+                        <div className="todaysDate">
+                            <h3>Enter Today's Date:</h3>
+                            <Textfield floatingLabel
+                                       error="Please enter the date in the form MM/DD/YYYY"
+                                       label="MM/DD/YYYY"
+                                       onChange={e => this.setState({todayDate: e.target.value})}
+                                       pattern={ datePattern }
+                            />
+                        </div>
                     </div>
                     </div>
                     <div className="signature">
